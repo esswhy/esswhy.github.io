@@ -1,0 +1,25 @@
+---
+title: "About Me"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+# My Career Goals
+
+I am interested in pursuing a career in data science. I enjoy solving problems by applying my skill set in interesting and challenging environments, and being involved with collaborative teams to help deliver impact and insights. I am highly skilled in statistical data analysis and visualization, experimental design, scientific writing, and creating and delivering professional presentations to key stakeholders.
+
+Concurrent with my Ph.D. training, I am also a M.A. candidate in the Statistics & Applied Probability department at the University of California, Santa Barbara.
+
+# My Academic Research
+
+I am a Ph.D. candidate in the Psychological & Brain Sciences department at the University of California, Santa Barbara, working with [Emily G. Jacobs, Ph.D.](https://jacobs.psych.ucsb.edu/) My academic research investigates the role of sex steroid hormones on spatial navigation abilities and strategies in midlife aging, a period when women undergo menopause and declining sex hormones influence targeted brain regions crucial to navigation performance.
+
+The outcomes of my research have practical importance and broader impacts that lead to greater advancement in educational, psychological, and medical fields — including understanding healthy brain aging, the interaction of women's reproductive health and neuroscience, and identifying early markers for dementia.
+
+
+# Other
+
+In my free time, I enjoy watching YouTube, water coloring, and baking recipes especially those with Asian-inspired flavors.

@@ -1,0 +1,26 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About Me",
+      "author": [],
+      "contents": "\r\nMy Career Goals\r\nI am interested in pursuing a career in data science. I enjoy solving problems by applying my skill set in interesting and challenging environments, and being involved with collaborative teams to help deliver impact and insights. I am highly skilled in statistical data analysis and visualization, experimental design, scientific writing, and creating and delivering professional presentations to key stakeholders.\r\nConcurrent with my Ph.D. training, I am also a M.A. candidate in the Statistics & Applied Probability department at the University of California, Santa Barbara.\r\nMy Academic Research\r\nI am a Ph.D. candidate in the Psychological & Brain Sciences department at the University of California, Santa Barbara, working with Emily G. Jacobs, Ph.D. My academic research investigates the role of sex steroid hormones on spatial navigation abilities and strategies in midlife aging, a period when women undergo menopause and declining sex hormones influence targeted brain regions crucial to navigation performance.\r\nThe outcomes of my research have practical importance and broader impacts that lead to greater advancement in educational, psychological, and medical fields — including understanding healthy brain aging, the interaction of women’s reproductive health and neuroscience, and identifying early markers for dementia.\r\nOther\r\nIn my free time, I enjoy watching YouTube, water coloring, and baking recipes especially those with Asian-inspired flavors.\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-15T16:55:28-08:00"
+    },
+    {
+      "path": "blog.html",
+      "title": "Projects",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2022-01-15T16:55:36-08:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Shuying Yu",
+      "author": [],
+      "contents": "\r\n\r\n          \r\n          \r\n          Welcome\r\n          \r\n          \r\n          Home\r\n          About\r\n          Projects\r\n          ☰\r\n          \r\n          \r\n      \r\n        \r\n          \r\n            Shuying Yu\r\n          \r\n          \r\n            \r\n              Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a trained behavioral data scientist and passionate supporter of women.\r\n            \r\n            \r\n              Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a trained behavioral data scientist and passionate supporter of women.\r\n            \r\n          \r\n\r\n          \r\n            \r\n              \r\n                  \r\n                    \r\n                      LinkedIn\r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      GitHub\r\n                    \r\n                  \r\n                \r\n                                \r\n                  \r\n                    \r\n                      Email\r\n                    \r\n                  \r\n                \r\n                              \r\n          \r\n\r\n          \r\n            \r\n              \r\n                                \r\n                  \r\n                    LinkedIn\r\n                  \r\n                \r\n                                \r\n                  \r\n                    GitHub\r\n                  \r\n                \r\n                                \r\n                  \r\n                    Email\r\n                  \r\n                \r\n                              \r\n            \r\n          \r\n        \r\n      \r\n    \r\n\r\n    \r\n    \r\n    ",
+      "last_modified": "2022-01-15T16:55:37-08:00"
+    }
+  ],
+  "collections": ["posts/posts.json"]
+}
