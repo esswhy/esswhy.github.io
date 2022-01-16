@@ -77,7 +77,14 @@ d-appendix {
 }
 
 /*-- Additional custom styles --*/
-/* Add any additional CSS rules below                      */
+/* Add any additional CSS rules below*/
+
+
+/*Date of the post list*/
+.posts-list .metadata .publishedDate {
+    color: #676efd;
+}
+
 
 /* Change bullets */
 ul > li::marker {
