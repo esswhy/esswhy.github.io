@@ -7,10 +7,10 @@ links:
   - label: GitHub
     url: "https://github.com/esswhy"
   - label: Email
-    url: "syu.shuying@gmail.com"
-site: distill::distill_website
+    url: "mailto:syu.shuying@gmail.com"
 output:
   postcards::jolla
+site: distill::distill_website
 ---
  
 Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a trained behavioral data scientist and passionate supporter of women.
