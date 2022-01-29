@@ -2,15 +2,15 @@
 title: "Shuying Yu"
 image: "yu_headshot.png"
 links:
-  - label: LinkedIn
+  - label: <i class="fab fa-linkedin" style="color:#2175ed"></i>
     url: "https://www.linkedin.com/in/shuyingyu/"
-  - label: GitHub
+  - label: <i class="fa fa-github" style="color:black"></i>
     url: "https://github.com/esswhy"
-  - label: Email
+  - label: <i class="fa fa-envelope" style="color:#ff7a59"></i>
     url: "mailto:syu.shuying@gmail.com"
 output:
   postcards::jolla
 site: distill::distill_website
 ---
  
-Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a trained behavioral data scientist and passionate supporter of women.
+Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a behavioral data scientist and passionate supporter of women in STEM.

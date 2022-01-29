@@ -7,17 +7,16 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-# My Career Goals
+I am a researcher and data analyst with 7+ years of experience conducting quantitative and qualitative research in laboratory, field, and online settings. Currently, I work at the University of California, Santa Barbara where I employ advanced statistical methods to interpret data gathered from surveys, experiments, and large datasets from multiple projects. These methods include A/B testing, logistic and linear regressions, univariate and multivariate analysis, and multi-level modeling using statistical software packages such as R, Python, MATLAB, and Excel. I maintain a robust and reproducible workflow using version-controlled projects with Github and use R Markdown and Jupyter Notebook to write and share reports.
 
-I am interested in pursuing a career in data science. I enjoy solving problems by applying my skill set in interesting and challenging environments, and being involved with collaborative teams to help deliver impact and insights. I am highly skilled in statistical data analysis and visualization, experimental design, scientific writing, and creating and delivering professional presentations to key stakeholders.
+I am interested in continuing to build my research and data science toolbox by staying actively involved in the RStudio and TidyTuesday communities. I plan to continue learning advanced methods for analyzing and communicating data, such as forecasting, time series analysis, spatial data analysis, and SQL and Tableau. For fun, I am currently developing a Shiny app which communicates sources of indoor air pollution in Ghana to inform public health and policy.
 
-Concurrent with my Ph.D. training, I am also a M.A. candidate in the Statistics & Applied Probability department at the University of California, Santa Barbara.
+Please check out my data science projects and blog to learn more!
+
 
 # My Academic Research
 
-I am a Ph.D. candidate in the Psychological & Brain Sciences department at the University of California, Santa Barbara, working with [Emily G. Jacobs, Ph.D.](https://jacobs.psych.ucsb.edu/) My academic research investigates the role of sex steroid hormones on spatial navigation abilities and strategies in midlife aging, a period when women undergo menopause and declining sex hormones influence targeted brain regions crucial to navigation performance.
-
-The outcomes of my research have practical importance and broader impacts that lead to greater advancement in educational, psychological, and medical fields — including understanding healthy brain aging, the interaction of women's reproductive health and neuroscience, and identifying early markers for dementia.
+In my cognitive neuroscience research, I work with [Emily G. Jacobs, Ph.D.](https://jacobs.psych.ucsb.edu/) to investigate the role of sex steroid hormones on spatial navigation abilities and strategies in midlife and reproductive aging. The midlife period is characterized by declining ovarian hormone production as women transition to menopause. Thus, my research aims to investigate the influence of declining sex hormones on targeted brain regions that are crucial for supporting spatial navigation performance. The outcomes of my research have practical importance and broader impacts that lead to greater advancement in educational, psychological, and medical fields, including understanding healthy brain aging, the intersection of women's reproductive health and neuroscience, and identifying early cognitive markers for dementia.
 
 
 # Other

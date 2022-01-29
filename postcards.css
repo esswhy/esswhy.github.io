@@ -12,6 +12,7 @@
 /* This must remain at the top of this file.                 */
 /* Optional: embed custom fonts here with `@import`          */
 /* This must remain at the top of this file.                 */
+
 @import url('https://fonts.googleapis.com/css2?family=Amiri');
 @import url('https://fonts.googleapis.com/css2?family=Bitter');
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono');
@@ -63,17 +64,17 @@ d-appendix {
 
 .distill-site-header {
   --title-size:       19px;    
-  --text-color:       #800080; /* edited */
+  --text-color:       #800080; /*text color*/
   --text-size:        19px;
-  --hover-color:      #676efd; /* edited */
-  --bkgd-color:       #b09cc8; /* edited */
+  --hover-color:      #676efd; /*text hover color*/
+  --bkgd-color:       #d3beeb; /*banner background color */
 }
 
 .distill-site-footer {
   --text-color:       rgba(255, 255, 255, 0.8);
   --text-size:        15px;
-  --hover-color:      white;
-  --bkgd-color:       #0F2E3D;
+  --hover-color:      white; /*text hover color*/
+  --bkgd-color:       #800080; /*link background color when hovered, #0F2E3D*/
 }
 
 /*-- Additional custom styles --*/
@@ -82,18 +83,18 @@ d-appendix {
 
 /*Date of the post list*/
 .posts-list .metadata .publishedDate {
-    color: #676efd;
+    color: #676efd; /*text color for date in blog*/
 }
 
 
 /* Change bullets */
 ul > li::marker {
   font-size: 1.125em;
-  color: #800080;
+  color: #800080; /*bulletpoint color*/
 }
 
 /* Change link appearance */
 d-article a {
-  border-bottom: 2px solid #b09cc8;
+  border-bottom: 2px solid #d3beeb; /*underline color*/
   text-decoration: none;
 }
