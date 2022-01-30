@@ -1,4 +1,4 @@
 ---
-title: "Projects"  # any name you want here
+title: "Data Science Projects and Reports"  # any name you want here
 listing: projects # do this exactly
 ---
