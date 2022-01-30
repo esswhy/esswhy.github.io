@@ -1,0 +1,29 @@
+---
+title: "My First Blog Post"
+description: |
+  Hello and welcome to my website!
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/blog/welcome/
+date: 01-15-2022
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Hi there!
+
+If you're reading this, it means you've found my blog. I'm currently learning to create my own website in R, so thanks for your patience as this portfolio evolves and takes shape.
+
+I plan to use this website as a way to record just a tiny fraction of the amazing amount of things I am experiencing and learning during my Ph.D. program and hopefully throughout my data science career. This website will be an amalgamation of data science projects, personal reflections, and so forth.
+
+Please don't hesitate to reach out or say hello!
+
+With appreciation,
+
+Shuying

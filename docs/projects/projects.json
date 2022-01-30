@@ -1,21 +1,19 @@
 [
   {
-    "path": "projects/2022-01-29-snag-behavior/",
+    "path": "projects/snag_behavior/",
     "title": "Behavioral and Spatial Data Analysis: Aging and Sex Differences in Spatial Navigation",
     "description": "In this project, I investigated age-related changes and sex differences in spatial navigation performance between young and midlife adults.",
     "author": [
       {
         "name": "Shuying Yu",
-        "url": {
-          "https://esswhy.github.io": {}
-        }
+        "url": {}
       }
     ],
     "date": "2022-01-29",
     "categories": [],
     "contents": "\r\nThis project post is a work in progress.\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2022-01-29T17:37:14-08:00",
+    "last_modified": "2022-01-29T18:39:19-08:00",
     "input_file": {}
   }
 ]
