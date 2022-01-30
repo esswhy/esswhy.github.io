@@ -4,7 +4,6 @@ theme: shuying_theme.css
 description: |
   Shuying Yu
 output_dir: "docs"  # docs directory of master branch
-base_url: esswhy.github.io
 navbar:
   right:
     - text: "Home"
