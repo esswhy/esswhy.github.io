@@ -1,9 +1,10 @@
 name: "."
-title: "Welcome"
-theme: postcards.css
+title: "Shuying Yu"
+theme: shuying_theme.css
 description: |
-  Shuying's Website
+  Shuying Yu
 output_dir: "docs"  # docs directory of master branch
+base_url: esswhy.github.io
 navbar:
   right:
     - text: "Home"
@@ -12,4 +13,8 @@ navbar:
       href: about.html
     - text: "Projects"
       href: projects.html
+    - text: "Blog"
+      href: blog.html
+    - icon: fab fa-github
+      href: https://github.com/esswhy/esswhy.github.io
 output: distill::distill_article

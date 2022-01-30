@@ -13,4 +13,4 @@ output:
 site: distill::distill_website
 ---
  
-Hi! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a behavioral data scientist and passionate supporter of women in STEM.
+Hi there! I am a Ph.D. candidate studying human behavior and decision-making, and a M.A. candidate studying applied statistics. I am a behavioral data scientist and passionate supporter of women in STEM.

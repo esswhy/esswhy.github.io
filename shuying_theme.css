@@ -98,3 +98,22 @@ d-article a {
   border-bottom: 2px solid #d3beeb; /*underline color*/
   text-decoration: none;
 }
+
+
+
+/*
+ * CSS Snipped for display logo color brand on HOVER for font awesome social media icons
+*/
+
+.btn-outline-dark {
+    background-color: transparent;
+    color: #676efd; 
+    border: 1px solid;
+    border-color: #d3beeb; /*icon link border color*/
+}
+
+.btn-outline-dark:hover {
+    background-color: #d3beeb; /*icon link background hover color*/
+    border-color: #800080; /*icon link border hover color*/
+    color: white;
+}

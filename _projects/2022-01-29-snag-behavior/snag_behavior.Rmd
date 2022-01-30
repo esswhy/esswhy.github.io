@@ -1,0 +1,25 @@
+---
+title: "Behavioral and Spatial Data Analysis: Aging and Sex Differences in Spatial Navigation"
+description: |
+  In this project, I investigated age-related changes and sex differences in spatial navigation performance between young and midlife adults.
+author:
+  - name: Shuying Yu
+    url: {https://esswhy.github.io}
+date: 01-29-2022
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+This project post is a work in progress.
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+
