@@ -114,6 +114,6 @@ d-article a {
 
 .btn-outline-dark:hover {
     background-color: #d3beeb; /*icon link background hover color*/
-    border-color: #676efd; /*icon link border hover color*/
+    border-color: #800080; /*icon link border hover color*/
     color: white;
 }
