@@ -212,7 +212,7 @@ ggplot(data = palmetto, aes(x = species,
 
 <br>
 
-Initial exploration of the data reveals certain physical traits between the two palmetto species. Height between the two species appear similar, but the *Sereona repens* plant species seem to have shorter canopy length (**Figure 1**). There is also a difference in the number of green leaves measured, with *Sereona repens* plants having larger range and variance with an average of `r round(palmetto_leaves$avg_leaves[2], digits = 2)` green leaves counted (**Figure 2**). The majority of *Sabal etonia* plants have on average `r round(palmetto_leaves$avg_leaves[1], digits = 2)` green leaves, and the variance appears smaller. For the final exploratory plot, the canopy width was examined between the species and their respective width distribution and median width appear to be similar (**Figure 3**). Based on these plots, plant height and number of green leaves are the most likely to be helpful in classifying palmetto species correctly.
+Initial exploration of the data reveals certain physical traits between the two palmetto species. Height between the two species appear similar, but the *Serenoa repens* plant species seem to have shorter canopy length (**Figure 1**). There is also a difference in the number of green leaves measured, with *Serenoa repens* plants having larger range and variance with an average of `r round(palmetto_leaves$avg_leaves[2], digits = 2)` green leaves counted (**Figure 2**). The majority of *Sabal etonia* plants have on average `r round(palmetto_leaves$avg_leaves[1], digits = 2)` green leaves, and the variance appears smaller. For the final exploratory plot, the canopy width was examined between the species and their respective width distribution and median width appear to be similar (**Figure 3**). Based on these plots, plant height and number of green leaves are the most likely to be helpful in classifying palmetto species correctly.
 
 
 ## Binary Logistic Regression Model
@@ -350,17 +350,19 @@ acc_table %>%
   #Change column names
   kable(col.names = c("Model 1", "Model 2"), 
         
-        caption = "<b></b> Average prediction accuracy of palmetto species for Model 1 and Model 2 from 10-fold cross-validation. Model 1 includes all predictors (plant height, canopy width, canopy length, and number of green leaves) while Model 2 excludes canopy length from the model. Data source: Abrahamson, 2019.",
+        caption = "Average prediction accuracy of 
+        palmetto species for Model 1 and Model 2 from 10-fold 
+        cross-validation. Model 1 includes all predictors 
+        (plant height, canopy width, canopy length, and 
+        number of green leaves) while Model 2 excludes 
+        canopy length from the model. 
+        Data source: Abrahamson, 2019.",
   
         #Align all cells/columns to center
         align = c(rep("c", times = 3)),
         
         #Round digits to 2
         digits = 2,
-        
-        #HTML post format
-        escape = FALSE,
-        format = "html",
         
         #Change width of table
         table.attr = "style='width:60%;'") %>% 
@@ -402,27 +404,32 @@ aictable %>%
   
   #Use kable to make nice format
   kable(col.names = c("Model Name", "*K*",
-        "AIC (corrected)", "Change in AIC (corrected)", "Model Likelihood", "AIC (corrected) Weight", "Log-Likelihood", "Cumulative Weight"),
+        "AIC (corrected)", "Change in AIC (corrected)", 
+        "Model Likelihood", "AIC (corrected) Weight", 
+        "Log-Likelihood", "Cumulative Weight"),
         
         #Add caption
-        caption = "<b></b> Statistics for the AIC table between Model 1 and Model 2, which includes the number of parameters in the model, the corrected AIC value, the difference in AIC value between the best model compared to the current model, proportion of total predictive power found in the model (%), the log-likelihood of the model, and finally the cumulative sum of the AIC weights. Data source: Abrahamson, 2019.",
+        caption = "Statistics for the AIC table 
+        between Model 1 and Model 2, which includes the 
+        number of parameters in the model, the corrected AIC 
+        value, the difference in AIC value between the best 
+        model compared to the current model, proportion of 
+        total predictive power found in the model (%), the 
+        log-likelihood of the model, and finally the cumulative 
+        sum of the AIC weights. Data source: Abrahamson, 2019.",
         
         #Align all cells/columns to center
         align = c(rep("c", times = 8)),
         
         #Round digits to 2
-        digits = 2,
-        
-        #HTML post format
-        escape = FALSE,
-        format = "html") %>% 
+        digits = 2) %>% 
   
   #Make full width
   kable_styling(full_width = TRUE, position = "center") 
 ```
 
 
-We used AIC model selection to distinguish among two possible models describing the relationship between the log odds of palmetto species being *Sereona repens* using plant height, canopy length, canopy width, and number of green leaves as predictor variables. Here, Model 1 (*K*: `r aictable$K[1]`, AIC: `r round(aictable$AICc[1], digits = 2)`) has a lower AIC value than Model 2 (*K*: `r aictable$K[2]`, AIC: `r round(aictable$AICc[2], digits = 2)`) (**Table 2**). Thus, the better fitting model is Model 1, carrying majority of the cumulative model weight, and includes all the covariates with no interaction effects. The $\Delta$AIC is `r round(aictable$Delta_AICc[2], digits = 2)`, which is the difference in AIC score between the model being compared (Model 2) and the better performing model (Model 1).
+We used AIC model selection to distinguish among two possible models describing the relationship between the log odds of palmetto species being *Serenoa repens* using plant height, canopy length, canopy width, and number of green leaves as predictor variables. Here, Model 1 (*K*: `r aictable$K[1]`, AIC: `r round(aictable$AICc[1], digits = 2)`) has a lower AIC value than Model 2 (*K*: `r aictable$K[2]`, AIC: `r round(aictable$AICc[2], digits = 2)`) (**Table 2**). Thus, the better fitting model is Model 1, carrying majority of the cumulative model weight, and includes all the covariates with no interaction effects. The $\Delta$AIC is `r round(aictable$Delta_AICc[2], digits = 2)`, which is the difference in AIC score between the model being compared (Model 2) and the better performing model (Model 1).
 
 Thus, according to our mean prediction accuracy and AIC measures, Model 1 with all four predictor variables is the better model. We will select this as the final model and train the model on the entire dataset.
 
@@ -457,17 +464,21 @@ blr_final_tidy_kable %>%
   kable(col.names = c("Predictor Variable", "Coefficient",
                       "Standard Error", "*Z*-value", "*p*-value"),
         #Add caption
-        caption = "<b></b> Binary logistic regression results for the log odds of palmetto species being *Serenoa repens*. The four predictor variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves are shown on the left column and model summary statistics are on the right columnns, reporting the $\\beta$ coefficients, standard errors, *Z*-values, and *p*-values. Data source: Abrahamson, 2019.",
+        caption = "Binary logistic regression results 
+        for the log odds of palmetto species being 
+        *Serenoa repens*. The four predictor variables 
+        plant height (cm), canopy length (cm), canopy width 
+        (cm), and number of green leaves are shown on the 
+        left column and model summary statistics are on the 
+        right columnns, reporting the $\\beta$ coefficients, 
+        standard errors, *Z*-values, and *p*-values. 
+        Data source: Abrahamson, 2019.",
         
         #Align all cells/columns to center
         align = c(rep("c", times = 5)),
         
         #Round digits to 2
-        digits = 2,
-        
-        #HTML post format
-        escape = FALSE,
-        format = "html") %>%
+        digits = 2) %>%
   
   #Make full width and add hover to rows
   kable_styling(full_width = TRUE,
@@ -527,7 +538,7 @@ ggplot(data = blr_fitted, aes(x = green_leaves,
   
   #Change x-axis and y-axis labels
   labs(x = "Number of Green Leaves",
-       y = "Probability of Species being *Sereona repens*",
+       y = "Probability of Species being *Serenoa repens*",
        color = "Species") +
   
   #Change theme
@@ -547,11 +558,11 @@ ggplot(data = blr_fitted, aes(x = green_leaves,
         axis.title = element_text(face = "bold", size = 11))
 
 ```
-**Figure 4.** Fitted logistic regression curve of the chosen model for the observed species, *Sereona repens* (blue points) and *Sabal etonia* (purple points), with probabilities of a palmetto species being *Sereona repens* and using number of green leaves as a predictor variable. Data source: Abrahamson, 2019.
+**Figure 4.** Fitted logistic regression curve of the chosen model for the observed species, *Serenoa repens* (blue points) and *Sabal etonia* (purple points), with probabilities of a palmetto species being *Serenoa repens* and using number of green leaves as a predictor variable. Data source: Abrahamson, 2019.
 
 <br>
 
-All else being equal, the odds of a palmetto species being *Sereona repens* increases by a multiplicative factor of $e^{0.03} = 1.03$ for every 1 centimeter increase in plant height. The odds of a species being *Sereona repens* decreases by a multiplicative factor of $e^{-0.05} = 0.95$ for every 1 centimeter increases in canopy length. This means the the odds are about 5% less likely for the plant to be *Sereona repens*. Similarly, every 1 centimeter increase in canopy width leads to a decrease in the odds of species being *Sereona repens* by a multiplicative factor of $e^{-0.04} = 0.96$. Finally, the odds of a species being *Sereona repens* to increase by a multiplicative factor of $e^{1.91} = 6.75$ for every additional count of green leaves on the plant. Probabilities for *Sereona repens* are higher when observations report greater number of green leaves (**Figure 4**), otherwise probabilities are lower and likely to be *Sabal etonia*. This indicates that the number of green leaves on the plant is one of the best predictor variables for classifying palmetto species.
+All else being equal, the odds of a palmetto species being *Serenoa repens* increases by a multiplicative factor of $e^{0.03} = 1.03$ for every 1 centimeter increase in plant height. The odds of a species being *Serenoa repens* decreases by a multiplicative factor of $e^{-0.05} = 0.95$ for every 1 centimeter increases in canopy length. This means the the odds are about 5% less likely for the plant to be *Serenoa repens*. Similarly, every 1 centimeter increase in canopy width leads to a decrease in the odds of species being *Serenoa repens* by a multiplicative factor of $e^{-0.04} = 0.96$. Finally, the odds of a species being *Serenoa repens* to increase by a multiplicative factor of $e^{1.91} = 6.75$ for every additional count of green leaves on the plant. Probabilities for *Serenoa repens* are higher when observations report greater number of green leaves (**Figure 4**), otherwise probabilities are lower and likely to be *Sabal etonia*. This indicates that the number of green leaves on the plant is one of the best predictor variables for classifying palmetto species.
 
 
 ## Classification Accuracy of Final Model
@@ -602,14 +613,17 @@ final_counts_table %>%
   kable(col.names = c("Palmetto Species", "Sample Correctly Classified",
                       "Sample Incorrectly Classified", "% Correctly Classified"),
         
-        caption = "<b></b> Sample size and percentage of *Serenoa repens* and *Sabal etonia* palmettos correctly or incorrectly classified by our binary logistic regression model using four predictor variables (plant height, canopy length, canopy width, and number of green leaves). Threshold for classification of *Serenoa repens* species was having a predicted probability of 50% or greater. Data source: Abrahamson, 2019.",
+        caption = "Sample size and percentage 
+        of *Serenoa repens* and *Sabal etonia* palmettos 
+        correctly or incorrectly classified by our binary 
+        logistic regression model using four predictor 
+        variables (plant height, canopy length, canopy width, 
+        and number of green leaves). Threshold for classification 
+        of *Serenoa repens* species was having a predicted 
+        probability of 50% or greater. Data source: Abrahamson, 2019.",
         
         #Align all cells/columns to center
-        align = c("l", rep("c", times = 3)),
-        
-        #HTML post format
-        escape = FALSE,
-        format = "html") %>% 
+        align = c("l", rep("c", times = 3))) %>% 
   
   #Not make full width
   kable_styling(full_width = TRUE,

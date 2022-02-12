@@ -2708,7 +2708,7 @@ Code
 </div>
 <p><strong>Figure 3.</strong> Violin plots for the distribution of canopy width (cm) for each palmetto species, <em>Sabal etonia</em> (purple) and <em>Serenoa repens</em> (blue). The violin plot outlines illustrate the kernel probability density such that the width of the shaded area represents the proportion of the data located there. The black point within the violin plot indicates the median width for each species. Data source: Abrahamson, 2019.</p>
 <p><br></p>
-<p>Initial exploration of the data reveals certain physical traits between the two palmetto species. Height between the two species appear similar, but the <em>Sereona repens</em> plant species seem to have shorter canopy length (<strong>Figure 1</strong>). There is also a difference in the number of green leaves measured, with <em>Sereona repens</em> plants having larger range and variance with an average of 7.5 green leaves counted (<strong>Figure 2</strong>). The majority of <em>Sabal etonia</em> plants have on average 4.02 green leaves, and the variance appears smaller. For the final exploratory plot, the canopy width was examined between the species and their respective width distribution and median width appear to be similar (<strong>Figure 3</strong>). Based on these plots, plant height and number of green leaves are the most likely to be helpful in classifying palmetto species correctly.</p>
+<p>Initial exploration of the data reveals certain physical traits between the two palmetto species. Height between the two species appear similar, but the <em>Serenoa repens</em> plant species seem to have shorter canopy length (<strong>Figure 1</strong>). There is also a difference in the number of green leaves measured, with <em>Serenoa repens</em> plants having larger range and variance with an average of 7.5 green leaves counted (<strong>Figure 2</strong>). The majority of <em>Sabal etonia</em> plants have on average 4.02 green leaves, and the variance appears smaller. For the final exploratory plot, the canopy width was examined between the species and their respective width distribution and median width appear to be similar (<strong>Figure 3</strong>). Based on these plots, plant height and number of green leaves are the most likely to be helpful in classifying palmetto species correctly.</p>
 <h2 id="binary-logistic-regression-model">Binary Logistic Regression Model</h2>
 <p>We will build two binary logistic regression models to determine the probability of a plant being either <em>Serenoa repens</em> or <em>Sabal etonia</em> based on several predictor variables.</p>
 <p><strong>Model 1:</strong> Log odds of palmetto species being <em>Serenoa repens</em> using plant height, canopy length, canopy width, and number of green leaves as predictor variables</p>
@@ -2843,17 +2843,19 @@ Code
   <span class='co'>#Change column names</span>
   <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Model 1"</span>, <span class='st'>"Model 2"</span><span class='op'>)</span>, 
         
-        caption <span class='op'>=</span> <span class='st'>"&lt;b&gt;&lt;/b&gt; Average prediction accuracy of palmetto species for Model 1 and Model 2 from 10-fold cross-validation. Model 1 includes all predictors (plant height, canopy width, canopy length, and number of green leaves) while Model 2 excludes canopy length from the model. Data source: Abrahamson, 2019."</span>,
+        caption <span class='op'>=</span> <span class='st'>"Average prediction accuracy of 
+        palmetto species for Model 1 and Model 2 from 10-fold 
+        cross-validation. Model 1 includes all predictors 
+        (plant height, canopy width, canopy length, and 
+        number of green leaves) while Model 2 excludes 
+        canopy length from the model. 
+        Data source: Abrahamson, 2019."</span>,
   
         <span class='co'>#Align all cells/columns to center</span>
         align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"c"</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>,
         
         <span class='co'>#Round digits to 2</span>
         digits <span class='op'>=</span> <span class='fl'>2</span>,
-        
-        <span class='co'>#HTML post format</span>
-        escape <span class='op'>=</span> <span class='cn'>FALSE</span>,
-        format <span class='op'>=</span> <span class='st'>"html"</span>,
         
         <span class='co'>#Change width of table</span>
         table.attr <span class='op'>=</span> <span class='st'>"style='width:60%;'"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
@@ -2865,7 +2867,7 @@ Code
 </details>
 <table style="width:60%; margin-left: auto; margin-right: auto;" class="table">
 <caption>
-<span id="tab:binary-logistic-regression">Table 1: </span><b></b> Average prediction accuracy of palmetto species for Model 1 and Model 2 from 10-fold cross-validation. Model 1 includes all predictors (plant height, canopy width, canopy length, and number of green leaves) while Model 2 excludes canopy length from the model. Data source: Abrahamson, 2019.
+<span id="tab:binary-logistic-regression">Table 1: </span>Average prediction accuracy of palmetto species for Model 1 and Model 2 from 10-fold cross-validation. Model 1 includes all predictors (plant height, canopy width, canopy length, and number of green leaves) while Model 2 excludes canopy length from the model. Data source: Abrahamson, 2019.
 </caption>
 <thead>
 <tr>
@@ -2924,20 +2926,25 @@ Code
   
   <span class='co'>#Use kable to make nice format</span>
   <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Model Name"</span>, <span class='st'>"*K*"</span>,
-        <span class='st'>"AIC (corrected)"</span>, <span class='st'>"Change in AIC (corrected)"</span>, <span class='st'>"Model Likelihood"</span>, <span class='st'>"AIC (corrected) Weight"</span>, <span class='st'>"Log-Likelihood"</span>, <span class='st'>"Cumulative Weight"</span><span class='op'>)</span>,
+        <span class='st'>"AIC (corrected)"</span>, <span class='st'>"Change in AIC (corrected)"</span>, 
+        <span class='st'>"Model Likelihood"</span>, <span class='st'>"AIC (corrected) Weight"</span>, 
+        <span class='st'>"Log-Likelihood"</span>, <span class='st'>"Cumulative Weight"</span><span class='op'>)</span>,
         
         <span class='co'>#Add caption</span>
-        caption <span class='op'>=</span> <span class='st'>"&lt;b&gt;&lt;/b&gt; Statistics for the AIC table between Model 1 and Model 2, which includes the number of parameters in the model, the corrected AIC value, the difference in AIC value between the best model compared to the current model, proportion of total predictive power found in the model (%), the log-likelihood of the model, and finally the cumulative sum of the AIC weights. Data source: Abrahamson, 2019."</span>,
+        caption <span class='op'>=</span> <span class='st'>"Statistics for the AIC table 
+        between Model 1 and Model 2, which includes the 
+        number of parameters in the model, the corrected AIC 
+        value, the difference in AIC value between the best 
+        model compared to the current model, proportion of 
+        total predictive power found in the model (%), the 
+        log-likelihood of the model, and finally the cumulative 
+        sum of the AIC weights. Data source: Abrahamson, 2019."</span>,
         
         <span class='co'>#Align all cells/columns to center</span>
         align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"c"</span>, times <span class='op'>=</span> <span class='fl'>8</span><span class='op'>)</span><span class='op'>)</span>,
         
         <span class='co'>#Round digits to 2</span>
-        digits <span class='op'>=</span> <span class='fl'>2</span>,
-        
-        <span class='co'>#HTML post format</span>
-        escape <span class='op'>=</span> <span class='cn'>FALSE</span>,
-        format <span class='op'>=</span> <span class='st'>"html"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+        digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   
   <span class='co'>#Make full width</span>
   <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>full_width <span class='op'>=</span> <span class='cn'>TRUE</span>, position <span class='op'>=</span> <span class='st'>"center"</span><span class='op'>)</span> 
@@ -2946,7 +2953,7 @@ Code
 </details>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:aic-table">Table 2: </span><b></b> Statistics for the AIC table between Model 1 and Model 2, which includes the number of parameters in the model, the corrected AIC value, the difference in AIC value between the best model compared to the current model, proportion of total predictive power found in the model (%), the log-likelihood of the model, and finally the cumulative sum of the AIC weights. Data source: Abrahamson, 2019.
+<span id="tab:aic-table">Table 2: </span>Statistics for the AIC table between Model 1 and Model 2, which includes the number of parameters in the model, the corrected AIC value, the difference in AIC value between the best model compared to the current model, proportion of total predictive power found in the model (%), the log-likelihood of the model, and finally the cumulative sum of the AIC weights. Data source: Abrahamson, 2019.
 </caption>
 <thead>
 <tr>
@@ -3032,7 +3039,7 @@ Model 2
 </tbody>
 </table>
 </div>
-<p>We used AIC model selection to distinguish among two possible models describing the relationship between the log odds of palmetto species being <em>Sereona repens</em> using plant height, canopy length, canopy width, and number of green leaves as predictor variables. Here, Model 1 (<em>K</em>: 5, AIC: 5194.57) has a lower AIC value than Model 2 (<em>K</em>: 4, AIC: 5987.48) (<strong>Table 2</strong>). Thus, the better fitting model is Model 1, carrying majority of the cumulative model weight, and includes all the covariates with no interaction effects. The <span class="math inline">\(\Delta\)</span>AIC is 792.91, which is the difference in AIC score between the model being compared (Model 2) and the better performing model (Model 1).</p>
+<p>We used AIC model selection to distinguish among two possible models describing the relationship between the log odds of palmetto species being <em>Serenoa repens</em> using plant height, canopy length, canopy width, and number of green leaves as predictor variables. Here, Model 1 (<em>K</em>: 5, AIC: 5194.57) has a lower AIC value than Model 2 (<em>K</em>: 4, AIC: 5987.48) (<strong>Table 2</strong>). Thus, the better fitting model is Model 1, carrying majority of the cumulative model weight, and includes all the covariates with no interaction effects. The <span class="math inline">\(\Delta\)</span>AIC is 792.91, which is the difference in AIC score between the model being compared (Model 2) and the better performing model (Model 1).</p>
 <p>Thus, according to our mean prediction accuracy and AIC measures, Model 1 with all four predictor variables is the better model. We will select this as the final model and train the model on the entire dataset.</p>
 <h2 id="final-model-selection">Final Model Selection</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -3067,17 +3074,21 @@ Code
   <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Predictor Variable"</span>, <span class='st'>"Coefficient"</span>,
                       <span class='st'>"Standard Error"</span>, <span class='st'>"*Z*-value"</span>, <span class='st'>"*p*-value"</span><span class='op'>)</span>,
         <span class='co'>#Add caption</span>
-        caption <span class='op'>=</span> <span class='st'>"&lt;b&gt;&lt;/b&gt; Binary logistic regression results for the log odds of palmetto species being *Serenoa repens*. The four predictor variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves are shown on the left column and model summary statistics are on the right columnns, reporting the $\\beta$ coefficients, standard errors, *Z*-values, and *p*-values. Data source: Abrahamson, 2019."</span>,
+        caption <span class='op'>=</span> <span class='st'>"Binary logistic regression results 
+        for the log odds of palmetto species being 
+        *Serenoa repens*. The four predictor variables 
+        plant height (cm), canopy length (cm), canopy width 
+        (cm), and number of green leaves are shown on the 
+        left column and model summary statistics are on the 
+        right columnns, reporting the $\\beta$ coefficients, 
+        standard errors, *Z*-values, and *p*-values. 
+        Data source: Abrahamson, 2019."</span>,
         
         <span class='co'>#Align all cells/columns to center</span>
         align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"c"</span>, times <span class='op'>=</span> <span class='fl'>5</span><span class='op'>)</span><span class='op'>)</span>,
         
         <span class='co'>#Round digits to 2</span>
-        digits <span class='op'>=</span> <span class='fl'>2</span>,
-        
-        <span class='co'>#HTML post format</span>
-        escape <span class='op'>=</span> <span class='cn'>FALSE</span>,
-        format <span class='op'>=</span> <span class='st'>"html"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+        digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   
   <span class='co'>#Make full width and add hover to rows</span>
   <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>full_width <span class='op'>=</span> <span class='cn'>TRUE</span>,
@@ -3088,7 +3099,7 @@ Code
 </details>
 <table class="table table-hover" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:final-model-table">Table 3: </span><b></b> Binary logistic regression results for the log odds of palmetto species being <em>Serenoa repens</em>. The four predictor variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves are shown on the left column and model summary statistics are on the right columnns, reporting the <span class="math inline">\(\beta\)</span> coefficients, standard errors, <em>Z</em>-values, and <em>p</em>-values. Data source: Abrahamson, 2019.
+<span id="tab:final-model-table">Table 3: </span>Binary logistic regression results for the log odds of palmetto species being <em>Serenoa repens</em>. The four predictor variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves are shown on the left column and model summary statistics are on the right columnns, reporting the <span class="math inline">\(\beta\)</span> coefficients, standard errors, <em>Z</em>-values, and <em>p</em>-values. Data source: Abrahamson, 2019.
 </caption>
 <thead>
 <tr>
@@ -3246,7 +3257,7 @@ Code
   
   <span class='co'>#Change x-axis and y-axis labels</span>
   <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Number of Green Leaves"</span>,
-       y <span class='op'>=</span> <span class='st'>"Probability of Species being *Sereona repens*"</span>,
+       y <span class='op'>=</span> <span class='st'>"Probability of Species being *Serenoa repens*"</span>,
        color <span class='op'>=</span> <span class='st'>"Species"</span><span class='op'>)</span> <span class='op'>+</span>
   
   <span class='co'>#Change theme</span>
@@ -3269,9 +3280,9 @@ Code
 </details>
 <p><img src="logistic_regression_palmetto_files/figure-html5/classification-table-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<p><strong>Figure 4.</strong> Fitted logistic regression curve of the chosen model for the observed species, <em>Sereona repens</em> (blue points) and <em>Sabal etonia</em> (purple points), with probabilities of a palmetto species being <em>Sereona repens</em> and using number of green leaves as a predictor variable. Data source: Abrahamson, 2019.</p>
+<p><strong>Figure 4.</strong> Fitted logistic regression curve of the chosen model for the observed species, <em>Serenoa repens</em> (blue points) and <em>Sabal etonia</em> (purple points), with probabilities of a palmetto species being <em>Serenoa repens</em> and using number of green leaves as a predictor variable. Data source: Abrahamson, 2019.</p>
 <p><br></p>
-<p>All else being equal, the odds of a palmetto species being <em>Sereona repens</em> increases by a multiplicative factor of <span class="math inline">\(e^{0.03} = 1.03\)</span> for every 1 centimeter increase in plant height. The odds of a species being <em>Sereona repens</em> decreases by a multiplicative factor of <span class="math inline">\(e^{-0.05} = 0.95\)</span> for every 1 centimeter increases in canopy length. This means the the odds are about 5% less likely for the plant to be <em>Sereona repens</em>. Similarly, every 1 centimeter increase in canopy width leads to a decrease in the odds of species being <em>Sereona repens</em> by a multiplicative factor of <span class="math inline">\(e^{-0.04} = 0.96\)</span>. Finally, the odds of a species being <em>Sereona repens</em> to increase by a multiplicative factor of <span class="math inline">\(e^{1.91} = 6.75\)</span> for every additional count of green leaves on the plant. Probabilities for <em>Sereona repens</em> are higher when observations report greater number of green leaves (<strong>Figure 4</strong>), otherwise probabilities are lower and likely to be <em>Sabal etonia</em>. This indicates that the number of green leaves on the plant is one of the best predictor variables for classifying palmetto species.</p>
+<p>All else being equal, the odds of a palmetto species being <em>Serenoa repens</em> increases by a multiplicative factor of <span class="math inline">\(e^{0.03} = 1.03\)</span> for every 1 centimeter increase in plant height. The odds of a species being <em>Serenoa repens</em> decreases by a multiplicative factor of <span class="math inline">\(e^{-0.05} = 0.95\)</span> for every 1 centimeter increases in canopy length. This means the the odds are about 5% less likely for the plant to be <em>Serenoa repens</em>. Similarly, every 1 centimeter increase in canopy width leads to a decrease in the odds of species being <em>Serenoa repens</em> by a multiplicative factor of <span class="math inline">\(e^{-0.04} = 0.96\)</span>. Finally, the odds of a species being <em>Serenoa repens</em> to increase by a multiplicative factor of <span class="math inline">\(e^{1.91} = 6.75\)</span> for every additional count of green leaves on the plant. Probabilities for <em>Serenoa repens</em> are higher when observations report greater number of green leaves (<strong>Figure 4</strong>), otherwise probabilities are lower and likely to be <em>Sabal etonia</em>. This indicates that the number of green leaves on the plant is one of the best predictor variables for classifying palmetto species.</p>
 <h2 id="classification-accuracy-of-final-model">Classification Accuracy of Final Model</h2>
 <div class="layout-chunk" data-layout="l-body">
 <details>
@@ -3323,14 +3334,17 @@ Code
   <span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span>col.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Palmetto Species"</span>, <span class='st'>"Sample Correctly Classified"</span>,
                       <span class='st'>"Sample Incorrectly Classified"</span>, <span class='st'>"% Correctly Classified"</span><span class='op'>)</span>,
         
-        caption <span class='op'>=</span> <span class='st'>"&lt;b&gt;&lt;/b&gt; Sample size and percentage of *Serenoa repens* and *Sabal etonia* palmettos correctly or incorrectly classified by our binary logistic regression model using four predictor variables (plant height, canopy length, canopy width, and number of green leaves). Threshold for classification of *Serenoa repens* species was having a predicted probability of 50% or greater. Data source: Abrahamson, 2019."</span>,
+        caption <span class='op'>=</span> <span class='st'>"Sample size and percentage 
+        of *Serenoa repens* and *Sabal etonia* palmettos 
+        correctly or incorrectly classified by our binary 
+        logistic regression model using four predictor 
+        variables (plant height, canopy length, canopy width, 
+        and number of green leaves). Threshold for classification 
+        of *Serenoa repens* species was having a predicted 
+        probability of 50% or greater. Data source: Abrahamson, 2019."</span>,
         
         <span class='co'>#Align all cells/columns to center</span>
-        align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"l"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"c"</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>,
-        
-        <span class='co'>#HTML post format</span>
-        escape <span class='op'>=</span> <span class='cn'>FALSE</span>,
-        format <span class='op'>=</span> <span class='st'>"html"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+        align <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"l"</span>, <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"c"</span>, times <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
   
   <span class='co'>#Not make full width</span>
   <span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span>full_width <span class='op'>=</span> <span class='cn'>TRUE</span>,
@@ -3343,7 +3357,7 @@ Code
 </details>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-2">Table 4: </span><b></b> Sample size and percentage of <em>Serenoa repens</em> and <em>Sabal etonia</em> palmettos correctly or incorrectly classified by our binary logistic regression model using four predictor variables (plant height, canopy length, canopy width, and number of green leaves). Threshold for classification of <em>Serenoa repens</em> species was having a predicted probability of 50% or greater. Data source: Abrahamson, 2019.
+<span id="tab:unnamed-chunk-2">Table 4: </span>Sample size and percentage of <em>Serenoa repens</em> and <em>Sabal etonia</em> palmettos correctly or incorrectly classified by our binary logistic regression model using four predictor variables (plant height, canopy length, canopy width, and number of green leaves). Threshold for classification of <em>Serenoa repens</em> species was having a predicted probability of 50% or greater. Data source: Abrahamson, 2019.
 </caption>
 <thead>
 <tr>

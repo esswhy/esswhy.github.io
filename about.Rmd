@@ -10,25 +10,29 @@ library(here)
 ```
 
 
-I am a researcher and data analyst with 8+ years of experience conducting quantitative and qualitative research in laboratory, field, and online settings. Currently, I work at the University of California, Santa Barbara as a Ph.D. Candidate in Psychological & Brain Sciences and a M.A. Candidate in Statistics and Applied Probability (specializing in Applied Statistics and Data Science) where I employ advanced statistical methods to interpret data gathered from surveys, experiments, and large datasets from multiple, collaborative projects. These methods include A/B testing, logistic and linear regressions, univariate and multivariate analyses, and multi-level modeling using statistical software packages such as R, Python, MATLAB, and Excel. I maintain a robust and reproducible workflow using version-controlled projects with Github and use R Markdown and Jupyter Notebook to write and share reports.
+I am a researcher and data analyst with 7+ years of experience conducting quantitative and qualitative research in laboratory, field, and online settings. Currently, I work at the University of California, Santa Barbara as a **Ph.D. Candidate in Psychological & Brain Sciences** and a **M.A. Candidate in Statistics and Applied Probability** (emphasis in Applied Statistics with focus in Data Science) where I employ advanced statistical methods to interpret data gathered from surveys, experiments, and large datasets from multiple, collaborative projects. These methods include A/B testing, logistic and linear regressions, univariate and multivariate analyses, and multi-level modeling using statistical software packages such as R, Python, MATLAB, and Excel. I maintain a robust and reproducible workflow using version-controlled projects with Github and use R Markdown and Jupyter Notebook to write and share reports.
 
-I am interested in continuing to build my research and data science toolbox by staying actively involved in the RStudio and TidyTuesday communities. I plan to continue learning advanced methods for analyzing and communicating data, such as forecasting, time series analysis, and other machine learning methods. I am also currently learning SQL and Tableau. For fun, I am currently developing a Shiny app which communicates sources of [indoor air pollution from cooking practices across thousands of households in Ghana](https://worldprojects.columbia.edu/combating-household-air-pollution-clean-energy) to inform government policy makers about the need to improve public health and encourage the transition to cleaner energy sources.
+I am interested in building my research and data science toolbox by staying actively involved in the RStudio and TidyTuesday communities. I plan to continue learning advanced methods for analyzing and communicating data, such as forecasting, time series analysis, and other machine learning methods. I am also learning SQL and Tableau. For fun, I am currently developing a Shiny app which communicates sources of [indoor air pollution from cooking practices across thousands of households in Ghana](https://worldprojects.columbia.edu/combating-household-air-pollution-clean-energy) to inform government policy makers about the need to improve public health and encourage the transition to cleaner energy sources. Please check out the website tabs for my [data science projects](https://esswhy.github.io/projects.html) and [blog](https://esswhy.github.io/blog.html) to learn more.
 
-Please check out the website tabs for my data science projects and blog to learn more!
 
-# My Academic Research
+Throughout my many years as a student and researcher working in multiple research laboratories, I have learned that open communication, collaborative teamwork, and compassionate support are paramount in generating quality scientific research. I hope to apply the skills I have developed to help solve real-world problems upon graduating.
 
-In my research as a Ph.D. Candidate in the Psychological & Brain Sciences Department, I work with [Emily G. Jacobs, Ph.D.](https://jacobs.psych.ucsb.edu/) to investigate the role of sex steroid hormones on spatial navigation abilities and strategies in midlife women and men. The midlife period is characterized by declining ovarian hormone production as women transition to menopause, otherwise known as reproductive aging. My research aims to investigate the influence of declining sex steroid hormones on brain regions that are crucial for supporting successful spatial navigation performance. 
+
+# Academic Research
+
+In my research as a Ph.D. Candidate in the Psychological & Brain Sciences Department, I work with [Emily G. Jacobs, Ph.D.](https://jacobs.psych.ucsb.edu/) to investigate the role of sex steroid hormones on spatial navigation abilities and strategies in midlife women and men. The midlife period is characterized by declining ovarian hormone production as women transition to menopause and behavioral and cognitive changes unfold, a natural process known as reproductive aging. My research aims to investigate the influence of declining sex steroid hormones on brain regions that are crucial for supporting successful spatial navigation performance. 
 
 The outcomes of my research have practical importance and benefits to society that lead to greater advancement in educational, psychological, and medical fields — including understanding healthy brain aging, advancing knowledge for the intersection of women's health and neuroscience, and identifying early cognitive markers for dementia.
 
-```{r, fig.cap = "As part of my project, I also don on proper PPE (white lab coat, safety goggles, and latex gloves) to centrifuge blood, aliquot serum, and store cryovials into our freezer for hormone assays. Being a female scientist is a pretty cool job!"}
+```{r, fig.cap = "Donning on proper PPE (white lab coat, safety goggles, and latex gloves) to centrifuge blood, aliquot serum, and store cryovials into our freezer for future hormone assays. Being a female scientist is a pretty cool job!"}
 knitr::include_graphics(here("figures", "shuying_lab_freezer.jpg"))
 ```
 
-Outside of the lab, I enjoy participating in community outreach events at science fairs, hosting laboratory tours, and teaming up with the local chapter of Girls Inc., an organization dedicated to introducing young girls to STEM. Together, these experiences continue to solidify my commitment to fostering the growth of my community and in sharing science with the public throughout my career. Please see my science communication tab to learn more!
+
+Outside of the lab, I enjoy participating in community outreach events at science fairs, hosting laboratory tours, and teaming up with the local chapter of Girls Inc., an organization dedicated to introducing young girls to STEM. Together, these experiences continue to solidify my commitment to fostering the growth of my community and in sharing science with the public throughout my career. Please see my [publications and scientific communications](https://esswhy.github.io/scientific_communication.html) tab to learn more!
 
 
-# Other
+# Personal
 
-In my free time, I love watching YouTube, water coloring, and baking pastries and sweets with Asian-inspired flavors.
+In my free time, I love watching YouTube, making art, and baking pastries and sweets with Asian-inspired flavors. I am a proud first-generation college student and first-generation American, and am continually finding ways to re-establish connections to my roots and joining communities to preserve and share my family's stories.
+
