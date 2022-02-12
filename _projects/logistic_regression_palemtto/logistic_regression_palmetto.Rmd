@@ -4,7 +4,7 @@ description: |
   In this project, I explored Florida palmetto data through exploratory visualizations and used binary logistic regression to classify palmetto species.
 author:
   - name: Shuying Yu
-    url: {}
+citation_url: https://esswhy.github.io/projects/logistic_regression_palmetto/
 date: 02-11-2022
 categories:
   - Logistic Regression
@@ -59,8 +59,7 @@ library(patchwork)
 
 ```{r}
 #Read in the data 
-palmetto <- read_csv(here("_projects", "data",
-                          "palmetto.csv"))
+palmetto <- read_csv(here("_projects", "data", "palmetto.csv"))
 
 
 #Clean the data
