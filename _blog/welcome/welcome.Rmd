@@ -18,9 +18,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Hi there!
 
-If you're reading this, it means you've found my blog. I'm currently learning to create my own website in R, so thanks for your patience as this portfolio evolves and takes shape.
+If you're reading this, it means you've found my blog. I'm currently learning to create my own website in R, so thanks for your patience as this portfolio evolves and comes to life.
 
-I plan to use this website as a way to record just a tiny fraction of the amazing amount of things I am experiencing and learning during my Ph.D. program and hopefully throughout my data science career. This website will be an amalgamation of data science projects, personal reflections, and so forth.
+I plan to use this website as a way to record just a tiny fraction of the milestones and events I am experiencing and learning during my Ph.D. program and hopefully throughout my data science career. This website will be an amalgamation of data science projects, personal reflections, and so forth.
 
 Please don't hesitate to reach out or say hello!
 

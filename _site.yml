@@ -12,6 +12,8 @@ navbar:
       href: about.html
     - text: "Projects"
       href: projects.html
+    - text: "Resume"
+      href: ShuyingYu_Resume_DataScienceAnalytics.pdf
     - text: "Blog"
       href: blog.html
     - icon: fab fa-github
