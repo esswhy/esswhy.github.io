@@ -1,0 +1,81 @@
+---
+title: "Publications and other Scientific Communications"
+description: |
+  A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true #doesn't really work...
+---
+ 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+#Counter for publications
+mycounter_pubs <- 0
+
+#Counter for presentation talks
+mycounter_talks <- 0
+
+#Counter for presentation posters
+mycounter_posters <- 0
+
+#Adding `&emsp;` is four spaces
+#Addint `&ensp;` is two spaces
+```
+
+
+# Publications
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Hegarty, M., He, C., Boone, A. P., **Yu, S.**, Jacobs, E. G., & Chrastil, E. R. (2022). Understanding Differences in Wayfinding Strategies. *Topics in Cognitive Science*. https://doi.org/10.1111/tops.12592.
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A. P., He, C., Davis, R., Hegarty, M., Chrastil, E., & Jacobs, E.G. (2021). Age-related changes in spatial navigation are evident by midlife and differ by sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185.
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Pritschet, L., Santander, T., Taylor, C. M., Layher, E., **Yu, S.**, Miller, M. B., Grafton, S.T., & Jacobs, E. G. (2020). Functional reorganization of brain networks across the human menstrual cycle. *NeuroImage*, 220, 117091. https://doi.org/10.1016/j.neuroimage.2020.117091.
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Taylor, C. M., Pritschet, L., **Yu, S.**, & Jacobs, E. G. (2019). Applying a women’s health lens to the study of the aging brain. *Frontiers in human neuroscience*, 13, 224. https://doi.org/10.3389/fnhum.2019.00224.
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Suarez, N.A., Samano, M., **Yu, S.**, Snyder, S. & Chukoskie, L. (2019). Research-practice partnerships in STEM informal learning environments. In P.K. Kuhl, S-S. Lim, S. Guerriero & D. Van Damme (Eds.), *Developing Minds in the Digital Age: Towards a Science of Learning for 21st Century Education*, (pp. 187-195). Paris, France: Educational Research and Innovation, OECD Publishing. https://doi.org/10.1787/562a8659-en.
+
+
+# Presentations
+
+## Talks
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.** (September 2021). Sex Differences and Aging in Spatial Navigation. *Lunch & Learn Series*. UCSB Graduate Division, Santa Barbara, CA, USA. **_Highlighted as "the most accessible STEM presentation seen at Lunch & Learn" by the Assistant Director of Professional Development for the Graduate Division._**
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Boone, A. P., He, C., Davis, R., Hegarty, M., Chrastil, E., & Jacobs, E. (October 2020). Sex Differences and Age-Related Differences in Spatial Navigation. *3rd Interdisciplinary Navigation Symposium (iNAV)*. Virtual Presentation, Cortina d'Ampezzo, Italy.
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Pritschet, L., Taylor, C.M. & Jacobs, E.G. (February 2018). *Cognitive Neuroscience Seminar Series*. UCSB Department of Psychological and Brain Sciences, Santa Barbara, CA, USA.
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Chu. D. & Nitz, D.A. (June 2016). Role of the Hippocampus and Parietal Cortex in Rule-Based Environmental Fragmentation. *Cognitive Science Undergraduate Honors Thesis Presentations*, La Jolla, CA, USA.
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Smith, C.N. & Squire, L.R. (April 2016). Eye Movements, Memory, and Awareness of Whether a Scene Is Old or New. *29th Annual Undergraduate Research Conference*, La Jolla, CA, USA.
+
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Chukoskie, L. & Townsend, J. (April 2015). Whatcha Looking At? Social and Non-Social Eye Fixations of Children with ASD in a Change Blindness Task. *28th Annual Undergraduate Research Conference*, La Jolla, CA, USA.
+
+
+
+## Posters
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; Shelley, L.E., Chu, D., **Yu, S.**, Kim, S., Ragland, S., Miyamoto, K., Park, J. & Nitz, D.A. (October 2016). Creating spaces: A possible function of the hippocampus and parietal networks. *2nd Annual Frontiers of Innovation Scholars Program Symposium*, La Jolla, CA, USA. 
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Smith, C.N. & Squire, L.R. (May 2016). Eye Movements, Memory, and Awareness of Whether a Scene Is Old or New. *2016 Psychology Honors Poster Session*, La Jolla, CA, USA.
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Smith, C.N. & Squire, L.R. (February 2016). Differential eye movements for old and new scenes under free viewing conditions are unrelated to awareness and are hippocampus-independent. *2016 Inter-Science of Learning Center Conference*, Arlington, VA, USA. 
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Smith, C.N. & Squire, L.R. (January 2016). Differential eye movements for old and new scenes under free viewing conditions are unrelated to awareness and are hippocampus-independent. *Temporal Dynamics of Learning Center All Hands Meeting 2016*, La Jolla, CA, USA. 
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; Samano, M., Suarez, N.A., **Yu, S.** & Chukoskie, L. (November 2015). A Good Balance Between Research and Outreach in an Informal Science Learning Environment. *1st Annual Frontiers of Innovation Scholars Program Symposium*, La Jolla, CA, USA. 
+
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Chukoskie, L. & Townsend, J. (May 2015). Whatcha Looking At? Social and Non-Social Eye Fixations of Children with ASD in a Change Blindness Task. *2015 Inter-Science of Learning Center Conference*, La Jolla, CA, USA. 
+
+
+# Videos
+
+
+Coming soon!
+
+
+
+

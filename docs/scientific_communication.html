@@ -86,26 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Shuying Yu: Blog Posts</title>
+  <title>Shuying Yu: Publications and other Scientific Communications</title>
 
+  <meta property="description" itemprop="description" content="A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Shuying Yu: Blog Posts"/>
+  <meta property="og:title" content="Shuying Yu: Publications and other Scientific Communications"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Shuying Yu"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Shuying Yu: Blog Posts"/>
+  <meta property="twitter:title" content="Shuying Yu: Publications and other Scientific Communications"/>
+  <meta property="twitter:description" content="A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Blog Posts"]},{"type":"character","attributes":{},"value":["blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Publications and other Scientific Communications"]},{"type":"character","attributes":{},"value":["A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2396,12 +2399,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Blog Posts","authors":[]}
+{"title":"Publications and other Scientific Communications","description":"A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2429,174 +2432,59 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-apply-limit l-page">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Blog Posts">Blog Posts</h1>
-<a href="blog/welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 15, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Shuying Yu</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>My First Blog Post</h2>
-<div class="dt-tags"></div>
-<p>Hello and welcome to my website!</p>
-</div>
-</a>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Blog Posts</h1>
+<h1>Publications and other Scientific Communications</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.</p></p>
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#publications">Publications</a></li>
+<li><a href="#presentations">Presentations</a>
+<ul>
+<li><a href="#talks">Talks</a></li>
+<li><a href="#posters">Posters</a></li>
+</ul></li>
+<li><a href="#videos">Videos</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="publications">Publications</h1>
+<ol type="1">
+<li><p>  Hegarty, M., He, C., Boone, A. P., <strong>Yu, S.</strong>, Jacobs, E. G., &amp; Chrastil, E. R. (2022). Understanding Differences in Wayfinding Strategies. <em>Topics in Cognitive Science</em>. <a href="https://doi.org/10.1111/tops.12592" class="uri">https://doi.org/10.1111/tops.12592</a>.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Boone, A. P., He, C., Davis, R., Hegarty, M., Chrastil, E., &amp; Jacobs, E.G. (2021). Age-related changes in spatial navigation are evident by midlife and differ by sex. <em>Psychological Science</em>, 32(5), 692-704. <a href="https://doi.org/10.1177/0956797620979185" class="uri">https://doi.org/10.1177/0956797620979185</a>.</p></li>
+<li><p>  Pritschet, L., Santander, T., Taylor, C. M., Layher, E., <strong>Yu, S.</strong>, Miller, M. B., Grafton, S.T., &amp; Jacobs, E. G. (2020). Functional reorganization of brain networks across the human menstrual cycle. <em>NeuroImage</em>, 220, 117091. <a href="https://doi.org/10.1016/j.neuroimage.2020.117091" class="uri">https://doi.org/10.1016/j.neuroimage.2020.117091</a>.</p></li>
+<li><p>  Taylor, C. M., Pritschet, L., <strong>Yu, S.</strong>, &amp; Jacobs, E. G. (2019). Applying a women’s health lens to the study of the aging brain. <em>Frontiers in human neuroscience</em>, 13, 224. <a href="https://doi.org/10.3389/fnhum.2019.00224" class="uri">https://doi.org/10.3389/fnhum.2019.00224</a>.</p></li>
+<li><p>  Suarez, N.A., Samano, M., <strong>Yu, S.</strong>, Snyder, S. &amp; Chukoskie, L. (2019). Research-practice partnerships in STEM informal learning environments. In P.K. Kuhl, S-S. Lim, S. Guerriero &amp; D. Van Damme (Eds.), <em>Developing Minds in the Digital Age: Towards a Science of Learning for 21st Century Education</em>, (pp. 187-195). Paris, France: Educational Research and Innovation, OECD Publishing. <a href="https://doi.org/10.1787/562a8659-en" class="uri">https://doi.org/10.1787/562a8659-en</a>.</p></li>
+</ol>
+<h1 id="presentations">Presentations</h1>
+<h2 id="talks">Talks</h2>
+<ol type="1">
+<li><p>  <strong>Yu, S.</strong> (September 2021). Sex Differences and Aging in Spatial Navigation. <em>Lunch &amp; Learn Series</em>. UCSB Graduate Division, Santa Barbara, CA, USA. <strong><em>Highlighted as “the most accessible STEM presentation seen at Lunch &amp; Learn” by the Assistant Director of Professional Development for the Graduate Division.</em></strong></p></li>
+<li><p>  <strong>Yu, S.</strong>, Boone, A. P., He, C., Davis, R., Hegarty, M., Chrastil, E., &amp; Jacobs, E. (October 2020). Sex Differences and Age-Related Differences in Spatial Navigation. <em>3rd Interdisciplinary Navigation Symposium (iNAV)</em>. Virtual Presentation, Cortina d’Ampezzo, Italy.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Pritschet, L., Taylor, C.M. &amp; Jacobs, E.G. (February 2018). <em>Cognitive Neuroscience Seminar Series</em>. UCSB Department of Psychological and Brain Sciences, Santa Barbara, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Chu. D. &amp; Nitz, D.A. (June 2016). Role of the Hippocampus and Parietal Cortex in Rule-Based Environmental Fragmentation. <em>Cognitive Science Undergraduate Honors Thesis Presentations</em>, La Jolla, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Smith, C.N. &amp; Squire, L.R. (April 2016). Eye Movements, Memory, and Awareness of Whether a Scene Is Old or New. <em>29th Annual Undergraduate Research Conference</em>, La Jolla, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Chukoskie, L. &amp; Townsend, J. (April 2015). Whatcha Looking At? Social and Non-Social Eye Fixations of Children with ASD in a Change Blindness Task. <em>28th Annual Undergraduate Research Conference</em>, La Jolla, CA, USA.</p></li>
+</ol>
+<h2 id="posters">Posters</h2>
+<ol type="1">
+<li><p>  Shelley, L.E., Chu, D., <strong>Yu, S.</strong>, Kim, S., Ragland, S., Miyamoto, K., Park, J. &amp; Nitz, D.A. (October 2016). Creating spaces: A possible function of the hippocampus and parietal networks. <em>2nd Annual Frontiers of Innovation Scholars Program Symposium</em>, La Jolla, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Smith, C.N. &amp; Squire, L.R. (May 2016). Eye Movements, Memory, and Awareness of Whether a Scene Is Old or New. <em>2016 Psychology Honors Poster Session</em>, La Jolla, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Smith, C.N. &amp; Squire, L.R. (February 2016). Differential eye movements for old and new scenes under free viewing conditions are unrelated to awareness and are hippocampus-independent. <em>2016 Inter-Science of Learning Center Conference</em>, Arlington, VA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Smith, C.N. &amp; Squire, L.R. (January 2016). Differential eye movements for old and new scenes under free viewing conditions are unrelated to awareness and are hippocampus-independent. <em>Temporal Dynamics of Learning Center All Hands Meeting 2016</em>, La Jolla, CA, USA.</p></li>
+<li><p>  Samano, M., Suarez, N.A., <strong>Yu, S.</strong> &amp; Chukoskie, L. (November 2015). A Good Balance Between Research and Outreach in an Informal Science Learning Environment. <em>1st Annual Frontiers of Innovation Scholars Program Symposium</em>, La Jolla, CA, USA.</p></li>
+<li><p>  <strong>Yu, S.</strong>, Chukoskie, L. &amp; Townsend, J. (May 2015). Whatcha Looking At? Social and Non-Social Eye Fixations of Children with ASD in a Change Blindness Task. <em>2015 Inter-Science of Learning Center Conference</em>, La Jolla, CA, USA.</p></li>
+</ol>
+<h1 id="videos">Videos</h1>
+<p>Coming soon!</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
