@@ -11,7 +11,7 @@ navbar:
     - text: "About"
       href: about.html
     - text: "Resume"
-      href: ShuyingYu_Resume_DataScienceAnalytics.pdf
+      href: ShuyingYu_Resume_DataScience.pdf
     - text: "Projects"
       href: projects.html
     - text: "Publications"
