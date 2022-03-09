@@ -2497,15 +2497,6 @@ d-appendix d-footnote-list a.footnote-backlink {
 </ul>
 </nav>
 </div>
-<h1 id="introduction">Introduction</h1>
-<p>In this project, I used binary logistic regression to classify Florida palmetto species as either <em>Serenoa repens</em> or <em>Sabal etonia</em> using physical measurements of the plants. Exploratory data analysis was performed and two logistic regression models were built. Accuracy was used as a metric for which model was better in classifying palmetto species.</p>
-<h1 id="research-question">Research Question</h1>
-<p>Can we correctly classify whether a palemtto species is either <em>Serenoa repens</em> or <em>Sabal etonia</em>? For binary logistic regression, we want to investigate whether the model can classify whether a palmetto belongs to species <em>Serenoa repens</em> or <em>Sabal etonia</em> using the variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves. In other words, we want to investigate whether the model can significantly predict our outcome variable, palmetto species.</p>
-<p><strong>Null hypothesis (<span class="math inline">\(H_0\)</span>):</strong> The model does not significantly predict the log odds of species being equal to <em>Serenoa repens</em>. The <span class="math inline">\(\beta_j\)</span> coefficients are equal to zero for each <span class="math inline">\(j\text{th}\)</span> predictor variable.</p>
-<p><strong>Alternative hypothesis (<span class="math inline">\(H_1\)</span>):</strong> At least one of the predictors or explanatory variables significantly predicts the log odds of species being equal to <em>Serenoa repens</em>. At least one of the <span class="math inline">\(\beta_j\)</span> coefficients in the model is not equal to zero.</p>
-<h1 id="data-and-methods">Data and Methods</h1>
-<p>Palmetto plant species <em>Serenoa repens</em> and <em>Sabal etonia</em> were observed from the years 1981 - 2017 at the Archbold Biological Station in south-central Florida and made publicly available by Dr. Warren Abrahamson (Abrahamson, 2019). Seedlings were planted and survival, growth, and biomass of the two species of plants were measured. Maximum height (cm), widest length of the canopy (cm), widest width of the canopy (cm), and the number of green leaves were among the physical measurements of plant growth that were recorded.</p>
-<p>Following exploratory data visualizations, the relationship between species and other recorded measurements were investigated by binary logistic regression. 10-fold cross-validation was performed, and accuracy and AIC were used as metrics to compare two different models and choose the model with better performance. Sample size and proportion of species correctly classified by the final model are reported. All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2527,6 +2518,15 @@ Code
 </div>
 </details>
 </div>
+<h1 id="introduction">Introduction</h1>
+<p>In this project, I used binary logistic regression to classify Florida palmetto species as either <em>Serenoa repens</em> or <em>Sabal etonia</em> using physical measurements of the plants. Exploratory data analysis was performed and two logistic regression models were built. Accuracy was used as a metric for which model was better in classifying palmetto species.</p>
+<h1 id="research-question">Research Question</h1>
+<p>Can we correctly classify whether a palemtto species is either <em>Serenoa repens</em> or <em>Sabal etonia</em>? For binary logistic regression, we want to investigate whether the model can classify whether a palmetto belongs to species <em>Serenoa repens</em> or <em>Sabal etonia</em> using the variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves. In other words, we want to investigate whether the model can significantly predict our outcome variable, palmetto species.</p>
+<p><strong>Null hypothesis (<span class="math inline">\(H_0\)</span>):</strong> The model does not significantly predict the log odds of species being equal to <em>Serenoa repens</em>. The <span class="math inline">\(\beta_j\)</span> coefficients are equal to zero for each <span class="math inline">\(j\text{th}\)</span> predictor variable.</p>
+<p><strong>Alternative hypothesis (<span class="math inline">\(H_1\)</span>):</strong> At least one of the predictors or explanatory variables significantly predicts the log odds of species being equal to <em>Serenoa repens</em>. At least one of the <span class="math inline">\(\beta_j\)</span> coefficients in the model is not equal to zero.</p>
+<h1 id="data-and-methods">Data and Methods</h1>
+<p>Palmetto plant species <em>Serenoa repens</em> and <em>Sabal etonia</em> were observed from the years 1981 - 2017 at the Archbold Biological Station in south-central Florida and made publicly available by Dr. Warren Abrahamson (Abrahamson, 2019). Seedlings were planted and survival, growth, and biomass of the two species of plants were measured. Maximum height (cm), widest length of the canopy (cm), widest width of the canopy (cm), and the number of green leaves were among the physical measurements of plant growth that were recorded.</p>
+<p>Following exploratory data visualizations, the relationship between species and other recorded measurements were investigated by binary logistic regression. 10-fold cross-validation was performed, and accuracy and AIC were used as metrics to compare two different models and choose the model with better performance. Sample size and proportion of species correctly classified by the final model are reported. All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.</p>
 <h1 id="results">Results</h1>
 <h2 id="exploratory-data-visualizations">Exploratory Data Visualizations</h2>
 <div class="layout-chunk" data-layout="l-body">
