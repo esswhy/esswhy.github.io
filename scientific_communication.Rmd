@@ -41,7 +41,7 @@ mycounter_videos <- 0
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Hegarty, M., He, C., Boone, A.P., **Yu, S.**, Jacobs, E.G., & Chrastil, E.R. (2022). Understanding Differences in Wayfinding Strategies. *Topics in Cognitive Science*. https://doi.org/10.1111/tops.12592.
 
-`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-related changes in spatial navigation are evident by midlife and differ by sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185.
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-related changes in spatial navigation are evident by midlife and differ by sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185. **_Featured article in  Association for Psychological Science's "This Week in Psychological Science" exclusive newsletter._**
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Pritschet, L., Santander, T., Taylor, C.M., Layher, E., **Yu, S.**, Miller, M.B., Grafton, S.T., & Jacobs, E.G. (2020). Functional reorganization of brain networks across the human menstrual cycle. *NeuroImage*, 220, 117091. https://doi.org/10.1016/j.neuroimage.2020.117091.
 
