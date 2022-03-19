@@ -1,0 +1,674 @@
+---
+title: "Binary Logistic Regression: Classifying Florida Palmetto Species"
+description: |
+  In this project, I explored Florida palmetto data through exploratory visualizations and used binary logistic regression to classify palmetto species.
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/portfolio/logistic_regression_palmettos/
+date: 02-11-2022
+categories:
+  - Logistic Regression
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = TRUE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.align = "center")
+
+#Attach libraries
+library(tidyverse)
+library(here)
+library(broom)
+library(AICcmodavg)
+library(kableExtra)
+library(ggtext)
+library(patchwork)
+```
+
+
+# Introduction
+
+In this project, I used binary logistic regression to classify Florida palmetto species as either *Serenoa repens* or *Sabal etonia* using physical measurements of the plants. Exploratory data analysis was performed and two logistic regression models were built. Accuracy was used as a metric for which model was better in classifying palmetto species.
+
+# Research Question
+
+Can we correctly classify whether a palemtto species is either *Serenoa repens* or *Sabal etonia*? For binary logistic regression, we want to investigate whether the model can classify whether a palmetto belongs to species *Serenoa repens* or *Sabal etonia* using the variables plant height (cm), canopy length (cm), canopy width (cm), and number of green leaves. In other words, we want to investigate whether the model can significantly predict our outcome variable, palmetto species.
+
+**Null hypothesis ($H_0$):** The model does not significantly predict the log odds of species being equal to *Serenoa repens*. The $\beta_j$ coefficients are equal to zero for each $j\text{th}$ predictor variable.
+
+**Alternative hypothesis ($H_1$):** At least one of the predictors or explanatory variables significantly predicts the log odds of species being equal to *Serenoa repens*. At least one of the $\beta_j$ coefficients in the model is not equal to zero.
+
+
+# Data and Methods
+
+Palmetto plant species *Serenoa repens* and *Sabal etonia* were observed from the years 1981 - 2017 at the Archbold Biological Station in south-central Florida and made publicly available by Dr. Warren Abrahamson (Abrahamson, 2019). Seedlings were planted and survival, growth, and biomass of the two species of plants were measured. Maximum height (cm), widest length of the canopy (cm), widest width of the canopy (cm), and the number of green leaves were among the physical measurements of plant growth that were recorded.
+
+Following exploratory data visualizations, the relationship between species and other recorded measurements were investigated by binary logistic regression. 10-fold cross-validation was performed, and accuracy and AIC were used as metrics to compare two different models and choose the model with better performance. Sample size and proportion of species correctly classified by the final model are reported. All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.
+
+# Results
+
+## Exploratory Data Visualizations
+
+```{r}
+#Read in the data 
+palmetto <- read_csv(here("_portfolio", "data", "palmetto.csv"))
+
+
+#Clean the data
+palmetto <- palmetto %>% 
+  
+  #Select relevant variables
+  select(height:green_lvs, species) %>% 
+  
+  #Recode species vairable
+  #1 = Serenoa repens, 2 = Sabal etonia
+  mutate(species = case_when(species == 1 ~ "Serenoa repens",
+                             species == 2 ~ "Sabal etonia")) %>% 
+  
+  #Change species as factor
+  mutate(species = as.factor(species)) %>% 
+  
+  #Reame variables to add units
+  rename(height_cm = height,
+         length_cm = length,
+         width_cm = width,
+         green_leaves = green_lvs)
+```
+
+```{r fig1_explore}
+### Plot 1: height and length marginal distributions
+
+#Define color palette
+palmetto_colors <- c("slateblue1", "skyblue1") 
+
+#Create scatterplot and marginal distributions
+ggplot(data = palmetto, 
+       aes(x = length_cm, y = height_cm, 
+           color = species)) +
+  
+  #Define scatter
+  geom_point(alpha = 0.50, size = 2) + 
+  
+  #Change colors
+  scale_colour_manual(values = palmetto_colors) +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change x-axis and y-axis labels
+  #Change legend title
+  labs(x = "Canopy Length (cm)",
+       y = "Height (cm)",
+       color = "Species") +
+  
+  #Change legend position
+  theme(legend.position = c(0.8, 0.15),
+        
+        #Bold title of legend
+        legend.title = element_text(face = "bold"),
+        
+        #Bold x-axis and y-axis label text, change size
+        axis.title = element_text(face = "bold", size = 11))
+```
+**Figure 1.** Canopy length (cm) plotted by plant height (cm) for each individual palmetto plant species, *Sabal etonia* (purple points) and *Serenoa repens* (blue points). Data source: Abrahamson, 2019.
+
+<br>
+
+
+```{r fig2_explore}
+### Plot 2: Histogram of leaves by species
+
+#Get mean of leaves by species
+palmetto_leaves <-  palmetto %>% 
+  select(species, green_leaves) %>% 
+  group_by(species) %>% 
+  summarize(avg_leaves = mean(green_leaves, na.rm = TRUE))
+
+
+#Bar plot
+ggplot(data = palmetto, aes(x = green_leaves,
+                            fill = species)) +
+  
+  #Define histogram
+  #Fill with same colors and allow overlap
+  geom_histogram(alpha = 0.60, position = "dodge") +
+  
+  #Change colors
+  scale_color_manual(values = palmetto_colors) +
+  scale_fill_manual(values = palmetto_colors) +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change x-axis and y-axis labels
+  labs(x = "Number of Green Leaves",
+       y = "Count",
+       fill = "Species") +
+  
+  #Change legend position inside plot
+  theme(legend.position = c(.80, .80),
+        
+        #Bold title
+        legend.title = element_text(face = "bold"),
+        
+        #Bold x-axis and y-axis label text, change size
+        axis.title = element_text(face = "bold", size = 11))
+```
+**Figure 2.** Histogram plots show the frequency of the number of green leaves counted per plant for each palmetto plant species, *Sabal etonia* (purple bars) and *Serenoa repens* (blue bars). Data source: Abrahamson, 2019.
+
+<br>
+
+
+```{r fig3_explore}
+### Plot 3: Check width of species
+
+#Beeswaram boxplot
+ggplot(data = palmetto, aes(x = species,
+                            y = width_cm,
+                            fill = species)) +
+  
+  #Define violin plot
+  #Change color fill to species, remove legend
+  geom_violin(alpha = 0.5, show.legend = FALSE) +
+
+  
+  #Add median point, change size and color
+  #Remove legend
+  stat_summary(fun = median, geom = "point", 
+               size = 3, color = "black",
+               show.legend = FALSE) +
+  
+  #Change x-axis and y-axis labels
+  labs(x = "Palmetto Species \n",
+       y = "Canopy Width (cm) \n") +
+  
+  #Use color palette to fill boxplot
+  scale_fill_manual(values = palmetto_colors) +
+  
+  #Use color palette to fill jitter points
+  scale_color_manual(values = palmetto_colors) +
+
+  #Change theme
+  theme_classic() +
+  
+  #Add break in species names
+  scale_x_discrete(labels = c("Sabal etonia", "Serenoa repens")) +
+  
+  #Italicize latin names for species
+  theme(axis.text.x = element_text(face = "italic", size = 11),
+        
+        #Bold x-axis and y-axis label text, change size
+        axis.title = element_text(face = "bold", size = 11))
+```
+**Figure 3.** Violin plots for the distribution of canopy width (cm) for each palmetto species, *Sabal etonia* (purple) and *Serenoa repens* (blue). The violin plot outlines illustrate the kernel probability density such that the width of the shaded area represents the proportion of the data located there. The black point within the violin plot indicates the median width for each species. Data source: Abrahamson, 2019.
+
+<br>
+
+Initial exploration of the data reveals certain physical traits between the two palmetto species. Height between the two species appear similar, but the *Serenoa repens* plant species seem to have shorter canopy length (**Figure 1**). There is also a difference in the number of green leaves measured, with *Serenoa repens* plants having larger range and variance with an average of `r round(palmetto_leaves$avg_leaves[2], digits = 2)` green leaves counted (**Figure 2**). The majority of *Sabal etonia* plants have on average `r round(palmetto_leaves$avg_leaves[1], digits = 2)` green leaves, and the variance appears smaller. For the final exploratory plot, the canopy width was examined between the species and their respective width distribution and median width appear to be similar (**Figure 3**). Based on these plots, plant height and number of green leaves are the most likely to be helpful in classifying palmetto species correctly.
+
+
+## Binary Logistic Regression Model
+
+We will build two binary logistic regression models to determine the probability of a plant being either *Serenoa repens* or *Sabal etonia* based on several predictor variables.
+
+**Model 1:** Log odds of palmetto species being *Serenoa repens* using plant height, canopy length, canopy width, and number of green leaves as predictor variables
+
+**Model 2:** Log odds of palmetto species being *Serenoa repens* using plant height, canopy width, and number of green leaves as predictor variables
+
+<br>
+
+```{r binary-logistic-regression}
+
+########## Build the models ##########
+
+### Model 1
+
+#Define model with formula
+fx1 <- species ~ height_cm + length_cm + width_cm + green_leaves
+
+#Create model
+#Sabal etonia is reference
+mod1 <- glm(formula = fx1, data = palmetto,
+            family = "binomial")
+
+
+### Model 2
+
+#Define model with formula
+fx2 <- species ~ height_cm + width_cm + green_leaves
+
+#Create model
+#Sabal etonia is reference
+mod2 <- glm(formula = fx2, data = palmetto,
+            family = "binomial")
+
+
+
+########## K-fold cross-validation ##########
+
+### Define parameters
+
+#Set seed
+set.seed(244)
+
+#10 fold, k=10
+n_folds <- 10
+
+#Create vector whose length is same as number of rows in our df
+fold_vec <- rep(1:n_folds, length.out = nrow(palmetto))
+
+#Randomize
+#Assign new column the number from fold_vec (repeats of 1-10)
+#Each group of 10 gets assigned a number 1-10, to divide folds into 10
+palmetto_fold <- palmetto %>% 
+  mutate(fold = sample(fold_vec, size = n()))
+
+
+### Prediction accuracy function
+
+pred_acc <- function(x, y) {
+  accurate <- ifelse(x == y, 1, 0)
+  return(mean(accurate, na.rm = TRUE))
+}
+
+
+### Run cross-validation
+
+#Create empty dataframe 
+results_df <- data.frame()
+
+#Loop 10 folds for cross-validation
+for(i in 1:n_folds){
+  
+  
+  #Create test and training sets
+  #90/10, train/test
+  kfold_test_df <- palmetto_fold %>% 
+    filter(fold_vec == i)
+  kfold_train_df <- palmetto_fold %>% 
+    filter(fold_vec != i)
+  
+  
+  #Train the 2 models on training set
+  kfold_model1 <- glm(formula = fx1, data = kfold_train_df,
+                      family = "binomial")
+  kfold_model2 <- glm(formula = fx2, data = kfold_train_df,
+                      family = "binomial")
+  
+  
+  #Test df
+  #Based on new model, use that to predict whether it is S.repens or not
+  kfold_pred <- kfold_test_df %>% 
+    mutate(blr1 = predict(kfold_model1,
+                          kfold_test_df,
+                          type = "response"),
+           blr2 = predict(kfold_model2,
+                          kfold_test_df,
+                          type = "response")) %>% 
+    
+    #Add a new column for predicted sepecies
+    mutate(pred1 = ifelse(blr1 > 0.50,
+                          "Serenoa repens", "Sabal etonia"),
+           pred2 = ifelse(blr2 > 0.50,
+                          "Serenoa repens", "Sabal etonia"))
+  
+  #Accuracy between true species and predicted species
+  #Use predict accuracy function
+  kfold_accuracy <- kfold_pred %>% 
+    summarize(blr1_acc = pred_acc(species, pred1),
+              blr2_acc = pred_acc(species, pred2))
+  
+  #Combine accuracy to results df
+  results_df <- bind_rows(results_df,
+                          kfold_accuracy)
+  
+}
+
+########## Check mean accuracy of each model ##########
+
+#Mean accuracy
+acc_table <- results_df %>%
+  
+  #Get mean of accuracy
+  summarize(blr1_acc = mean(blr1_acc),
+            blr2_acc = mean(blr2_acc)) 
+
+#Add row name
+rownames(acc_table) <- c("Mean Prediction Accuracy")
+
+#Style in kable
+acc_table %>% 
+  
+  #Change column names
+  kable(col.names = c("Model 1", "Model 2"), 
+        
+        caption = "Average prediction accuracy of 
+        palmetto species for Model 1 and Model 2 from 10-fold 
+        cross-validation. Model 1 includes all predictors 
+        (plant height, canopy width, canopy length, and 
+        number of green leaves) while Model 2 excludes 
+        canopy length from the model. 
+        Data source: Abrahamson, 2019.",
+  
+        #Align all cells/columns to center
+        align = c(rep("c", times = 3)),
+        
+        #Round digits to 2
+        digits = 2,
+        
+        #Change width of table
+        table.attr = "style='width:60%;'") %>% 
+
+   kable_styling(full_width = TRUE,
+                 position = "center")
+```
+
+
+We perform *k*-fold cross-validation with $k = 10$ folds for each model. Model 1 with all the predictors in the model has a higher mean accuracy (`r round(acc_table$blr1_acc, digits = 4) * 100`%) in classifying palmetto species than Model 2 (`r round(acc_table$blr2_acc, digits = 4) * 100`%) (**Table 1**).
+
+
+## Model Comparison Using AIC
+
+We can use the Akaike information criterion (AIC) as an additional metric to compare the fit of our binary logistic regression models. AIC is calculated as:
+
+$$\text{AIC}=2K−2ln(L)$$
+
+where *K* is the number of model parameters (default is 2), and $ln(L)$ is the log-likelihood of the model. The log-likelihood tells us how likely the model is given the data we use.
+
+<br>
+
+```{r aic-table}
+########## AICc ##########
+
+#Compare AIC of model 1 and model 2
+aic <- AIC(mod1, mod2)
+
+#Allows to compare 2 model values at once here
+#Gives K, delta AICc... lists best model first
+aictable <- AICcmodavg::aictab(list(mod1, mod2))
+
+#Rename model names in column
+aictable$Modnames <- c("Model 1", "Model 2")
+
+########## Create finalized table ##########
+
+aictable %>% 
+  
+  #Use kable to make nice format
+  kable(col.names = c("Model Name", "*K*",
+        "AIC (corrected)", "Change in AIC (corrected)", 
+        "Model Likelihood", "AIC (corrected) Weight", 
+        "Log-Likelihood", "Cumulative Weight"),
+        
+        #Add caption
+        caption = "Statistics for the AIC table 
+        between Model 1 and Model 2, which includes the 
+        number of parameters in the model, the corrected AIC 
+        value, the difference in AIC value between the best 
+        model compared to the current model, proportion of 
+        total predictive power found in the model (%), the 
+        log-likelihood of the model, and finally the cumulative 
+        sum of the AIC weights. Data source: Abrahamson, 2019.",
+        
+        #Align all cells/columns to center
+        align = c(rep("c", times = 8)),
+        
+        #Round digits to 2
+        digits = 2) %>% 
+  
+  #Make full width
+  kable_styling(full_width = TRUE, position = "center") 
+```
+
+
+We used AIC model selection to distinguish among two possible models describing the relationship between the log odds of palmetto species being *Serenoa repens* using plant height, canopy length, canopy width, and number of green leaves as predictor variables. Here, Model 1 (*K*: `r aictable$K[1]`, AIC: `r round(aictable$AICc[1], digits = 2)`) has a lower AIC value than Model 2 (*K*: `r aictable$K[2]`, AIC: `r round(aictable$AICc[2], digits = 2)`) (**Table 2**). Thus, the better fitting model is Model 1, carrying majority of the cumulative model weight, and includes all the covariates with no interaction effects. The $\Delta$AIC is `r round(aictable$Delta_AICc[2], digits = 2)`, which is the difference in AIC score between the model being compared (Model 2) and the better performing model (Model 1).
+
+Thus, according to our mean prediction accuracy and AIC measures, Model 1 with all four predictor variables is the better model. We will select this as the final model and train the model on the entire dataset.
+
+
+## Final Model Selection
+
+
+```{r final-model-table}
+#Final model using all predictors
+blr_final <- glm(species ~ ., 
+                 data = palmetto, 
+                 family = "binomial")
+
+#Make into tidy format
+blr_final_tidy <- broom::tidy(blr_final)
+
+#Change row term names for kable
+blr_final_tidy_kable <- blr_final_tidy
+blr_final_tidy_kable$term <- c("(Intercept)", "Height (cm)",
+                               "Length (cm)", "Width (cm)", "Green Leaves")
+
+#Change p-value so it writes "< 0.001" in kableExtra table
+blr_final_tidy_kable$p.value <- ifelse(blr_final_tidy_kable$p.value < 0.001,
+                                       paste("< 0.001"),
+                                       paste("=", blr_final_tidy_kable$p.value))
+
+
+#Use kableExtra to format into nice table
+blr_final_tidy_kable %>% 
+  
+  #Change column and row names
+  kable(col.names = c("Predictor Variable", "Coefficient",
+                      "Standard Error", "*Z*-value", "*p*-value"),
+        #Add caption
+        caption = "Binary logistic regression results 
+        for the log odds of palmetto species being 
+        *Serenoa repens*. The four predictor variables 
+        plant height (cm), canopy length (cm), canopy width 
+        (cm), and number of green leaves are shown on the 
+        left column and model summary statistics are on the 
+        right columnns, reporting the $\\beta$ coefficients, 
+        standard errors, *Z*-values, and *p*-values. 
+        Data source: Abrahamson, 2019.",
+        
+        #Align all cells/columns to center
+        align = c(rep("c", times = 5)),
+        
+        #Round digits to 2
+        digits = 2) %>%
+  
+  #Make full width and add hover to rows
+  kable_styling(full_width = TRUE,
+                position = "center",
+                bootstrap_options = "hover")
+```
+
+
+The better performing and final model reveals that all $\beta$ coefficients are statistically significant (*p* < 0.001) (**Table 3.**). Thus, we would reject the null hypothesis that $\beta_j$ coefficients are equal to zero for each $j\text{th}$ predictor variable. The final model is written as:
+
+
+$$\small
+\begin{aligned}
+ln \biggl( \frac{P(\widehat{\text{species} = \mathit{Serenoa \ repens}})}{1 - P(\widehat{\text{species} = \mathit{Serenoa \ repens}})} \biggr) = -3.23 + 0.03(\text{Height}) - 0.05(\text{Length}) - 0.04(\text{Width}) + 1.91(\operatorname{Green \ Leaves})
+\end{aligned}$$
+
+
+
+
+
+
+```{r classification-table, preview=TRUE}
+########## Fit model to make predictions ##########
+
+##Take log odds and convert to probability
+#Get predicted probabilities of each plant being classified as Serenoa repens
+blr_fitted <- blr_final %>% 
+  broom::augment(type.predict = "response") 
+
+
+#Add column for what species the model predicted
+blr_fitted <- blr_fitted %>%
+  
+  #Create new column for predicted species
+  #Lower probability = Sabal etonia (< 50%)
+  #Higher probability = Serenoa repens (>= 50%)
+  mutate(species_predicted = case_when(.fitted >= 0.50 ~ "Serenoa repens",
+                                       .fitted < 0.50 ~ "Sabal etonia")) 
+
+
+
+#Plot logistic regression fitted plots for green leaves
+ggplot(data = blr_fitted, aes(x = green_leaves, 
+                              y = .fitted)) + 
+  
+  #Color points by species, change transparency and size
+  #Remove legend
+  geom_point(aes(color = species), alpha = 0.50, size = 2) +
+  
+  #Plot logistic regression curve, remove standard error
+  stat_smooth(method = "glm", se = FALSE, 
+              method.args = list(family=binomial),
+              size = 1.3, color = "grey12") +
+  
+  #Change color
+  scale_color_manual(values = palmetto_colors) +
+  
+  #Change x-axis and y-axis labels
+  labs(x = "Number of Green Leaves",
+       y = "Probability of Species being *Serenoa repens*",
+       color = "Species") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Add custom theme
+  #Make y-label part italic in rendered markdown
+  theme(axis.title.y = ggtext::element_markdown(),
+        
+        #Change position of legend
+        legend.position = c(.81, .30),
+        
+        #Bold title of legend
+        legend.title = element_text(face = "bold"),
+        
+        #Bold x-axis and y-axis label text, change size
+        axis.title = element_text(face = "bold", size = 11))
+
+```
+**Figure 4.** Fitted logistic regression curve of the chosen model for the observed species, *Serenoa repens* (blue points) and *Sabal etonia* (purple points), with probabilities of a palmetto species being *Serenoa repens* and using number of green leaves as a predictor variable. Data source: Abrahamson, 2019.
+
+<br>
+
+All else being equal, the odds of a palmetto species being *Serenoa repens* increases by a multiplicative factor of $e^{0.03} = 1.03$ for every 1 centimeter increase in plant height. The odds of a species being *Serenoa repens* decreases by a multiplicative factor of $e^{-0.05} = 0.95$ for every 1 centimeter increases in canopy length. This means the the odds are about 5% less likely for the plant to be *Serenoa repens*. Similarly, every 1 centimeter increase in canopy width leads to a decrease in the odds of species being *Serenoa repens* by a multiplicative factor of $e^{-0.04} = 0.96$. Finally, the odds of a species being *Serenoa repens* to increase by a multiplicative factor of $e^{1.91} = 6.75$ for every additional count of green leaves on the plant. Probabilities for *Serenoa repens* are higher when observations report greater number of green leaves (**Figure 4**), otherwise probabilities are lower and likely to be *Sabal etonia*. This indicates that the number of green leaves on the plant is one of the best predictor variables for classifying palmetto species.
+
+
+## Classification Accuracy of Final Model
+
+
+```{r}
+#Get total counts
+final_counts <- blr_fitted %>% 
+  
+  #Use `across()` to obtain counts for variables that contian "species" name
+  count(across(contains("species"))) 
+
+
+
+########## Construct table for % classified ##########
+
+#Construct final table
+final_counts_table <- final_counts %>% 
+  
+  #Make correct/incorrect label
+  mutate(classification_label = case_when(
+    (species == "Sabal etonia" & species_predicted == "Sabal etonia") ~ "Correct",
+    (species == "Serenoa repens" & species_predicted == "Serenoa repens") ~ "Correct",
+    (species == "Sabal etonia" & species_predicted == "Serenoa repens") ~ "Incorrect",
+    (species == "Serenoa repens" & species_predicted == "Sabal etonia") ~ "Incorrect"
+  )) %>% 
+  
+  #Remove irrelevant variable
+  select(-species_predicted) %>% 
+  
+  #Group by species and correctness
+  group_by(species, classification_label) %>% 
+  
+  #Make wide format
+  pivot_wider(names_from = classification_label,
+              values_from = n) %>% 
+  
+  #Make new column for percent correct
+  mutate(correct_pct = (Correct / (Correct + Incorrect)) * 100)
+
+
+
+########## Present table using kableExtra ##########
+
+final_counts_table %>% 
+  
+  #Change column names
+  kable(col.names = c("Palmetto Species", "Sample Correctly Classified",
+                      "Sample Incorrectly Classified", "% Correctly Classified"),
+        
+        caption = "Sample size and percentage 
+        of *Serenoa repens* and *Sabal etonia* palmettos 
+        correctly or incorrectly classified by our binary 
+        logistic regression model using four predictor 
+        variables (plant height, canopy length, canopy width, 
+        and number of green leaves). Threshold for classification 
+        of *Serenoa repens* species was having a predicted 
+        probability of 50% or greater. Data source: Abrahamson, 2019.",
+        
+        #Align all cells/columns to center
+        align = c("l", rep("c", times = 3))) %>% 
+  
+  #Not make full width
+  kable_styling(full_width = TRUE,
+                position = "center") %>% 
+  
+  #Make species italic
+  column_spec(1, italic = TRUE, bold = TRUE)
+
+```
+
+
+Finally, we can evaluate how successfully this model would classify a plant as the correct species, using a 50% cutoff. The binary logistic regression model using four predictor variables (plant height, canopy length, canopy width, and number of green leaves) was successful over about 90% of the time in correctly classifying whether a palmetto species is either *Serenoa repens* or *Sabal etonia*.
+
+
+
+# Summary
+
+In conclusion, we have constructed and trained a binary logistic regression model that performs well in classifying palmetto species using physical attributes of the plant, which includes the plant height, canopy length, canopy width, and number of green leaves.
+
+- Visualizing physical measurements between the two species show possible variables that would be informative for helping with model prediction
+
+- Model metrics (prediction accuracy from *k*-fold cross-validation and AIC) reveal that the better performing model is one that includes all four predictor variables
+
+- Using a 50% probability threshold and the full dataset, the final model correctly classifies palmetto species at least 90% of the time
+
+
+# References
+
+## Data and Literature
+
+Abrahamson, W.G. (2019). Survival, growth and biomass estimates of two
+dominant palmetto species of south-central Florida from 1981 - 2017, ongoing at 5-year intervals ver 1. Environmental Data Initiative. https://doi.org/10.6073/pasta/f2f96ec76fbbd4b9db431c79a770c4d5
+
+## R Libraries
+
+
+Mazerolle, M.J. (2020) AICcmodavg: Model selection and multimodel inference based on (Q)AIC(c). R package version 2.3-1. https://cran.r-project.org/package=AICcmodavg.
+
+Müller, K. (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here.
+
+Pedersen, T.L. (2020). patchwork: The Composer of Plots. R package version 1.1.1. https://CRAN.R-project.org/package=patchwork
+
+Robinson, D., Hayes, A., & Couch, S. (2021). broom: Convert Statistical Objects into Tidy Tibbles. R package version 0.7.9. https://CRAN.R-project.org/package=broom.
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686.
+
+Wilke, C.O. (2020). ggtext: Improved Text Rendering Support for 'ggplot2'. R package version 0.1.1. https://CRAN.R-project.org/package=ggtext
+
+Zhu, H. (2021). kableExtra: Construct Complex Table with ‘kable’ and Pipe Syntax. R package version 1.3.4. https://CRAN.R-project.org/package=kableExtra.
+
