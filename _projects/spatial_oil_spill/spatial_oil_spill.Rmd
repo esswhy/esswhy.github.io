@@ -17,12 +17,6 @@ output:
     toc_float: true
 ---
 
-<style>
-.html-widget {
-    margin: auto;
-}
-</style>
-
 ```{r setup, include = TRUE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
                       fig.align = "center")

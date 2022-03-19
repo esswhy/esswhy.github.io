@@ -14,6 +14,8 @@ navbar:
       href: ShuyingYu_Resume_DataScience.pdf
     - text: "Projects"
       href: projects.html
+    - text: "Projects2"
+      href: projects2.html
     - text: "Publications"
       href: scientific_communication.html
     - text: "Blog"
