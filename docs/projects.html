@@ -2148,6 +2148,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --navbar-font:     "Amiri", serif;
   }
 
+
+  /*-- MAKE WIDGETS CENTERED --*/
+  .html-widget {
+      margin: auto;
+  }
+
   /*-- ARTICLE METADATA --*/
   d-byline {
     --heading-size:    0.6rem;
@@ -2419,6 +2425,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="about.html">About</a>
 <a href="ShuyingYu_Resume_DataScience.pdf">Resume</a>
 <a href="projects.html">Projects</a>
+<a href="projects2.html">Projects2</a>
 <a href="scientific_communication.html">Publications</a>
 <a href="blog.html">Blog</a>
 <a href="https://github.com/esswhy/esswhy.github.io">
@@ -2566,6 +2573,26 @@ function init_posts_list() {
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Data Science Projects and Reports">Data Science Projects and Reports</h1>
+<a href="projects/spatial_oil_spill/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Spatial Analysis","R"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 2, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Shuying Yu</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="projects/spatial_oil_spill/spatial_oil_spill_files/figure-html5/unnamed-chunk-3-1.png"/>
+</div>
+<div class="description">
+<h2>Spatial Analysis: California Oil Spills</h2>
+<div class="dt-tags">
+<div class="dt-tag">Spatial Analysis</div>
+<div class="dt-tag">R</div>
+</div>
+<p>In this project, I plotted spatial maps to visualize California oil spills by county and conducted point pattern analysis to investiate locations of spatial clusters of oil spills.</p>
+</div>
+</a>
 <a href="projects/pca_usda_food/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Principal Component Analysis","R"]}</script>
 <div class="metadata">
@@ -2655,7 +2682,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="projects/regression_snowshoe_hare/regression_snowshoe_hare_files/figure-html5/trap_counts-1.png"/>
+<img data-src="projects/regression_snowshoe_hare/regression_snowshoe_hare_files/figure-html5/trap_counts-1.png"/>
 </div>
 <div class="description">
 <h2>Linear Regression: Juvenile Snowshoe Hares at Bonanza Creek</h2>
@@ -2673,7 +2700,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:Articles">Articles</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Data_Visualization">Data Visualization</a>
@@ -2693,10 +2720,14 @@ function init_posts_list() {
 </li>
 <li>
 <a href="#category:R">R</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Regression">Regression</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Spatial_Analysis">Spatial Analysis</a>
 <span class="category-count">(1)</span>
 </li>
 </ul>

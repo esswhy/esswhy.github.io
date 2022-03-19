@@ -37,5 +37,5 @@
       "last_modified": "2022-03-18T19:29:04-07:00"
     }
   ],
-  "collections": ["blog/blog.json", "projects/projects.json"]
+  "collections": ["blog/blog.json", "projects/projects.json", "projects2/projects2.json"]
 }
