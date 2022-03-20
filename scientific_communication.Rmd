@@ -1,7 +1,7 @@
 ---
 title: "Publications and other Scientific Communications"
 description: |
-  A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.
+  A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, and more.
 output: 
   distill::distill_article:
     toc: true

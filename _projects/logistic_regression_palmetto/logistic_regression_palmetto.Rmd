@@ -498,7 +498,7 @@ ln \biggl( \frac{P(\widehat{\text{species} = \mathit{Serenoa \ repens}})}{1 - P(
 
 
 
-```{r classification-table}
+```{r classification-table, preview=TRUE}
 ########## Fit model to make predictions ##########
 
 ##Take log odds and convert to probability

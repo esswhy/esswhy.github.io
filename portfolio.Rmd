@@ -1,4 +1,0 @@
----
-title: "Data Science Projects, Reports, and Visualizations"
-listing: portfolio
----

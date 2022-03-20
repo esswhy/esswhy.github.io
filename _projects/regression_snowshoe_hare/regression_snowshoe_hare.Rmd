@@ -430,7 +430,7 @@ On average, juvenile male snowshoe hares have heavier weights (*M* = `r round(ha
 
 ## Comparison Between Juvenille Weight & Hind Foot Length
 
-```{r lm_explore_model}
+```{r lm_explore_model, preview=TRUE}
 
 ########## Exploratory
 

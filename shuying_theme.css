@@ -39,6 +39,12 @@ html {
   --navbar-font:     "Amiri", serif;
 }
 
+
+/*-- WIDGETS 
+.html-widget {
+    margin: auto; /*center widgets*/
+/*--}--*/
+
 /*-- ARTICLE METADATA --*/
 d-byline {
   --heading-size:    0.6rem;

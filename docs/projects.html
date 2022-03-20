@@ -2148,6 +2148,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     --navbar-font:     "Amiri", serif;
   }
 
+
+  /*-- WIDGETS 
+  .html-widget {
+      margin: auto; /*center widgets*/
+  /*--}--*/
+
   /*-- ARTICLE METADATA --*/
   d-byline {
     --heading-size:    0.6rem;
@@ -2419,7 +2425,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <a href="about.html">About</a>
 <a href="ShuyingYu_Resume_DataScience.pdf">Resume</a>
 <a href="projects.html">Projects</a>
-<a href="portfolio.html">Portfolio</a>
 <a href="scientific_communication.html">Publications</a>
 <a href="blog.html">Blog</a>
 <a href="https://github.com/esswhy/esswhy.github.io">
@@ -2567,6 +2572,26 @@ function init_posts_list() {
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Data Science Projects and Reports">Data Science Projects and Reports</h1>
+<a href="projects/time_series_fish_ladder/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Time Series Analysis","R"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 2, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Shuying Yu</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="projects/time_series_fish_ladder/time_series_fish_ladder_files/figure-html5/daily-time-series-species-1.png"/>
+</div>
+<div class="description">
+<h2>Time Series Analysis: Willamette Falls Fish Ladder Passage</h2>
+<div class="dt-tags">
+<div class="dt-tag">Time Series Analysis</div>
+<div class="dt-tag">R</div>
+</div>
+<p>In this project, I used time series analysis to explore and visualize various rates (daily, monthly, annual) of fish passage at the Willamette Falls Fish Ladder, Oregon for three different species of salmon.</p>
+</div>
+</a>
 <a href="projects/pca_usda_food/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Principal Component Analysis","R"]}</script>
 <div class="metadata">
@@ -2596,7 +2621,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="projects/logistic_regression_palmetto/logistic_regression_palmetto_files/figure-html5/fig1_explore-1.png"/>
+<img src="projects/logistic_regression_palmetto/logistic_regression_palmetto_files/figure-html5/classification-table-1.png"/>
 </div>
 <div class="description">
 <h2>Binary Logistic Regression: Classifying Florida Palmetto Species</h2>
@@ -2656,7 +2681,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="projects/regression_snowshoe_hare/regression_snowshoe_hare_files/figure-html5/trap_counts-1.png"/>
+<img data-src="projects/regression_snowshoe_hare/regression_snowshoe_hare_files/figure-html5/lm_explore_model-1.png"/>
 </div>
 <div class="description">
 <h2>Linear Regression: Juvenile Snowshoe Hares at Bonanza Creek</h2>
@@ -2674,7 +2699,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:Articles">Articles</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Data_Visualization">Data Visualization</a>
@@ -2694,10 +2719,14 @@ function init_posts_list() {
 </li>
 <li>
 <a href="#category:R">R</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Regression">Regression</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Time_Series_Analysis">Time Series Analysis</a>
 <span class="category-count">(1)</span>
 </li>
 </ul>
