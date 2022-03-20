@@ -11,6 +11,8 @@ collections:
     categories: true
   project2:
     categories: true
+  portfolio:
+    categories: true
 navbar:
   right:
     - text: "Home"
@@ -23,6 +25,8 @@ navbar:
       href: projects.html
     - text: "Project2"
       href: project2.html
+    - text: "Portfolio"
+      href: portfolio.html
     - text: "Publications"
       href: scientific_communication.html
     - text: "Blog"
