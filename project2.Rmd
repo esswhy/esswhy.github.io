@@ -1,4 +1,4 @@
 ---
-title: "Project Test"
+title: "Project2"
 listing: project2
 ---
