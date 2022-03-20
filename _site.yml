@@ -7,7 +7,7 @@ output_dir: "docs"  # docs directory of master branch
 collections:
   blog: 
     categories: true
-  project2:
+  portfolio:
     categories: true
 navbar:
   right:
@@ -17,10 +17,6 @@ navbar:
       href: about.html
     - text: "Resume"
       href: ShuyingYu_Resume_DataScience.pdf
-    - text: "Projects"
-      href: projects.html
-    - text: "Project2"
-      href: project2.html
     - text: "Portfolio"
       href: portfolio.html
     - text: "Publications"
