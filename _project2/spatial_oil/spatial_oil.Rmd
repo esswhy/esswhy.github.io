@@ -187,7 +187,7 @@ tmap_mode("view")
 
 ### Choropleth Map
 
-```{r }
+```{r preview=TRUE}
 
 ########## Join datasets and fix NA data ##########
 
