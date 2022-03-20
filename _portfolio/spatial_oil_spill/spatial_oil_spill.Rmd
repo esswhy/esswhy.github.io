@@ -1,0 +1,546 @@
+---
+title: "Spatial Analysis: California Oil Spills"
+description: |
+  In this project, I plotted spatial maps to visualize California oil spills by county and conducted point pattern analysis to investiate locations of spatial clusters of oil spills.
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/portfolio/spatial_oil_spill/
+date: 03-02-2022
+categories:
+  - Spatial Analysis
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include = TRUE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.align = "center")
+
+#Attach packages
+
+#For spatial maps and stats
+library(spatstat)
+library(maptools)
+
+#For general wrangling
+library(tidyverse)
+library(here)
+library(janitor)
+
+#Additional spatial maps
+library(sf)
+library(tmap)
+
+#For plots
+library(grid)
+library(ggpubr)
+library(gridExtra)
+library(patchwork)
+```
+
+
+# Introduction
+
+In this project, I used spatial data visualization and point pattern analysis to explore California oil spill incidents that were tracked and quantified in the Office of Spill Prevention and Response Incident Tracking Database System. Exploratory data analysis was performed and maps of oil spills were plotted in California by county. Point pattern analysis using *G*-function was conducted to test for complete spatial randomness.
+
+
+# Research Question
+
+Do oil spills in California tend to be more clustered or more uniformly distributed than complete spatial randomness? Using spatial visualizations and point pattern analysis, we aim to investigate whether oil spill incidents in California are either sporadic or clustered in specific spatial locations.
+
+
+# Data and Methods
+
+The California Department of Fish and Wildlife (CDFW) describes oil spill "incidents" as "a discharge or threatened discharge of petroleum or other deleterious material into the waters of the state." (CDFW, 2020). There were over 3,200 tracked oil spill incidents recorded in California during the year 2008. Data is made publicly available by the Office of Spill Prevention and Response (OSPR) Incident Tracking Database System (2009). The database contains statewide oil spill tracking information system with data collected by OSPR Field Response Team members for Marine oil spills and by OSPR Inland Pollution Coordinators and Wardens for Inland incidents (OSPR, 2009). Purposes of the data include program planning, public education, spill preparedness, and response performance.
+
+Exploratory spatial analysis included plotting the locations of oil spill incidents by creating an interactive thematic map and assessing counts of oil spills by county using a choropleth map with shapefile courtesy of the California Open Data Portal (2016). Kernel desnsity plot was also presented. Spatial point pattern analysis was performed to assess spatial clustering of the locations of oil spill incidents. *G*-function was calculated as the proportion of oil spill incidents with the nearest neighbor within spatial unit distance. All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.
+
+
+# Results
+
+## Locations of Oil Spills in California
+
+### Basic Map
+
+Using `geom_sf`, we can plot the oil spill incident locations using shapefiles, which are a common way to store geospatial data.
+
+```{r}
+
+########## Shapefile with CA county boundaries ##########
+
+#Read in the county boundary shapefile
+ca_counties_sf <- read_sf(here("_portfolio", "data", "ca_county_boundaries",
+                               "CA_Counties_TIGER2016.shp")) %>% 
+  
+  #Clean variable names
+  clean_names() %>% 
+  
+  #Select name and rename to county_name
+  #Now sf file contains these two variables: this and geometry
+  dplyr::select(county_name = name)
+
+
+#Check the project for coordinate reference system (CRS)
+#st_crs(ca_counties_sf) #WGS 84, EPSG 3857
+
+
+
+########## Shapefile with oil spill data ##########
+
+#Read in the oil spill data
+ca_spills_sf <- read_sf(here("_portfolio", "data", "ds394", "ds394.shp")) %>% 
+  
+  #Clean variable names
+  clean_names() %>% 
+  
+  #Rename variables
+  rename(county_name = "localecoun",
+         inland_marine = "inlandmari") 
+
+
+#Now convert using EPSG code
+ca_spills_sf2 <- st_transform(ca_spills_sf, 3857)
+
+
+#Check the project for coordinate reference system (CRS)
+#st_crs(ca_spills_sf2) #WGS 84, EPSG 3857
+
+
+
+########## Plot location of oil spill incidents
+
+#Visualize sf objects
+ggplot() +
+  
+  #Plot CA county map
+  geom_sf(data = ca_counties_sf,
+          fill = "lightblue") +
+  
+  #Plot CA oil spills
+  #Change size, color, transparency of points
+  geom_sf(data = ca_spills_sf2, size = 1,
+          color = "darkorange", alpha = 0.6) +
+  
+  #Add x-axis and y-axis labels
+  labs(x = "\nLatitude",
+       y = "Longitude\n") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Add custom theme
+  #Change size of axis tick text
+  theme(axis.text = element_text(size = 10),
+        
+        #Bold and change size of axes labels
+        axis.title = element_text(face = "bold", size = 12))
+```
+**Figure 1.** Map of California oil spill incidents (orange dots) that were tracked and quantified in the year 2008. Data source: OSPR (2009).
+
+<br>
+
+### Interactive Thematic Map
+
+Using `tmap`, we can plot the oil spill incident locations in an interactive thematic map. The locations of the oil spills will show whether the event took place in marine or inland environments.
+
+```{r}
+#Rename files for county boundaries
+County <- ca_counties_sf
+
+#Rename files for oil spills
+`Oil Spills` <- st_transform(ca_spills_sf, 3857) %>% 
+  
+  #Rename variable name for sake of showing as 
+  rename(Environment = "inland_marine")
+
+
+
+#View interactive tmap
+tmap_mode("view")
+
+#Plot map
+#Change layers to view
+  tm_basemap(c(`Street Map` = "OpenStreetMap",
+               `Topographic Map` = "OpenTopoMap")) +
+    
+  #Add county boundaries
+  tm_shape(County) +
+
+  #Change transparency of polygons of counties
+  tm_polygons(alpha = 0) +
+    
+  #Add oil spill data
+  tm_shape(`Oil Spills`) +
+  
+  #Plot oil spills based on inland vs. marine
+  tm_dots("Environment")
+```
+
+
+## Frequency of Oil Spills by County
+
+### Choropleth Map
+
+```{r preview=TRUE}
+
+########## Join datasets and fix NA data ##########
+
+#Use `st_join` for spatial joins
+ca_counties_oil_sf <- ca_counties_sf %>% 
+  st_join(ca_spills_sf2)
+
+#Check
+#Modoc county is NA, so manually enter in 0
+# test <- ca_counties_oil_sf %>% 
+#   filter(is.na(inland_marine) == TRUE)
+  
+
+
+########## Find counts of inland oil spill events by county ##########
+
+ca_oil_counts_sf <- ca_counties_oil_sf %>% 
+  
+  #Filter for inland spills and any NA data
+  filter(inland_marine %in% c("Inland", NA)) %>% 
+  
+  #Rename county_name variable
+  #Same as county_name.y
+  rename("county_name" = county_name.x) %>% 
+  
+  #Group by county
+  group_by(county_name) %>% 
+  
+  #Sum of records/oil spills
+  summarize(n_records = sum(!is.na(county_name)))
+
+
+
+
+
+########## Plot choropleth map of oil spills by county ##########
+
+ggplot(data = ca_oil_counts_sf) +
+  
+  #Fill with number of oil spills
+  #Change border color and size
+  geom_sf(aes(fill = n_records), color = "white", size = 0.1) +
+  
+  #Change gradient colors
+  #NA values will be lightgrey
+  scale_fill_gradientn(colors = c("lightgrey", "orange", "red"),
+                       na.value = "lightgrey") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change x-axis and y-axis
+  #Change legend title
+  labs(x = "\nLatitude",
+       y = "Longitude\n",
+       fill = "Number of \nInland Oil Spills") +
+  
+  #Add custom theme
+  #Change size of axis tick text
+  theme(axis.text = element_text(size = 10),
+        
+        #Bold and change size of axes labels
+        axis.title = element_text(face = "bold", size = 12))
+```
+**Figure 2.** Choropleth map of California inland oil spill incidents recorded in the year 2008. Gradient colors represent number of oil spills from lowest (grey) to highest (red). Data source: OSPR (2009).
+
+<br>
+
+Based on the choropleth map of California inland oil spill incidents (**Figure 2**), Los Angeles County has the highest number of recorded oil spill incidents in the year 2008. From the map of the location of oil spill incidents (**Figure 1**), it appears that most oil spills were clustered in Los Angeles County as well as some counties in the Bay Area.
+
+
+## Point Pattern Analysis
+
+### Kernel Density Map
+
+To further determine whether oil spills tend to be more clustered or are spatially random, we will perform a point pattern analysis on the data. First, we can make a kernel density map of the location of oil spill incidents, focusing on Los Angeles County.
+
+
+```{r}
+
+########## Isolate LA County in shapefile map and oil spill data ##########
+
+#Plot just oil spills of LA County
+la_county_sf <- ca_counties_sf %>% 
+  filter(county_name == "Los Angeles")
+
+la_county_spills <- ca_spills_sf2 %>% 
+  filter(county_name == "Los Angeles")
+
+
+
+########## Plot oil spill in just LA County ##########
+
+#Visualize sf objects
+la_spill_plot <- ggplot() +
+  
+  #Plot LA county map
+  geom_sf(data = la_county_sf,
+          fill = "lightblue") +
+  
+  #Plot LA oil spills
+  #Change size, color, transparency of points
+  geom_sf(data = la_county_spills, size = 1,
+          color = "darkorange", alpha = 0.6) +
+  
+  #Add x-axis and y-axis labels
+  #Add tag
+  labs(
+       #Remove to combine x-axis together
+       #x = "\nLatitude",
+       y = "Longitude\n",
+       tag = "A") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change size of axis tick text
+  theme(axis.text = element_text(size = 10),
+        
+        #Tilt x tick
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1),
+        
+        #Bold and change size of axes labels
+        axis.title = element_text(face = "bold", size = 12))
+
+
+
+########## Convert files to spatial and spatial point pattern objects ##########
+
+#Convert to object 'Spatial'
+oil_sp  <- as(la_county_spills,"Spatial") 
+
+#Convert to spatial point pattern
+oil_ppp <- as(oil_sp, "ppp") 
+
+#Convert to object 'Spatial1
+la_sp  <- as(la_county_sf, "Spatial")
+
+#Comes from spatial stats package: ppp and owin
+#Convert to spatial point pattern from `spatstat` package
+la_win <- as(la_sp, "owin") 
+ 
+#Combine as a point pattern object (points + window):
+oil_full <- ppp(oil_ppp$x, oil_ppp$y, 
+                window = la_win)
+
+#Check where points lie within county border
+#plot(oil_full)
+
+
+
+########## Kernel density plot ##########
+
+#Take points and say x,y position spatial points have a probability distribution around it
+#Sigma=1, units of reference sys is in meters, create normal curve where curve is and give std of 1 meter around that
+oil_density <- density(oil_full, sigma = 15000)
+
+#Convert density_spatstat into a stars object
+density_stars <- stars::st_as_stars(oil_density)
+
+#Convert density_stars into an sf object
+density_sf <- st_as_sf(density_stars) %>%
+  st_set_crs(3857)
+
+
+#Plot density map
+la_density_plot <- ggplot() +
+  
+  #Plot density object, fill with density `v`
+  geom_sf(data = density_sf, aes(fill = v), col = NA) +
+  
+  #Choose gradient scale color
+  #Missing data just colored as blue
+  scale_fill_gradientn(colours = c("blue", "red", "yellow"), 
+                       na.value = "blue") +
+  
+  #Plot LA county map
+  geom_sf(data = st_boundary(la_county_sf)) +
+  
+  #Plot LA oil spills
+  #Change size, color, transparency of points
+  # geom_sf(data = la_county_spills, size = 1, col = "darkorange",
+  #         alpha = 0.6) +
+  
+  #Add x-axis labels
+  #Change legend title, add tag
+  labs(
+       #Remove to combine x-axis together
+       #x = "\nLatitude",
+       fill = "Density of\nOil Spills",
+       tag = "B") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change size of axis tick text
+  theme(axis.text = element_text(size = 10),
+
+        #Tilt x tick
+        axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+
+
+########## Combine plots together ##########
+
+#Plot together using `patchwork`
+result <- la_spill_plot + la_density_plot
+point_kernel <- patchwork::patchworkGrob(result)
+
+#Add x-axis title
+#Change size, make bold, adjust vertical placement
+xtitle <- ggpubr::text_grob("Latitude", size = 12, face = "bold",
+                            vjust = -0.3)
+
+#Plot figure and axis together using `gridExtra`
+gridExtra::grid.arrange(point_kernel, 
+                        bottom = xtitle) 
+```
+
+**Figure 3.** Map for the location (**A**) and the kernel density (**B**) of oil spill incidents (orange dots) for Los Angeles County in the year 2008. Density of oil spill incidents in Los Angeles County are represented from lowest (dark blue) to highest (yellow). Points outside of the county boundaries are oil spill incidents that have occurred in marine environments rather than inland environments. Data source: OSPR (2009).
+
+<br>
+
+### Nearest Neighbor using G-Function
+
+We will use the *G*-function to compare our observed point pattern to a simulated complete spatial randomness scenario, to help us determine if it is more clustered or more uniform than complete spatial randomness. Units of *G(r)* are in degrees lat-long.
+
+```{r}
+#Make a sequence of distances over which to calculate G(r)
+r_vec <- seq(0, 10000, by = 100) 
+
+#Calculate the actual and theoretical G(r) values, using 100 simulations of CRS for the "theoretical" outcome
+
+#Envelope function within which we run simulations for CSR, and calculate the G-function value at distances r for each simulation
+gfunction <- envelope(oil_full, 
+                      
+                      #Use G-function
+                      fun = Gest, 
+                      
+                      #Sequence of distances over which we’ll calculate 
+                      #the proportion of points with nearest neighbor within that range
+                      r = r_vec, 
+                      
+                      #100 simulations of CSR
+                      nsim = 100, 
+                      
+                      #2nd highest and 2nd lowest values from simulations 
+                      #shown as the “hi” and “lo” value envelopes
+                      nrank = 2,
+                      
+                      #Suppress simulation message
+                      verbose = FALSE) 
+
+
+#Gather this to plot series in ggplot
+gfunction_long <- gfunction %>% 
+  
+  #Convert as data frame
+  as.data.frame() %>% 
+  
+  #Pivot longer
+  pivot_longer(cols = obs:hi, names_to = "model", values_to = "g_val") %>% 
+  
+  #Recode levels
+  mutate(model = recode(model, 
+                        obs = "Observed Data",
+                        theo = "Theoretical Complete Spatial Randomness",
+                        hi = "High 95th Percentile (Left)",
+                        lo = "Low 95th Percentile (Right)"))
+
+
+#Plot in ggplot
+ggplot(data = gfunction_long, 
+       aes(x = r, y = g_val, group = model)) +
+  
+  #Define line plot
+  #Color by model's data and change size
+  geom_line(aes(color = model), size = 1.2) +
+
+  #Specify colors
+  scale_color_manual(values = c("lightblue", "lightblue",
+                                "darkorange", "cyan4")) +
+
+  
+  #Change x-axis and y-axis labels
+  #Change legend title
+  labs(x = expression(italic("r")),
+       y = expression(atop(paste(italic("G(r)")),
+                           paste("(degree lat-long)"))),
+       color = "Model") +
+  
+  #Change theme
+  theme_minimal() +
+  
+  #Change size of ticks
+  theme(axis.text = element_text(size = 10),
+        
+        #Bold and change size of axis labels
+        axis.title = element_text(face = "bold", size = 12),
+        
+        #Bold legend title
+        legend.title = element_text(face = "bold"),
+        
+        #Change legend posiiton
+        legend.position = c(0.7, 0.4))
+```
+**Figure 4.** Plot of nearest neighbor patterns (*G(r)*) compared to a sequence of calculated distances (*r*). *G(r)* of the observed data (orange line) is above the theoretical threshold for complete spatial randomness (cyan line). Monte Carlo simulations were used to find the theoretical values of complete spatial randomness as well as the 95% upper and lower bounds (light blue lines) of the theoretical values. Data source: OSPR (2009).
+
+<br>
+
+Based on the density plot (**Figure 3B**) and *G(r)* plot (**Figure 4**), spatial point pattern analysis reveals that oil spill incidents in Los Angeles County from the year 2008 are clustered along similar degrees of latitude and longitude rather than spatially random. The clusters of oil spill incidents in Los Angeles County are located in, what appears to be, Long Beach, Burbank, the San Gabriel Valley, and Central Los Angeles (**Figure 3A**), which are known to be highly populated areas.
+
+
+# Summary
+
+In conclusion, we have plotted the locations of over 3,200 marine and inland oil spill incidents reported in California by different counties using `geom_sf` and `tmap`. Los Angeles County has the highest number of oil spill incidents in the year 2008, and kernel density plot and spatial pint pattern analysis using *G*-function revealed that the incidents were spatially clustered.
+
+Future analyses could include using *L*-function in spatial point pattern analysis, and further exploring oil spill incidents at the sub-county level in Los Angeles or in other counties that have high incidents of oil spills (e.g., San Mateo County in the Bay Area).
+
+
+# References
+
+## Data and Literature
+
+California Department of Fish and Wildlife (CDFW) (2020). California State Geoportal. Oil Spill Incident Tracking [ds394] database. https://gis.data.ca.gov/datasets/CDFW::oil-spill-incident-tracking-ds394-1/about.
+
+California Open Data Portal. (2016). Geographic Boundaries. CA County Boundaries. https://data.ca.gov/dataset/ca-geographic-boundaries.
+
+Office of Spill Prevention and Response (OSPR) Incident Tracking Database. (2009). Oil Spill Incident Tracking [ds394]. https://map.dfg.ca.gov/metadata/ds0394.html.
+
+
+## R Libraries
+
+Baddeley, A., Rubak, E., & Turner, R. (2015). Spatial Point Patterns: Methodology and Applications with R. London: Chapman and Hall/CRC Press, 2015. URL https://www.routledge.com/Spatial-Point-Patterns-Methodology-and-Applications-with-R/Baddeley-Rubak-Turner/9781482210200/.
+
+Baptiste, A. (2017). gridExtra: Miscellaneous Functions for "Grid" Graphics. R package version 2.3. https://CRAN.R-project.org/package=gridExtra.
+
+Bivand, R. & Lewin-Koh, N. (2021). maptools: Tools for Handling Spatial Objects. R package version 1.1-2. https://CRAN.R-project.org/package=maptools.
+
+Firke, S. (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://CRAN.R-project.org/package=janitor.
+
+Kassambara, A. (2020). ggpubr: 'ggplot2' Based Publication Ready Plots. R package version 0.4.0. https://CRAN.R-project.org/package=ggpubr.
+
+Müller, K. (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here.
+
+Pebesma, E. (2018). Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009.
+
+Pedersen, T.L. (2020). patchwork: The Composer of Plots. R package version 1.1.1. https://CRAN.R-project.org/package=patchwork.
+
+R Core Team (2021). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL https://www.R-project.org/.
+
+Tennekes, M. (2018). “tmap: Thematic Maps in R.” _Journal of Statistical Software_, *84*(6), 1-39. doi: 10.18637/jss.v084.i06 (URL: https://doi.org/10.18637/jss.v084.i06).
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686.
+
+
