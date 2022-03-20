@@ -4,6 +4,13 @@ theme: shuying_theme.css
 description: |
   Shuying Yu
 output_dir: "docs"  # docs directory of master branch
+collections:
+  blog: 
+    categories: true
+  projects:
+    categories: true
+  project2:
+    categories: true
 navbar:
   right:
     - text: "Home"
@@ -12,8 +19,10 @@ navbar:
       href: about.html
     - text: "Resume"
       href: ShuyingYu_Resume_DataScience.pdf
-    - text: Projects
+    - text: "Projects"
       href: projects.html
+    - text: "Project2"
+      href: project2.html
     - text: "Publications"
       href: scientific_communication.html
     - text: "Blog"
