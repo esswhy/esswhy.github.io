@@ -67,7 +67,7 @@ Following summary statistics and exploratory data visualizations, comparison of 
 
 ########## Read in the data
 
-maples <- read_csv(here("_portfolio", "data", "maples.csv"))
+maples <- read_csv(here("data", "maples.csv"))
 
 
 

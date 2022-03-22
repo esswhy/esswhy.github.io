@@ -105,7 +105,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Data Science Projects, Reports, and Visualizations"]},{"type":"character","attributes":{},"value":["portfolio"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Data Science Projects, Reports, and Visualizations"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["portfolio"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2151,8 +2151,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*-- WIDGETS 
   .html-widget {
-      margin: auto; /*center widgets*/
-  /*--}--*/
+      margin: auto; --*/ /*center widgets*/
+
 
   /*-- ARTICLE METADATA --*/
   d-byline {
@@ -2592,6 +2592,26 @@ function init_posts_list() {
 <p>In this project, I plotted spatial maps to visualize California oil spills by county and conducted point pattern analysis to investiate locations of spatial clusters of oil spills.</p>
 </div>
 </a>
+<a href="portfolio/pca_usda_food/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Principal Component Analysis","R"]}</script>
+<div class="metadata">
+<div class="publishedDate">Feb. 21, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Shuying Yu</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="portfolio/pca_usda_food/pca_usda_food_files/figure-html5/unnamed-chunk-1-1.png"/>
+</div>
+<div class="description">
+<h2>Principal Component Analysis: USDA Food Nutrient Information</h2>
+<div class="dt-tags">
+<div class="dt-tag">Principal Component Analysis</div>
+<div class="dt-tag">R</div>
+</div>
+<p>In this project, I used principal component analysis to explore macronutrient and micronutrient information for various food groups listed by the United States Department of Agriculture.</p>
+</div>
+</a>
 <a href="portfolio/logistic_regression_palmettos/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Logistic Regression","R"]}</script>
 <div class="metadata">
@@ -2661,7 +2681,7 @@ function init_posts_list() {
 </div>
 </div>
 <div class="thumbnail">
-<img src="portfolio/regression_bonanza_hares/regression_bonanza_hares_files/figure-html5/lm_explore_model-1.png"/>
+<img data-src="portfolio/regression_bonanza_hares/regression_bonanza_hares_files/figure-html5/lm_explore_model-1.png"/>
 </div>
 <div class="description">
 <h2>Linear Regression: Juvenile Snowshoe Hares at Bonanza Creek</h2>
@@ -2679,7 +2699,7 @@ function init_posts_list() {
 <ul>
 <li>
 <a href="#category:Articles">Articles</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Data_Visualization">Data Visualization</a>
@@ -2694,8 +2714,12 @@ function init_posts_list() {
 <span class="category-count">(1)</span>
 </li>
 <li>
+<a href="#category:Principal_Component_Analysis">Principal Component Analysis</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
 <a href="#category:R">R</a>
-<span class="category-count">(5)</span>
+<span class="category-count">(6)</span>
 </li>
 <li>
 <a href="#category:Regression">Regression</a>

@@ -55,7 +55,7 @@ Following exploratory data visualizations, weight comparison between juvenile fe
 
 ########## Read in the data 
 
-hares <- read_csv(here("_portfolio", "data", "bonanza_hares.csv"))
+hares <- read_csv(here("data", "bonanza_hares.csv"))
 
 #Check data
 #head(hares)

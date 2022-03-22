@@ -57,7 +57,7 @@ Following exploratory data visualizations, the relationship between species and 
 
 ```{r}
 #Read in the data 
-palmetto <- read_csv(here("_portfolio", "data", "palmetto.csv"))
+palmetto <- read_csv(here("data", "palmetto.csv"))
 
 
 #Clean the data

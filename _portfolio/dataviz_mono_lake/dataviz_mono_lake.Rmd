@@ -38,7 +38,7 @@ Mono Lake is a terminal saline lake in Lee Vining, California, northeast of Yose
 ########## Read in the data 
 
 #Skip first 4 lines, 5th line is header
-mono_lake <- read_csv(here("_portfolio", "data", "mono_lake_annual_levels.csv"),
+mono_lake <- read_csv(here("data", "mono_lake_annual_levels.csv"),
                       skip = 5)
 
 #Check data

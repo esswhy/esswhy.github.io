@@ -17,6 +17,11 @@ output:
     toc_float: true
 ---
 
+<style>
+.html-widget {
+    margin: auto;
+}
+</style>
 
 ```{r setup, include = TRUE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
@@ -75,7 +80,7 @@ Using `geom_sf`, we can plot the oil spill incident locations using shapefiles, 
 ########## Shapefile with CA county boundaries ##########
 
 #Read in the county boundary shapefile
-ca_counties_sf <- read_sf(here("_portfolio", "data", "ca_county_boundaries",
+ca_counties_sf <- read_sf(here("data", "ca_county_boundaries",
                                "CA_Counties_TIGER2016.shp")) %>% 
   
   #Clean variable names
@@ -94,7 +99,7 @@ ca_counties_sf <- read_sf(here("_portfolio", "data", "ca_county_boundaries",
 ########## Shapefile with oil spill data ##########
 
 #Read in the oil spill data
-ca_spills_sf <- read_sf(here("_portfolio", "data", "ds394", "ds394.shp")) %>% 
+ca_spills_sf <- read_sf(here("data", "ds394", "ds394.shp")) %>% 
   
   #Clean variable names
   clean_names() %>% 

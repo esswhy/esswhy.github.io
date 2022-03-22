@@ -2151,8 +2151,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*-- WIDGETS 
   .html-widget {
-      margin: auto; /*center widgets*/
-  /*--}--*/
+      margin: auto; --*/ /*center widgets*/
+
 
   /*-- ARTICLE METADATA --*/
   d-byline {
@@ -2569,9 +2569,28 @@ function init_posts_list() {
 
 
 
-<div class="posts-container posts-apply-limit l-page">
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
 <h1 class="posts-list-caption" data-caption="Blog Posts">Blog Posts</h1>
+<a href="blog/winter_2022/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Grad School"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 21, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Shuying Yu</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Winter 2022</h2>
+<div class="dt-tags">
+<div class="dt-tag">Grad School</div>
+</div>
+<p>Reflecting on the highs and lows of Winter 2022</p>
+</div>
+</a>
 <a href="blog/welcome/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":[]}</script>
 <div class="metadata">
@@ -2589,6 +2608,21 @@ function init_posts_list() {
 <p>Hello and welcome to my website!</p>
 </div>
 </a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Grad_School">Grad School</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
 </div>
 <div class="posts-more">
 <a href="#">More articles &raquo;</a>
