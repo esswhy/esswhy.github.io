@@ -3,7 +3,7 @@ title: "Shuying Yu"
 theme: shuying_theme.css
 description: |
   Shuying Yu
-output_dir: "docs"  # docs directory of master branch
+output_dir: "docs"  #docs directory of master branch
 collections:
   blog: 
     categories: true

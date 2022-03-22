@@ -1,10 +1,9 @@
 ---
 title: "Winter 2022"
 description: |
-  Reflecting on the highs and lows of Winter 2022
+  In this blog post, I reflect on the highs and lows of Winter 2022.
 author:
   - name: Shuying Yu
-    url: {}
 citation_url: https://esswhy.github.io/blog/winter_2022/
 date: 03-21-2022
 categories:
@@ -17,36 +16,40 @@ output:
     toc_float: true
 ---
 
-Winter quarters on the UC system are always so challenging for me. It's a combination of densely packed courses (from an extra day or two off from holidays), gloomy and cold weather, and tying to figure out my goals for the new year. This past quarter has been a rocky start to the 2022 year for me, but there are also some really amazing things that have happened along the way.
+Winter quarters on the UC system are always so challenging for me. It's a combination of densely packed courses (from an extra day or two off from holidays), gloomy and cold weather, and tying to figure out my goals for the new year. This past quarter has especially been a rocky start to the 2022 year for me, but there are also some really amazing things that have happened along the way that I want to remember. Grad school is a long marathon and I want to appreciate both the good and bad times to remind myself how far I've come.
 
 <br>
 
-Some challenges for me this quarter were:
+Some of the challenges for me this quarter were:
 
-**Delayed timeline to complete courses for my degree:** I met with an academic advisor in the PSTAT department who initially told me I needed one more course to complete the degree requirements for my M.A, but then later told me that I had two more courses. This was disappointing to hear after all the meetings, petitions, and plans I made that had been already approved by the personnel in the department. It's hard knowing I would have to make a lot more sacrifices to balance research, teaching, and a work-life balance to finish the degree.
-
-
-**Extreme anxiety, stress, and depression:** I ended my long-distance relationship at the beginning of January, which had been a long time coming but doesn't exactly make it any less difficult. I had a really hard time trying to focus on my work and continue to stay motivated, so I ended up speaking regularly with a therapist again. I also feel like there has been a lot of academic pressure and people who constantly take a lot of time and energy from me that I haven't had enough time for myself to grieve or do the things I want. It's an understatement to say it's been a very isolating and upsetting quarter for me.
+**Delayed timeline to complete courses for my M.A. degree:** I met with an academic advisor in the PSTAT department who initially told me I needed one more course to complete the degree requirements for my M.A, but then later told me that I actually had to take two more courses. This was disappointing to hear after all the meetings, petitions, and plans I made that had been already approved by the personnel in the department. It's hard knowing I would have to make a lot more sacrifices to balance finishing the M.A. degree and the Ph.D. degree, too.
 
 
-**Limited time to focus on fun and applying to internships:** While doing research, juggling two statistics heavy courses, and maintaining my mental health, I haven't had much time to apply to as many internship applications for summer 2022 as I would have liked. I'm hoping that I can still have opportunities to apply now that the quarter is over.
+**Extreme anxiety, stress, and depression:** I ended my long-distance relationship at the beginning of January. I felt like it was long overdue, but it didn't make it any less difficult. I had a really hard time trying to focus on my work and stay motivated, and I ended up speaking regularly with a therapist again. I haven't had enough time for myself to grieve or to do the things I want because of the growing academic pressure and needs of other people around me. I have felt especially lonely, depressed, and unappreciated this quarter.
+
+
+**Limited time to focus on applying to internships:** While doing research, juggling two statistics heavy courses, mentoring students, and maintaining my mental health, I haven't had much time to apply to as many internship applications for summer 2022 as I would have liked. And of course, I get rejected from all the ones I do apply to...
+
 
 
 <br>
 
 
-To end on a positive note, some of the best things that happened to me this quarter were:
+Despite how much of an emotional rollercoaster this quarter has been, I do want to end on a positive note! Some of the best things that happened to me this quarter were:
 
-**Officially became a M.A. Candidate for PSTAT on paper:** Even though I still need two more courses until completion, I'm happy that the Graduate Division was quick to receive and process my petition to add this degree (about three weeks)! I've already passed the qualifying exam in May 2021, so just need the remaining two courses to finish.
+**Officially became a M.A. Candidate in PSTAT on paper:** Even though I still need two more courses until completion of this degree, I'm happy that the Graduate Division was quick to receive and process my petition to add this degree (about three weeks) to my records! I've already passed the qualifying exam back in May 2021, so just need the remaining two courses to finish everything.
 
-**Submitted by approved dissertation proposal:** I was able to complete my course projects, did well on my final exam, and submit a revised version of my dissertation proposal. I met with my committee members at the end of January and we were able to have a productive discussion on how to flesh out the details of certain methods and predictions. I'm really proud of myself of being able to set a schedule to make edits here and there throughout the weeks that led to the end of this paper and milestone!
+**Submitted my approved final dissertation proposal:** I was able to complete my course projects, did well on my final exam, and submitted a revised version of my dissertation proposal on time. I met with my committee members at the end of January and we were able to have a productive discussion on how to flesh out the details of certain methods and predictions for my studies. I'm really proud of myself for coming to the end of this milestone. This is basically the last step before the dissertation!
 
-**Finished 4+ years of data collection for my fMRI project:** I scanned my last participant this quarter after working on this astronomical fMRI project for nearly five years. The timeline of this project started on March 1, 2017 and ended on February 10, 2022. Thoguh I will say that I will be generous and take off one year from the timeline due to lack of human subjects research participation during the height of COVID-19. Now all that is left is to analyze data for my dissertation!
+**Finished 4+ years of data collection for my fMRI project:** I scanned my last ever participant this quarter after working on this astronomical fMRI project for nearly five years. This project started on March 1, 2017 and ended on February 10, 2022. I will be generous and take off one year from the timeline due to lack of human subjects research participation during the height of COVID-19 in 2020. Now all that's left for me is to analyze data for my dissertation!
 
 
-**Learned to create my own website and Shiny App:** One of the courses I took this quarter was ESM 244 with Casey O'Hara from the Bren School, which was recommended to me from two friends who said I would be able to learn to make my own website using `distill` and work on a group Shiny App to communicate some data. I'm excited to have this personal website now where I can update projects and other information in preparation for my career. I'm also glad to have the experience to learn some tools and make a Shiny App with clients from the Bren School to communicate sources of indoor air pollution from different cooking practices in Ghana.
+**Learned to create my own website and Shiny App:** One of the courses I took this quarter was ESM 244 with Casey O'Hara from the Bren School of Environmental Sciences & Management, which was recommended to me by two friends who said I would be able to make my own website using `distill` and work on a group Shiny App to communicate some data. I'm excited to have this personal website where I can showcase code for my projects in preparation for my data science career. I'm also glad to have the experience to learn some tools and make a Shiny App with clients from the Bren School to communicate sources of indoor air pollution from different cooking practices in Ghana.
 
 
 **Learned so much about Bayesian analysis and inference:** The other course I took this quarter was PSTAT 115 with Alex Franks, which was an introduction to Bayesian analysis course. It was a refreshing perspective to learn non-Frequentist statistics and to build on my previous knowledge of likelihoods and generalized linear models. I realize how much I have learned over the years from taking PSTAT courses and how useful it's been for me to tackle future courses and my own research as well. I really enjoyed the course and did well on the final exam, and found out this morning I received an A! Yay!
 
 
+<br>
+
+I hope Spring 2022 will be kinder to me as I try to balance being a teaching assistant, taking two PSTAT courses, mentoring my undergraduate research assistant for her project, communicating some data at a conference, and making progress on my first study for my dissertation!

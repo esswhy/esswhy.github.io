@@ -24,10 +24,7 @@ In my research as a Ph.D. Candidate in the Psychological & Brain Sciences Depart
 
 The outcomes of my research have practical importance and benefits to society that lead to greater advancement in educational, psychological, and medical fields — including understanding healthy brain aging, advancing knowledge for the intersection of women's health and neuroscience, and identifying early cognitive markers for dementia.
 
-```{r, fig.cap = "Donning on proper PPE (white lab coat, safety goggles, and latex gloves) to centrifuge blood, aliquot serum, and store cryovials into our freezer for future hormone assays. Being a female scientist is a pretty cool job!"}
-knitr::include_graphics(here("figures", "shuying_lab_freezer.jpg"))
-```
-
+![Donning on proper PPE (white lab coat, safety goggles, and latex gloves) to centrifuge blood, aliquot serum, and store cryovials into our freezer for future hormone assays. Being a female scientist is a pretty cool job!](figures/shuying_lab_freezer.jpg)
 
 Outside of the lab, I enjoy participating in community outreach events at science fairs, hosting laboratory tours, and teaming up with the local chapter of Girls Inc., an organization dedicated to introducing young girls to STEM. Together, these experiences continue to solidify my commitment to fostering the growth of my community and in sharing science with the public throughout my career. Please see my [publications and scientific communications](https://esswhy.github.io/scientific_communication.html) tab to learn more!
 

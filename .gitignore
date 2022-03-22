@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 
-#Ignore the projects folders
+#Ignore the data folder
+/data
