@@ -1,7 +1,7 @@
 ---
 title: "Publications and other Scientific Communications"
 description: |
-  A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, visualizations, and more.
+  A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, and more.
 output: 
   distill::distill_article:
     toc: true
@@ -41,11 +41,11 @@ mycounter_videos <- 0
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Hegarty, M., He, C., Boone, A.P., **Yu, S.**, Jacobs, E.G., & Chrastil, E.R. (2022). Understanding Differences in Wayfinding Strategies. *Topics in Cognitive Science*. https://doi.org/10.1111/tops.12592.
 
-`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-related changes in spatial navigation are evident by midlife and differ by sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185. **_Featured article in  Association for Psychological Science's "This Week in Psychological Science" exclusive newsletter._**
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-Related Changes in Spatial Navigation Are Evident by Midlife and Differ by Sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185. **_Featured in Association for Psychological Science's "This Week in Psychological Science" exclusive newsletter._**
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Pritschet, L., Santander, T., Taylor, C.M., Layher, E., **Yu, S.**, Miller, M.B., Grafton, S.T., & Jacobs, E.G. (2020). Functional reorganization of brain networks across the human menstrual cycle. *NeuroImage*, 220, 117091. https://doi.org/10.1016/j.neuroimage.2020.117091.
 
-`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Taylor, C.M., Pritschet, L., **Yu, S.**, & Jacobs, E.G. (2019). Applying a women’s health lens to the study of the aging brain. *Frontiers in human neuroscience*, 13, 224. https://doi.org/10.3389/fnhum.2019.00224.
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Taylor, C.M., Pritschet, L., **Yu, S.**, & Jacobs, E.G. (2019). Applying a Women’s Health Lens to the Study of the Aging Brain. *Frontiers in human neuroscience*, 13, 224. https://doi.org/10.3389/fnhum.2019.00224.
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Suarez, N.A., Samano, M., **Yu, S.**, Snyder, S. & Chukoskie, L. (2019). Research-practice partnerships in STEM informal learning environments. In P.K. Kuhl, S-S. Lim, S. Guerriero & D. Van Damme (Eds.), *Developing Minds in the Digital Age: Towards a Science of Learning for 21st Century Education*, (pp. 187-195). Paris, France: Educational Research and Innovation, OECD Publishing. https://doi.org/10.1787/562a8659-en.
 

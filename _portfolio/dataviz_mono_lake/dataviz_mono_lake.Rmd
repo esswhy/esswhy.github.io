@@ -1,0 +1,266 @@
+---
+title: "Data Visualization: Mono Lake Elevation Levels from 1850-2017"
+description: |
+  In this project, I created a data visualization of Mono Lake elevation levels and its major historical events using highly customized aesthetics in R.
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/portfolio/dataviz_mono_lake/
+date: 11-28-2021
+categories:
+  - Data Visualization
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = TRUE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      fig.align = "center")
+
+#Attach packages
+library(tidyverse)
+library(here)
+library(janitor)
+```
+
+# Introduction
+
+Mono Lake is a terminal saline lake in Lee Vining, California, northeast of Yosemite National Park in the Pamidu Toiyabe (Sierra Nevada), and is home to the Kootzaduka’a (or Kutzadika’a) Tribe.
+
+# Data Visualization
+
+```{r data-viz}
+
+########## Read in the data 
+
+#Skip first 4 lines, 5th line is header
+mono_lake <- read_csv(here("data", "mono_lake_annual_levels.csv"),
+                      skip = 5)
+
+#Check data
+#head(mono_lake)
+
+
+
+########## Clean data
+
+mono_lake <- mono_lake %>% 
+  
+  #Convert to lower snake case
+  clean_names() %>% 
+  
+  #Select only year and lake level above sea level
+  select(year, lake_level_feet_above_sea_level) 
+
+#Check data
+#head(mono_lake)
+
+
+
+########## Plotting
+
+#Line plot of lake elevation levels over time in years
+ggplot(data = mono_lake, aes(x = year,
+                             y = lake_level_feet_above_sea_level)) +
+  
+  #Define line plot
+  #Change size and color of line
+  geom_line(size = 1.15, color = "aquamarine4") +
+  
+  
+  
+  ########## Limits
+  
+  theme_minimal() +
+  
+  #Change x-axis scale
+  scale_x_continuous(breaks = seq(1850, 2017, by = 20)) +
+  
+  #Change y-axis scale
+  scale_y_continuous(breaks = seq(6350, 6440, by = 10)) +
+  
+  #Focus plot area on limits and allow text outside margins
+  coord_cartesian(xlim = c(1850,2017),
+                  ylim = c(6350, 6440), clip = "off") +
+  
+  
+  ########## Add horizontal lines: ELEVATION (Y-AXIS)
+  
+  #6392 ft: standard elevation set by State Water Board Decision 1631 in 1994
+  # geom_segment(aes(x = 1994.5, y = 6392,
+  #                  xend = Inf, yend = 6392),
+  #              color = "lightsteelblue3", size = 1.3) +
+  
+  #6377 ft: Land bridges emerge between the mainland and islands
+  geom_segment(aes(x = 1844, y = 6377,
+                   xend = Inf, yend = 6377),
+               color = "dodgerblue3", size = 1.3, linetype = "dashed") +
+
+  #6360 ft: Decrease in availability of brine shrimp for food (salinity at 120 g/L)
+  geom_segment(aes(x = 1844, y = 6360,
+                   xend = Inf, yend = 6360),
+               color = "darkturquoise", size = 1.3, linetype = "dotdash") +
+  
+  #6350 ft: Impacts on gulls due to decrease of food and when salinities above 150 g/L
+  geom_segment(aes(x = 1844, y = 6350,
+                   xend = Inf, yend = 6350),
+               color = "lightblue2", size = 1.3, linetype = "dotted") +
+  
+
+  
+  
+  ########## Shading
+  
+  #Shade area under 6350 ft
+  #Give geom_rect a single row data object to ensure only one rectangle is drawn
+  # geom_rect(data = mono_lake[1,],
+  #           aes(xmin = 1850, xmax = 2017, ymin = -Inf, ymax = 6350), 
+  #           fill = "lightblue2", alpha = 0.2) +
+  
+  
+  
+  ########## Text
+
+  ##### 6392 text
+  # annotate(geom = "text", x = 2030, y = 6392, 
+  #          label = expression(bold("6,392 feet:")), 
+  #                   hjust = 0, vjust = 0.5, size = 3) +
+  # annotate(geom = "text", x = 2030, y = 6389, 
+  #          label = "standard elevation", 
+  #                   hjust = 0, vjust = 0.5, size = 3) +
+
+  ##### 6377 text
+  annotate(geom = "text", x = 2030, y = 6377, 
+           label = expression(bold("6,377 feet:")), 
+                    hjust = 0, vjust = 0.5, size = 3) +
+  annotate(geom = "text", x = 2030, y = 6374, 
+           label = "land bridges form", 
+                    hjust = 0, vjust = 0.5, size = 3) +
+
+  ##### 6360 text
+  annotate(geom = "text", x = 2030, y = 6360, 
+           label = expression(bold("6,360 feet:")), 
+                    hjust = 0, vjust = 0.5, size = 3) +
+  annotate(geom = "text", x = 2030, y = 6357, 
+           label = "salinity at 120 g/L", 
+                    hjust = 0, vjust = 0.5, size = 3) +
+  
+  ##### 6350 text
+  annotate(geom = "text", x = 2030, y = 6350, 
+           label = expression(bold("6,350 feet:")), 
+                    hjust = 0, vjust = 0.5, size = 3) +
+  annotate(geom = "text", x = 2030, y = 6347, 
+           label = "salinity at 150 g/L", 
+                    hjust = 0, vjust = 0.5, size = 3) +
+  
+  
+  
+  ########## Add vertical lines: YEAR (X-AXIS)
+  
+  ##### 1941: LA DWP begins diverting water from lake
+  
+  ##### 1941 point
+  #Point
+  geom_point(aes(x = 1941, y = 6417.5), color = "darkorange1", size = 3.5) +
+  
+  ##### 1941 arrow
+  geom_segment(x = 1941, y = 6420, xend = 1941, yend = 6425,
+               arrow = arrow(length = unit(2.5, "mm")), ends = "first") +
+  
+  ##### 1941 text
+  annotate(geom = "text", x = 1927, y = 6433, 
+           label = expression(bold("1941:")),
+                    hjust = 0, size = 3) +
+  annotate(geom = "text", x = 1940, y = 6433,
+           label = "L.A. DWP diverts water \nfrom tributary streams",
+           hjust = 0, vjust = 0.85, size = 3) +
+  
+  
+  
+  #####1976: First comprehensive ecological study of Mono Lake by UCD and Stanford
+  
+  ##### 1976 point
+  geom_point(aes(x = 1976, y = 6378.60), color = "darkorange1", size = 3.5) +
+  
+  ##### 1976 arrow
+  geom_segment(x = 1976, y = 6383, xend = 1976, yend = 6410,
+               arrow = arrow(length = unit(2.5, "mm")), ends = "first") +
+  
+  ##### 1976 text
+  annotate(geom = "text", x = 1962, y = 6418, 
+           label = expression(bold("1976:")),
+                    hjust = 0, size = 3) +
+  annotate(geom = "text", x = 1975, y = 6418,
+           label = "First comprehensive ecological \nstudy of Mono Lake",
+           hjust = 0, vjust = 0.85, size = 3) +
+  
+  
+  
+  
+  ##### 1994: State Water Board Decision 1631, levels set at 6392 feet to protect Mono Lake’s public trust values
+  
+  ##### 1994 point
+  geom_point(aes(x = 1994, y = 6374.60), color = "darkorange1", size = 3.5) +
+  
+  ##### 1994 arrow
+  geom_segment(x = 1994, y = 6380, xend = 1994, yend = 6395,
+               arrow = arrow(length = unit(2.5, "mm")), ends = "first") +
+  
+  ##### 1994 text
+  annotate(geom = "text", x = 1980, y = 6403, 
+           label = expression(bold("1994:")),
+                    hjust = 0, size = 3) +
+  annotate(geom = "text", x = 1993, y = 6403,
+           label = "State Water Board \nDecision 1631",
+           hjust = 0, vjust = 0.85, size = 3) +
+  
+  
+
+  
+  ########## Theme
+
+  #Change x-axis and y-axis labels
+  labs(x = "\nYear",
+       y = "Mono Lake Elevation Levels \n(feet above sea level)\n") +
+  
+  
+  #Customize theme of plot
+  #Bold and increase font of x-axis and y-axis labels
+  theme(axis.title.x = element_text(size = 12, face = "bold"),
+        axis.title.y = element_text(size = 12, face = "bold"),
+        
+        #Increase x-tick and y-tick text
+        axis.text.x = element_text(size = 10),
+        axis.text.y = element_text(size = 10),
+        
+        #Color x-axis and y-axis
+        axis.line.x = element_line(color = "grey50"),
+
+        #Increase margins: theme_minimal()$plot.margin
+        #Top, right, bottom, left
+        plot.margin = unit(c(0.2, 3, 0.2, 0.2), "cm")) 
+```
+
+<br>
+
+**Figure 1.** Timeline of major historical events and legal decisions that have impacted Mono Lake elevation levels (feet above sea level) from the years 1850 - 2017. Text above Mono Lake elevation levels (green solid line) describes specific events that took place at certain years (orange points) and text to the right of the plot margin describes specific changes on the Mono Lake ecosystems at critical levels of elevation. Mono Lake elevation levels began to decline in 1941 when the Los Angeles (L.A.) Department of Water & Power (DWP) diverted water from the lake to meet the growing water demands of L.A. When elevation levels dropped to 6,377 feet (dark blue dashed line), land bridges emerged between the mainland and islands, which allowed predators to access major bird nesting sites. In 1976, the first comprehensive ecological study conducted by students at UC Davis and Stanford discovered that water diversions change lake salinity levels. At 6,360 feet (turquoise dot-dash line), brine shrimp and brine flies, which are main food sources for aquatic birds at Mono Lake, are adversely affected. At 6,350 feet (light blue dotted line), impacts become acute. In 1994, after a series of successful lawsuits charged by the Mono Lake Committee against DWP's water diversions, the State Water Board issued Decision 1631, which set a lake level of 6,392 feet to protect Mono Lake’s public trust values, required permanent streamflows for Mono Basin streams, and ordered DWP to restore streams and waterfowl habitat damaged as a result of past diversions. Data source: Mono Basin Clearinghouse.
+
+
+# References
+
+## Data and Literature
+
+Mono Basin Clearinghouse: Building a Digital Library for Better Resource Management. Accessed 11/20/2021. https://www.monobasinresearch.org/.
+
+## R Libraries
+
+Firke, S. (2021). janitor: Simple Tools for Examining and Cleaning Dirty Data. R package version 2.1.0. https://CRAN.R-project.org/package=janitor.
+
+Müller, K. (2020). here: A Simpler Way to Find Your Files. R package version 1.0.1. https://CRAN.R-project.org/package=here.
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686.
+

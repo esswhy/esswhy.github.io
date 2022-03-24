@@ -86,7 +86,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>Shuying Yu: My First Blog Post</title>
+<title>SY: My First Blog Post</title>
 
 <meta property="description" itemprop="description" content="Hello and welcome to my website!"/>
 
@@ -98,21 +98,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta name="article:author" content="Shuying Yu"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="Shuying Yu: My First Blog Post"/>
+<meta property="og:title" content="SY: My First Blog Post"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Hello and welcome to my website!"/>
 <meta property="og:url" content="https://esswhy.github.io/blog/welcome/"/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:site_name" content="Shuying Yu"/>
+<meta property="og:site_name" content="SY"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="Shuying Yu: My First Blog Post"/>
+<meta property="twitter:title" content="SY: My First Blog Post"/>
 <meta property="twitter:description" content="Hello and welcome to my website!"/>
 <meta property="twitter:url" content="https://esswhy.github.io/blog/welcome/"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
-<meta name="citation_title" content="Shuying Yu: My First Blog Post"/>
+<meta name="citation_title" content="SY: My First Blog Post"/>
 <meta name="citation_fulltext_html_url" content="https://esswhy.github.io/blog/welcome/"/>
 <meta name="citation_online_date" content="2022/01/15"/>
 <meta name="citation_publication_date" content="2022/01/15"/>
@@ -1879,7 +1879,10 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
       window.tippy(this, {
         allowHTML: true,
         content: refHtml,
@@ -2169,10 +2172,10 @@ html {
 }
 
 
-/*-- MAKE WIDGETS CENTERED --*/
+/*-- WIDGETS 
 .html-widget {
-    margin: auto;
-}
+    margin: auto; --*/ /*center widgets*/
+
 
 /*-- ARTICLE METADATA --*/
 d-byline {
@@ -2438,15 +2441,14 @@ d-appendix d-footnote-list a.footnote-backlink {
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
-<a href="../../index.html" class="title">Shuying Yu</a>
+<a href="../../index.html" class="title">SY</a>
 <input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
 <a href="../../index.html">Home</a>
 <a href="../../about.html">About</a>
-<a href="../../ShuyingYu_Resume_DataScience.pdf">Resume</a>
-<a href="../../projects.html">Projects</a>
-<a href="../../projects2.html">Projects2</a>
+<a href="../../resume.html">Resume</a>
+<a href="../../portfolio.html">Portfolio</a>
 <a href="../../scientific_communication.html">Publications</a>
 <a href="../../blog.html">Blog</a>
 <a href="https://github.com/esswhy/esswhy.github.io">
@@ -2495,11 +2497,11 @@ d-appendix d-footnote-list a.footnote-backlink {
 <div class="appendix-bottom">
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Yu (2022, Jan. 15). Shuying Yu: My First Blog Post. Retrieved from https://esswhy.github.io/blog/welcome/</pre>
+  <pre class="citation-appendix short">Yu (2022, Jan. 15). SY: My First Blog Post. Retrieved from https://esswhy.github.io/blog/welcome/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{yu2022my,
   author = {Yu, Shuying},
-  title = {Shuying Yu: My First Blog Post},
+  title = {SY: My First Blog Post},
   url = {https://esswhy.github.io/blog/welcome/},
   year = {2022}
 }</pre>

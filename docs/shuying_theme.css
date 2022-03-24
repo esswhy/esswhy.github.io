@@ -40,10 +40,10 @@ html {
 }
 
 
-/*-- MAKE WIDGETS CENTERED --*/
+/*-- WIDGETS 
 .html-widget {
-    margin: auto;
-}
+    margin: auto; --*/ /*center widgets*/
+
 
 /*-- ARTICLE METADATA --*/
 d-byline {

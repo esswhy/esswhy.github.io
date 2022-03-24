@@ -1,9 +1,15 @@
 name: "."
-title: "Shuying Yu"
+title: "SY"
 theme: shuying_theme.css
 description: |
   Shuying Yu
-output_dir: "docs"  # docs directory of master branch
+output_dir: "docs"  #docs directory of master branch
+base_url: https://esswhy.github.io/
+collections:
+  blog: 
+    categories: true
+  portfolio:
+    categories: true
 navbar:
   right:
     - text: "Home"
@@ -11,11 +17,9 @@ navbar:
     - text: "About"
       href: about.html
     - text: "Resume"
-      href: ShuyingYu_Resume_DataScience.pdf
-    - text: "Projects"
-      href: projects.html
-    - text: "Projects2"
-      href: projects2.html
+      href: resume.html
+    - text: "Portfolio"
+      href: portfolio.html
     - text: "Publications"
       href: scientific_communication.html
     - text: "Blog"

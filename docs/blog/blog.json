@@ -1,5 +1,24 @@
 [
   {
+    "path": "blog/winter_2022/",
+    "title": "Winter 2022",
+    "description": "In this blog post, I reflect on the highs and lows of Winter 2022.",
+    "author": [
+      {
+        "name": "Shuying Yu",
+        "url": {}
+      }
+    ],
+    "date": "2022-03-21",
+    "categories": [
+      "Grad School"
+    ],
+    "contents": "\r\nWinter quarters on the UC system are always so challenging for me. It’s a combination of densely packed courses (from an extra day or two off from holidays), gloomy and cold weather, and tying to figure out my goals for the new year. This past quarter has especially been a rocky start to the 2022 year for me, but there are also some really amazing things that have happened along the way that I want to remember. Grad school is a long marathon and I want to appreciate both the good and bad times to remind myself how far I’ve come.\r\n\r\nSome of the challenges for me this quarter were:\r\nDelayed timeline to complete courses for my M.A. degree: I met with an academic advisor in the PSTAT department who initially told me I needed one more course to complete the degree requirements for my M.A, but then later told me that I actually had to take two more courses. This was disappointing to hear after all the meetings, petitions, and plans I made that had been already approved by the personnel in the department. It’s hard knowing I would have to make a lot more sacrifices to balance finishing the M.A. degree and the Ph.D. degree, too.\r\nExtreme anxiety, stress, and depression: I ended my long-distance relationship at the beginning of January. I felt like it was long overdue, but it didn’t make it any less difficult. I had a really hard time trying to focus on my work and stay motivated, and I ended up speaking regularly with a therapist again. I haven’t had enough time for myself to grieve or to do the things I want because of the growing academic pressure and needs of other people around me. I have felt especially lonely, depressed, and unappreciated this quarter.\r\nLimited time to focus on applying to internships: While doing research, juggling two statistics heavy courses, mentoring students, and maintaining my mental health, I haven’t had much time to apply to as many internship applications for summer 2022 as I would have liked. And of course, I get rejected from all the ones I do apply to…\r\n\r\nDespite how much of an emotional rollercoaster this quarter has been, I do want to end on a positive note! Some of the best things that happened to me this quarter were:\r\nOfficially became a M.A. Candidate in PSTAT on paper: Even though I still need two more courses until completion of this degree, I’m happy that the Graduate Division was quick to receive and process my petition to add this degree (about three weeks) to my records! I’ve already passed the qualifying exam back in May 2021, so just need the remaining two courses to finish everything.\r\nSubmitted my approved final dissertation proposal: I was able to complete my course projects, did well on my final exam, and submitted a revised version of my dissertation proposal on time. I met with my committee members at the end of January and we were able to have a productive discussion on how to flesh out the details of certain methods and predictions for my studies. I’m really proud of myself for coming to the end of this milestone. This is basically the last step before the dissertation!\r\nFinished 4+ years of data collection for my fMRI project: I scanned my last ever participant this quarter after working on this astronomical fMRI project for nearly five years. This project started on March 1, 2017 and ended on February 10, 2022. I will be generous and take off one year from the timeline due to lack of human subjects research participation during the height of COVID-19 in 2020. Now all that’s left for me is to analyze data for my dissertation!\r\nLearned to create my own website and Shiny App: One of the courses I took this quarter was ESM 244 with Casey O’Hara from the Bren School of Environmental Sciences & Management, which was recommended to me by two friends who said I would be able to make my own website using distill and work on a group Shiny App to communicate some data. I’m excited to have this personal website where I can showcase code for my projects in preparation for my data science career. I’m also glad to have the experience to learn some tools and make a Shiny App with clients from the Bren School to communicate sources of indoor air pollution from different cooking practices in Ghana.\r\nLearned so much about Bayesian analysis and inference: The other course I took this quarter was PSTAT 115 with Alex Franks, which was an introduction to Bayesian analysis course. It was a refreshing perspective to learn non-Frequentist statistics and to build on my previous knowledge of likelihoods and generalized linear models. I realize how much I have learned over the years from taking PSTAT courses and how useful it’s been for me to tackle future courses and my own research as well. I really enjoyed the course and did well on the final exam, and found out this morning I received an A! Yay!\r\n\r\nI hope Spring 2022 will be kinder to me as I try to balance being a teaching assistant, taking two PSTAT courses, mentoring my undergraduate research assistant for her project, communicating some data at a conference, and making progress on my first study for my dissertation!\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2022-03-22T15:11:52-07:00",
+    "input_file": {}
+  },
+  {
     "path": "blog/welcome/",
     "title": "My First Blog Post",
     "description": "Hello and welcome to my website!",
@@ -13,7 +32,7 @@
     "categories": [],
     "contents": "\r\nHi there!\r\nIf you’re reading this, it means you’ve found my blog. I’m currently learning to create my own website in R, so thanks for your patience as this portfolio evolves and comes to life.\r\nI plan to use this website as a way to record just a tiny fraction of the milestones and events I am experiencing and learning during my Ph.D. program and hopefully throughout my data science career. This website will be an amalgamation of data science projects, personal reflections, and so forth.\r\nPlease don’t hesitate to reach out or say hello!\r\nWith appreciation,\r\nShuying\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2022-02-11T20:44:27-08:00",
+    "last_modified": "2022-03-22T14:06:21-07:00",
     "input_file": {}
   }
 ]
