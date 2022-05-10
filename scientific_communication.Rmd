@@ -1,5 +1,5 @@
 ---
-title: "Publications and other Scientific Communications"
+title: "Publications and Other Scientific Communications"
 description: |
   A list of my publications and presentations (talks and posters), as well as content for scientific communications that include videos, community outreach, and more.
 output: 
@@ -54,6 +54,8 @@ mycounter_videos <- 0
 
 ## Talks
 
+`r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.** (May 2022). The Role of Reproductive Aging on Navigation Strategy in Midlife Women. *7th Annual Psychology in Action Symposium: Healthy Aging*. Virtual Presentation, UCLA Department of Psychology, Los Angeles, CA, USA.
+
 `r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.** (September 2021). Sex Differences and Aging in Spatial Navigation. *Lunch & Learn Series*. UCSB Graduate Division, Santa Barbara, CA, USA. **_Highlighted as "the most accessible STEM presentation seen at Lunch & Learn" by the Assistant Director of Professional Development for Graduate Division._** _See <a href="#videos">Videos</a> to watch talk._
 
 `r mycounter_talks <- mycounter_talks +1; mycounter_talks`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (October 2020). Sex Differences and Age-Related Differences in Spatial Navigation. *3rd Interdisciplinary Navigation Symposium (iNAV)*. Virtual Presentation, Cortina d'Ampezzo, Italy.
@@ -74,8 +76,9 @@ mycounter_videos <- 0
 
 ## Posters
 
-`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (May 2020). Sex Differences and Age-Related Changes in Spatial Navigation. *2020 Organization for the Study of Sex Differences Annual Meeting*, Marina del Rey, CA, USA. _Abstract accepted but meeting canceled due to COVID-19._
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (May 2022). Navigation Strategy Tied to Sex Steroid Hormones. *2022 Organization for the Study of Sex Differences Annual Meeting*, Marina del Rey, CA, USA.
 
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (May 2020). Sex Differences and Age-Related Changes in Spatial Navigation. *2020 Organization for the Study of Sex Differences Annual Meeting*, Marina del Rey, CA, USA. _Abstract accepted but meeting canceled due to COVID-19._
 
 `r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; Layher, E., Pritschet, L., Santander, T., Taylor, C.M., **Yu, S.**, Grafton, S.T., Jacobs, E.G., & Miller, M.B. (June 2019). Within-subject fMRI analyses of the successful retrieval effect in recognition memory. *2019 Organization for Human Brain Mapping Annual Meeting*, Rome, Italy. 
 
