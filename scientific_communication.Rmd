@@ -39,6 +39,10 @@ mycounter_videos <- 0
 
 # Publications
 
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu. S.**, Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (*Manuscript In Preparation*). Sex steroid hormones associated with spatial navigational strategy in midlife women. 
+
+`r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Snider, J., Hacker, S., **Yu, S.**, Townsend, J., & Chukoskie, L. (*Manuscript Under Review*). Change blindness and eye tracking in children with autism. 
+
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; Hegarty, M., He, C., Boone, A.P., **Yu, S.**, Jacobs, E.G., & Chrastil, E.R. (2022). Understanding Differences in Wayfinding Strategies. *Topics in Cognitive Science*. https://doi.org/10.1111/tops.12592.
 
 `r mycounter_pubs <- mycounter_pubs +1; mycounter_pubs`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-Related Changes in Spatial Navigation Are Evident by Midlife and Differ by Sex. *Psychological Science*, 32(5), 692-704. https://doi.org/10.1177/0956797620979185. **_Featured in Association for Psychological Science's "This Week in Psychological Science" exclusive newsletter._**
@@ -76,6 +80,8 @@ mycounter_videos <- 0
 
 ## Posters
 
+`r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; Cossio, D., Sabur, R., **Yu, S.**, Hegarty, M., Jacobs, E.G., & Chrastil, E.R. (November 2022). The relationship between spatial navigation ability during midlife and white matter structural integrity. *2022 Society for Neuroscience Annual Meeting*, San Diego, CA, USA.
+
 `r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (May 2022). Navigation Strategy Tied to Sex Steroid Hormones. *2022 Organization for the Study of Sex Differences Annual Meeting*, Marina del Rey, CA, USA.
 
 `r mycounter_posters <- mycounter_posters +1; mycounter_posters`. &emsp; **Yu, S.**, Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (May 2020). Sex Differences and Age-Related Changes in Spatial Navigation. *2020 Organization for the Study of Sex Differences Annual Meeting*, Marina del Rey, CA, USA. _Abstract accepted but meeting canceled due to COVID-19._
@@ -100,7 +106,7 @@ mycounter_videos <- 0
 
 `r mycounter_videos <- mycounter_videos +1; mycounter_videos`. &emsp; **Crossroads**
 
-As part of my Crossroads fellowship, I worked with three graduate students and four professors to design an interdisciplinary pedagogy on the topics surrounding my academic research that investigates sex hormones, aging, and spatial navigation. The results were multi-part videos that explained why there are sex differences in spatial navigation from the perspective of four main disciplines: neuroendocrinology, cognitive psychology, human geography, and biological anthropology. The goal of the videos were to present them to undergraduate students and diverse audiences who would benefit from applying course concepts to tangible research, in addition to thinking critically about how science is contextualized across multiple disciplines.
+As part of my Crossroads fellowship, I worked with three other graduate student fellows and four advising professors to design an interdisciplinary pedagogy on the topics surrounding my academic research that investigates the overlap between sex hormones, aging, and spatial navigation. The results were multi-part videos that explained why there are sex differences in spatial navigation from the perspective of four main disciplines: neuroendocrinology, cognitive psychology, human geography, and biological anthropology. The goal of the videos was to present them to undergraduate students and diverse audiences who would benefit from applying course concepts to tangible research, in addition to thinking critically about how science is contextualized across multiple disciplines.
 
 I conceptualized the ideas of the teaching videos, designed and reviewed the layout of the presentations, directed the content and goals of the videos, wrote scripts, and did voice-overs for two of the videos. I was responsible for creating the video that explains the research question from the perspective of a neuroendocrinologist:
 
