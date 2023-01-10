@@ -1,3 +1,3 @@
 # Shuying Yu's Website
 
-Personal website for data science projects
+Personal website for projects, presentations, and publications
