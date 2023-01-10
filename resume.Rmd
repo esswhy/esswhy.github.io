@@ -3,5 +3,5 @@ title: "Resume"
 ---
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "800px", out.height = "1100px"}
-knitr::include_graphics("ShuyingYu_Resume_DataScience.pdf")
+knitr::include_graphics("ShuyingYu_Resume.pdf")
 ```

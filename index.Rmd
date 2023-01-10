@@ -13,4 +13,4 @@ output:
 site: distill::distill_website
 ---
  
-Hi there! I am currently residing on the California Central Coast where I am a Ph.D. Candidate studying human behavior and decision-making, and a M.A. Candidate studying applied statistics. I am a behavioral data scientist and passionate supporter of underrepresented minorities and women in STEM.
+Hi there! I am currently residing on the California Central Coast where I am a Ph.D. Candidate studying human behavior and decision-making. I am a behavioral data scientist, cognitive and behavioral researcher, and passionate supporter of underrepresented minorities and women in STEM.
