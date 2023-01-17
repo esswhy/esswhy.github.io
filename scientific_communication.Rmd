@@ -134,7 +134,7 @@ To watch the other videos, please see the [playlist on YouTube](https://youtube.
 
 `r mycounter_videos <- mycounter_videos +1; mycounter_videos`. &emsp; **Lunch & Learn**
 
-My recorded talk for UCSB Graduate Division's *Lunch & Learn Series* from September 2021.
+My recorded talk for UCSB Graduate Division's *Lunch & Learn Series* from September 2021. This series is a monthly informal seminar that recruits one graduate student from the STEM discipline (Science, Technology, Engineering, and Mathematics) and one graduate student from SHEF discipline (Social Science, Humanities, Education, and Fine Arts) to present their research the way they want to a smart, friendly, and non-specialist audience of peers.
 
 Password: LunchLearn2021
 

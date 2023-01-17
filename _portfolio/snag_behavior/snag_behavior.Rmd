@@ -1,0 +1,113 @@
+---
+title: "Hypothesis Testing and Spatial Analysis: Age and Sex Differences in Spatial Navigation"
+description: |
+  In this project, I investigated age-related changes and sex differences in spatial navigation performance between young and midlife adults.
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/projects/snag_behavior/
+date: 01-29-2022
+categories:
+  - Hypothesis Testing
+  - Spatial Analysis
+  - Python
+  - R
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = TRUE, warning = FALSE, message= FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message= FALSE,
+                      fig.align = "center")
+
+#Attach packages
+library(tidyverse)
+library(here)
+library(janitor)
+library(ggfortify) 
+library(RColorBrewer)
+library(kableExtra)
+```
+
+
+This analysis was originally conducted between the years 2019-2020. This work was published in the journal *Psychological Science* in 2021: https://doi.org/10.1177/0956797620979185.
+
+The GitHub repository is linked here: https://github.com/esswhy/snag
+
+# Introduction
+
+In this project, I used analysis of variance (ANOVA), analysis of covariance (ANCOVA), and T-test methods to analyze whether there are behavioral differences in spatial navigation performance between different age groups (midlife and young) and sex (women and men). Three different aspects of navigation behavior were tested (path integration, wayfinding success, and navigational strategy) in order to gain a comprehensive understanding of which navigation behaviors are sensitive to changes with age and by sex.
+
+
+# Research Question
+
+```{r include=FALSE, echo=TRUE}
+#Counter for questions
+mycounter_qs <- 0
+```
+
+
+Do age-related changes emerge by midlife and do sex differences persist with age?
+
+More specifically, the questions per spatial navigation task were:
+
+`r mycounter_qs <- mycounter_qs +1; mycounter_qs`. &emsp; Do path integration deficits emerge by midlife and differ by sex?
+
+`r mycounter_qs <- mycounter_qs +1; mycounter_qs`. &emsp; Are midlife adults and women less successful than younger adults and men?
+
+`r mycounter_qs <- mycounter_qs +1; mycounter_qs`. &emsp; Do midlife adults and women take fewer shortcuts than younger adults and men?
+
+
+# Data and Methods
+
+All data and methods are described in the published paper. Briefly, the three navigation tasks included an immersive virtual reality circular path integration task (LOOP), a virtual desktop wayfinding task (MAZE), and a virtual dual-solutions paradigm task (DSP) (**Figure 1**).
+
+![ ](2021_yu_snag_fig1.png)
+
+**LOOP:** 
+
+For LOOP, the variables of interest were position error, position error variability, degrees traveled, and degrees traveled variability for each radius on the circle (1.0m, 2.0m, and 3.0m). Position error is the straight-line distance between the actual starting location for each trial and the location that the participant indicated was the start. Total degrees traveled represents the number of degrees traveled around the circular path (which can be greater than, less than, or equal to 360$^{\circ}$).
+
+A mixed-model analysis of variance (ANOVA) was conducted for the four outcome measures with a 2 (age group: midlife, young) $\times$ 2 (sex: women, men) $\times$ 3 (radius size: 1.0m, 2.0m, 3.0m) design. Corrections for sphericity were made where appropriate using the Greenhouse-Geisser correction
+
+**MAZE:**
+
+For MAZE, the variables of interest were accuracy or wayfinding success, and the number of moves made during exploration. Wayfinding success is a measure of spatial-knowledge acquisition based on free exploration, and was defined as the proportion of trials that the participant reached the correct target object in time during the test phase. Number of moves made were the number of key presses made to navigate the environment during the learning or exploration phase.
+
+A 2 (age group: midlife, young) $\times$ 2 (sex: women, men) between-subjects ANOVA was conducted to assess group differences in each of these variables. Pearson’s correlation assessed the relationship between the number of moves made during the exploration phase and navigation success in the test phase. An analysis of covariance (ANCOVA) examined the effects of age and sex on navigation success after controlling for the number of moves made by participants during maze exploration.
+
+
+**DSP:**
+
+For DSP, the variables of interest were wayfinding success and solution index. Wayfinding success was defined as the proportion of trials on which the participant reached the target object within the time limit. Solution index was defined as the number of shortcuts (the shortest possible route) divided by the number of successful trials (a measure of strategy).
+
+A 2 (age group: midlife, young) $\times$ 2 (sex: women, men) between-subjects ANOVA was performed on each dependent variable. Heatmaps were generated to qualitatively gauge the trajectory of where participants traveled along the maze during the testing phase of the task.
+
+All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.
+
+
+# Results
+
+## LOOP
+
+## MAZE
+
+## DSP
+
+# Summary
+
+# References
+
+## Data and Literature
+
+Yu, S., Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-Related Changes in Spatial Navigation Are Evident by Midlife and Differ by Sex. Psychological Science, 32(5), 692-704. https://doi.org/10.1177/0956797620979185.
+
+## R Libraries
+
+
+
+
+
