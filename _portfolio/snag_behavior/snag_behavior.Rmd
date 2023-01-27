@@ -30,6 +30,8 @@ library(janitor)
 library(ggfortify) 
 library(RColorBrewer)
 library(kableExtra)
+library(Hmisc)
+library(corrplot)
 ```
 
 
@@ -66,6 +68,17 @@ More specifically, the questions per spatial navigation task were:
 All data and methods are described in the published paper. Briefly, the three navigation tasks included an immersive virtual reality circular path integration task (LOOP), a virtual desktop wayfinding task (MAZE), and a virtual dual-solutions paradigm task (DSP) (**Figure 1**).
 
 ![ ](2021_yu_snag_fig1.png)
+**Figure 1.** Three VR tasks probe unique aspects of navigation ability. *Task 1: LOOP.* Participants track their movements as they move through various radii of a circle. *Task 2: MAZE.* Participants explore, navigate, learn, and reach target objects in a maze environment without feedback. *Task 3: DSP.* Participants trained in a maze environment and take either the learned route or shortcuts to reach target objects. Source: Yu et al., 2021.
+
+<br>
+
+
+```{r}
+##### Table showing samples sizes for overall and by task
+
+```
+
+
 
 **LOOP:** 
 
@@ -91,9 +104,127 @@ All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.
 
 # Results
 
+## Exploratory Data Analysis
+
+We asked whether the navigation task variables were correlated with one another. Because correlations require observations with the same vector length, this was done only for participants who have all tasks completed.
+
+```{r}
+##### Generate data for correlation
+
+#Read in data
+corr_dat <- read_csv(here("data", "snag_behavior_correlations.csv"))
+
+#Remove SubjectID column
+corr_dat <- corr_dat[,c(2:13)]
+
+
+
+##### Convert to table that includes p-values and coefficient
+
+#Code modified from Reference [1] and [2]
+#coeff_mat: matrix of the correlation coefficients
+#p_mat : matrix of the correlation p-values
+CorMat <- function(coeff_mat, p_mat) {
+  
+  #Save upper half triangle of coefficients
+  #This is because the other half is redundant
+  up_half <- upper.tri(coeff_mat)
+
+  #Save into dataframe
+  data.frame(
+
+    #Variable 1
+    Var1 = rownames(coeff_mat)[row(coeff_mat)[up_half]],
+  
+    #Variable 2
+    Var2 = rownames(coeff_mat)[col(coeff_mat)[up_half]],
+    
+    #Correlation coefficient
+    Corr =(coeff_mat)[up_half],
+    #p-value
+    p_value = p_mat[up_half]
+    
+)
+}
+
+#Pearson correlation
+res2 <- rcorr(as.matrix(corr_dat), type="pearson")
+
+#res2$r = correlation coefficient
+#res2$P = associated p-value
+
+#Present as table to scroll
+CorMat(res2$r, res2$P) %>% 
+  
+  #Rename columns
+  kable(col.names = c("Variable 1", "Variable 2",
+                      "Coefficient", "p-value"),
+        
+        #Change alignment
+        align = c("l", "l", "l", "l"),
+        
+        #Add caption
+        caption = "Pearson correlation coefficients and <i>p</i>-values for
+                   different pairs of variables.",
+        
+        #Change width of table
+        table.attr = "style='width:80%;'") %>% 
+  
+  #Make table striped and hover
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                
+                #Center table
+                position = "center") %>% 
+  
+  #Add scroll box
+  scroll_box(width = "100%", height = "300px", 
+             fixed_thead = list(enabled = T))
+```
+
+In the pointing task (SOT), one of the neuropsychological batteries administered prior to the three main navigation tasks, angle and error are negatively correlated. The more accurate subjects are at selecting the correct angle, the less errors they make.
+
+We can see that the wayfinding measures from DSP and MAZE are significantly positively correlated, indicating that performance in successfully and accurately completing trials are related in both tasks. Variability in position error and degrees traveled are also significantly correlated.
+
+```{r}
+#Numbers are correlation coefficients
+#Colored squares are those that meet significance (alpha = 0.05)
+
+#Color palette and code taken from Reference [1] and [2]
+col <- colorRampPalette(c("#BB4444", "#EE9988", "#FFFFFF", "#77AADD", "#4477AA"))
+
+corrplot(res2$r, method = "color", col = col(200),
+         type = "upper", order = "hclust",
+         
+         #Add coefficient of correlation
+         addCoef.col = "black",
+         
+         #Text label color and rotation
+         tl.col = "black", tl.srt = 45,
+         
+         #Combine with significance
+         p.mat = res2$P, sig.level = 0.05, number.cex = 0.6, 
+         insig = "label_sig", pch.cex = 1, pch.col = "green",
+         
+         #Hide correlation coefficient on the principal diagonal
+         diag = FALSE
+)
+```
+
+**Figure 2.** Correlation matrix plot of participants with all spatial navigation task variables completed (*n* = 41). Positive correlations are displayed in blue while negative correlations are displayed in red. Color intensity is proportional to the correlation coefficient, as shown by the color bar on the right. Numbers represent the Pearson correlation coefficient and the green asterisk represents a significant association between the variables ($\alpha$ = 0.05). 
+
+<br>
+
+Overall, the DSP and MAZE wayfinding success measures are the most interesting (but expected) positive association. In general, there are no other major associations of interest or concern.
+
+
 ## LOOP
 
+(ADD FIGURE)
+
 ## MAZE
+
+
+(ADD FIGURE)
 
 ## DSP
 
@@ -104,6 +235,11 @@ All analyses were conducted in R version 4.1.1 and RStudio version 1.4.1717.
 ## Data and Literature
 
 Yu, S., Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs, E.G. (2021). Age-Related Changes in Spatial Navigation Are Evident by Midlife and Differ by Sex. Psychological Science, 32(5), 692-704. https://doi.org/10.1177/0956797620979185.
+
+Correlation matrix : A quick start guide to analyze, format and visualize a correlation matrix using R softwards. http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyzeformat-and-visualize-a-correlation-matrix-using-r-software
+
+Visualize correlation matrix using correlogram. http://www.sthda.com/english/wiki/visualizecorrelation-
+matrix-using-correlogram
 
 ## R Libraries
 
