@@ -25,6 +25,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message= FALSE,
 
 #Attach packages
 library(tidyverse)
+library(dplyr)
 library(here)
 library(janitor)
 library(ggfortify) 
@@ -72,10 +73,81 @@ All data and methods are described in the published paper. Briefly, the three na
 
 <br>
 
+Overall,*n* = 115 adults from the University of California, Santa Barbara, and the greater Santa Barbara community participated in the study. These consisted of 85 young adults (39 women; age range 18–28 years, *M* = 19.81, *SD* = $\pm$ 1.87) and 66 midlife adults (40 women; age range 43–61 years, *M* = 51.14, *SD* = $\pm$ 4.07).
+
+Due to technical issues from equipment and motion simulator sickness, some participants could not complete all three tasks or were excluded from data analysis because of insufficient trials. Thus, each task had different sample sizes. These final sample sizes for each task is reported in the table below.
+
 
 ```{r}
 ##### Table showing samples sizes for overall and by task
 
+#Read in LOOP, MAZE, DSP data
+df_loop <- read_csv(here("data", "snag",
+                         "snag_behavior_loop.csv")) %>% clean_names()
+df_maze <- read_csv(here("data", "snag",
+                         "snag_behavior_maze.csv")) %>% clean_names()
+df_dsp <- read_csv(here("data", "snag",
+                         "snag_behavior_dsp.csv")) %>% clean_names()
+
+#Table LOOP
+tab_loop <- df_loop %>% 
+  dplyr::group_by(group, sex) %>% 
+  dplyr::summarize(n_subject = n()) 
+
+#Table MAZE
+tab_maze <- df_maze %>% 
+  dplyr::group_by(group, sex) %>% 
+  dplyr::summarize(n_subject = n()) 
+
+#Table DSP
+tab_dsp <- df_dsp %>% 
+  dplyr::group_by(group, sex) %>% 
+  dplyr::summarize(n_subject = n()) 
+
+#Join df based on group and sex
+tab1 <- merge(tab_loop, tab_maze, by = c("group", "sex"))
+
+#Rename columns
+tab1 <- tab1 %>% 
+  rename(n_subject_loop = n_subject.x,
+         n_subject_maze = n_subject.y)
+
+#Rest of the merge
+tab_final <- merge(tab1, tab_dsp, by = c("group", "sex"))
+
+#Rename columns
+tab_final <- tab_final %>% 
+  rename(n_subject_dsp = n_subject)
+  
+tab_final <- tab_final %>% 
+  #Remove age group
+  select(-group)
+
+#Kable presentation (ideal if we had all hormones)
+tab_final %>% 
+  kable(col.names = c("Sex",
+                      "LOOP", "MAZE", "DSP"),
+        
+        #Change alignment
+        align = c("c", "c", "c"),
+        
+        caption = "Sample sizes for analysis for each spatial navigation
+        task grouped by age and sex.",
+  
+        #Change width of table
+        table.attr = "style='width:80%;'") %>% 
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12) %>% 
+  
+  #Add columsn above
+  add_header_above(c(" " = 1, "Spatial Navigation Task" = 3)) %>% 
+  
+  #Group rows
+  pack_rows("Midlife Adults", 1, 2) %>%
+  pack_rows("Young Adults", 3, 4)
 ```
 
 
@@ -112,7 +184,8 @@ We asked whether the navigation task variables were correlated with one another.
 ##### Generate data for correlation
 
 #Read in data
-corr_dat <- read_csv(here("data", "snag_behavior_correlations.csv"))
+corr_dat <- read_csv(here("data", "snag", 
+                          "snag_behavior_correlations.csv"))
 
 #Remove SubjectID column
 corr_dat <- corr_dat[,c(2:13)]
