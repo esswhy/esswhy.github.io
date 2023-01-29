@@ -42,6 +42,7 @@ library(car)
 library(sjstats)
 library(pwr)
 library(effectsize)
+library(effsize)
 library(Rmisc)
 #library(rstatix)
 ```
@@ -342,6 +343,8 @@ tidy_si %>%
         align = c(rep("l",2), "c", rep("l", 2)),
         
         caption = "ANOVA table of results for DSP solution index.",
+        
+        digits = 3,
   
         #Change width of table
         table.attr = "style='width:80%;'") %>% 
@@ -365,7 +368,9 @@ anova_stats(aov_si)
 effectsize::eta_squared(aov_si, partial = TRUE)
 ```
 
-We can summarize the descriptive statistics for DSP solution index.
+The ANOVA reports that there is a main effect of age, with younger adults taking more shortcuts than midlife adults. The main effect of sex was only marginally significant, with men tending to take more shortcuts than women. There was, however, a significant age by sex interaction. 
+
+We can summarize the descriptive statistics for DSP solution index in the tables below.
 
 
 ```{r}
@@ -498,7 +503,9 @@ tab_si_stats %>%
   pack_rows("Young Adults", 3, 4)
 ```
 
-After running ANOVA, we can investigate post-hoc effects to observe whether there is an effect of sex at each level of age group, and whether there is an effect of age group between each level of sex.
+#### Effect of Sex
+
+After running the ANOVA, we can investigate post-hoc analysis to observe whether there is an effect of sex at each level of age group.
 
 ```{r}
 #Effect of sex at each level of age group
@@ -518,6 +525,8 @@ df_dsp %>%
         align = c(rep("l",2), rep("c",2), rep("l", 2),
                   "c", rep("l", 2)),
         
+        digits = 3,
+        
         caption = "Post-hoc ANOVA table of results for the effect of
         sex at each level of age group for DSP solution index.",
   
@@ -531,8 +540,79 @@ df_dsp %>%
                 font_size = 12)
 ```
 
-
 Next we can find the effect size of each treatment of sex on the different age groups.
+
+```{r}
+#Effect of sex on midlife
+df_dsp_midlife <- df_dsp %>% 
+  filter(group == "Midlife")
+cd_dsp_old <- cohen.d(si_strict ~ sex, data = df_dsp_midlife,
+        conf.level = 0.95, 
+        pooled = T, paired = F)
+
+#Effect of sex on young
+df_dsp_young <- df_dsp %>% 
+  filter(group == "Young")
+cd_dsp_young <- cohen.d(si_strict ~ sex, data = df_dsp_young,
+        conf.level = 0.95, 
+        pooled = T, paired = F)
+```
+
+
+#### Effect of Age
+
+We can also investigate whether there is an effect of age between each level of sex.
+
+```{r}
+# Effect of age at each level of sex
+df_dsp %>%
+  group_by(sex) %>%
+  anova_test(si_strict ~ group,
+             type = "III",
+             effect.size = "pes") %>%
+  get_anova_table() %>%
+  adjust_pvalue(method = "bonferroni") %>% 
+  kable(col.names = c("Sex", "Effect", "Degrees Freedom, numerator",
+                      "Degrees Freedom, denominator", "F-value",
+                      "p-value", "Significant", "Partial Eta Sq.",
+                      "Bonferroni Adjusted p-value"),
+        
+        #Change alignment
+        align = c(rep("l",2), rep("c",2), rep("l", 2),
+                  "c", rep("l", 2)),
+        
+        digits = 3,
+        
+        caption = "Post-hoc ANOVA table of results for the effect of
+        age at each level of sex for DSP solution index.",
+  
+        #Change width of table
+        table.attr = "style='width:95%;'"
+        ) %>% 
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12)
+```
+
+Finally, we can find the effect size of the effect of age on women and men.
+
+```{r}
+#Effect of age on women
+df_dsp_female <- df_dsp %>% 
+  filter(sex == "Female")
+cd_dsp_f <- cohen.d(si_strict ~ group, data = df_dsp_female,
+        conf.level = 0.95, 
+        pooled = T, paired = F)
+
+#Effect of age on men
+df_dsp_male <- df_dsp %>% 
+  filter(sex == "Male")
+cd_dsp_m <- cohen.d(si_strict ~ group, data = df_dsp_male,
+        conf.level = 0.95, 
+        pooled = T, paired = F)
+```
 
 
 
