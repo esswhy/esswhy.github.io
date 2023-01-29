@@ -24,6 +24,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message= FALSE,
                       fig.align = "center")
 
 #Attach packages
+#General
 library(tidyverse)
 library(dplyr)
 library(here)
@@ -31,8 +32,18 @@ library(janitor)
 library(ggfortify) 
 library(RColorBrewer)
 library(kableExtra)
+
+#Correlations
 library(Hmisc)
 library(corrplot)
+
+#ANOVA stats
+library(car)
+library(sjstats)
+library(pwr)
+library(effectsize)
+library(Rmisc)
+#library(rstatix)
 ```
 
 
@@ -78,7 +89,7 @@ Overall,*n* = 115 adults from the University of California, Santa Barbara, and t
 Due to technical issues from equipment and motion simulator sickness, some participants could not complete all three tasks or were excluded from data analysis because of insufficient trials. Thus, each task had different sample sizes. These final sample sizes for each task is reported in the table below.
 
 
-```{r}
+```{r demo-table}
 ##### Table showing samples sizes for overall and by task
 
 #Read in LOOP, MAZE, DSP data
@@ -292,14 +303,244 @@ Overall, the DSP and MAZE wayfinding success measures are the most interesting (
 
 ## LOOP
 
-(ADD FIGURE)
+(CREATE NEW FIGURE)
 
 ## MAZE
 
+### Test Against Chance Level
 
-(ADD FIGURE)
+### Wayfinding Success
+
+### Number of Moves
+
+### ANCOVA
+
+
+(CREATE NEW FIGURE)
 
 ## DSP
+
+### Wayfinding Success
+
+### Solution Index
+
+```{r}
+#ANOVA set contrasts
+options(contrasts=c("contr.sum", "contr.poly"))
+interaction_SI <- aov(si_strict ~ group*sex, data = df_dsp)
+
+#Run ANOVA and present in tidy format
+tidy_si <- broom::tidy(Anova(interaction_SI, type="III"))
+tidy_si
+
+#Present as table
+tidy_si %>% 
+  kable(col.names = c("Variable", "Sum of Squares",
+                      "Degrees of Freedom", "Statistic", "p-value"),
+        
+        #Change alignment
+        align = c(rep("l",2), "c", rep("l", 2)),
+        
+        caption = "ANOVA table of results for DSP solution index.",
+  
+        #Change width of table
+        table.attr = "style='width:80%;'") %>% 
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12)
+```
+
+
+```{r}
+#Statistics from ANOVA
+aov_si <- Anova(interaction_SI, type="III")
+anova_stats(aov_si)
+```
+
+
+```{r}
+#Partial eta squared based on bootstrapping
+effectsize::eta_squared(aov_si, partial = TRUE)
+```
+
+We can summarize the descriptive statistics for DSP solution index.
+
+
+```{r}
+#Table of mean and sd of SI by age 
+tab_si_stats_group <- df_dsp %>% 
+  dplyr::group_by(group) %>% 
+  dplyr::rename(variable = group) %>% 
+  dplyr::summarize(count = n(),
+                   mean_si = mean(si_strict),
+                   sd_si = sd(si_strict),
+                   ci_si = CI(si_strict, ci = 0.95)) %>% 
+  #Ungroup
+  dplyr::ungroup(variable) %>% 
+  
+  #Add columns for CI labels
+  mutate(ci_label = rep(c("upper", "mean", "lower"), 2)) %>% 
+  
+  #Long to wide
+  pivot_wider(names_from = ci_label,
+              values_from = ci_si) %>%
+  
+  #Remove mean
+  select(-mean) %>% 
+  
+  #Move upper and lower columns
+  relocate(lower, .before = "upper")
+
+
+
+#Table of mean and sd of SI by sex
+tab_si_stats_sex <- df_dsp %>% 
+  dplyr::group_by(sex) %>% 
+  dplyr::rename(variable = sex) %>% 
+  dplyr::summarize(count = n(),
+                   mean_si = mean(si_strict),
+                   sd_si = sd(si_strict),
+                   ci_si = CI(si_strict, ci = 0.95)) %>% 
+  #Ungroup
+  dplyr::ungroup(variable) %>% 
+  
+  #Add columns for CI labels
+  mutate(ci_label = rep(c("upper", "mean", "lower"), 2)) %>% 
+  
+  #Long to wide
+  pivot_wider(names_from = ci_label,
+              values_from = ci_si) %>%
+  
+  #Remove mean
+  select(-mean) %>% 
+  
+  #Move upper and lower columns
+  relocate(lower, .before = "upper") 
+
+
+#Combine tables
+tab_si_stats <- rbind(tab_si_stats_group,
+                      tab_si_stats_sex)
+
+  
+#Kable presentation
+tab_si_stats %>% 
+  kable(col.names = c("", "Count",
+                      "Mean", "SD", "Lower", "Upper"),
+        align = c(rep("c", 2), rep("l", 2)),
+        caption = "Descriptive statistics for DSP solution 
+        index by age and sex.",
+        digits = 3,
+        #Change width of table
+        table.attr = "style='width:80%;'") %>% 
+  
+  #Add columns above
+  add_header_above(c(" " = 4, "95% Confidence Interval" = 2)) %>%
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12) %>% 
+  
+  #Group rows
+  pack_rows("Age Group", 1, 2) %>%
+  pack_rows("Sex", 3, 4)
+```
+
+
+```{r}
+#Table of mean and sd of SI by age and sex
+tab_si_stats <- df_dsp %>% 
+  dplyr::group_by(group, sex) %>% 
+  dplyr::summarize(count = n(),
+                   mean_si = mean(si_strict),
+                   sd_si = sd(si_strict),
+                   ci_si = CI(si_strict, ci = 0.95)) %>% 
+  #Ungroup
+  dplyr::ungroup() %>% select(-group) %>% 
+  
+  #Add columns for CI labels
+  mutate(ci_label = rep(c("upper", "mean", "lower"), 4)) %>% 
+  
+  #Long to wide
+  pivot_wider(names_from = ci_label,
+              values_from = ci_si) %>%
+  
+  #Remove mean
+  select(-mean) %>% 
+  
+  #Move upper and lower columns
+  relocate(lower, .before = "upper")
+  
+#Kable presentation
+tab_si_stats %>% 
+  kable(col.names = c("Sex", "Count",
+                      "Mean", "SD", "Lower", "Upper"),
+        align = c(rep("c", 2), rep("l", 2)),
+        caption = "Descriptive statistics for DSP solution 
+        index by each age and sex group.",
+        digits = 3,
+        #Change width of table
+        table.attr = "style='width:80%;'") %>% 
+  
+  #Add columns above
+  add_header_above(c(" " = 4, "95% Confidence Interval" = 2)) %>% 
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12) %>% 
+  
+  #Group rows
+  pack_rows("Midlife Adults", 1, 2) %>%
+  pack_rows("Young Adults", 3, 4)
+```
+
+After running ANOVA, we can investigate post-hoc effects to observe whether there is an effect of sex at each level of age group, and whether there is an effect of age group between each level of sex.
+
+```{r}
+#Effect of sex at each level of age group
+df_dsp %>%
+  group_by(group) %>%
+  anova_test(si_strict ~ sex,
+             type = "III",
+             effect.size = "pes") %>%
+  get_anova_table() %>%
+  adjust_pvalue(method = "bonferroni") %>% 
+  kable(col.names = c("Age Group", "Effect", "Degrees Freedom, numerator",
+                      "Degrees Freedom, denominator", "F-value",
+                      "p-value", "Significant", "Partial Eta Sq.",
+                      "Bonferroni Adjusted p-value"),
+        
+        #Change alignment
+        align = c(rep("l",2), rep("c",2), rep("l", 2),
+                  "c", rep("l", 2)),
+        
+        caption = "Post-hoc ANOVA table of results for the effect of
+        sex at each level of age group for DSP solution index.",
+  
+        #Change width of table
+        table.attr = "style='width:95%;'"
+        ) %>% 
+  
+  #Extra styling
+  kable_styling(bootstrap_options = c("hover", "striped"),
+                position = "center", 
+                font_size = 12)
+```
+
+
+Next we can find the effect size of each treatment of sex on the different age groups.
+
+
+
+
+
+### Heatmaps
+
+(CREATE NEW FIGURE)
 
 # Summary
 
@@ -311,8 +552,7 @@ Yu, S., Boone, A.P., He, C., Davis, R.C., Hegarty, M., Chrastil, E.R., & Jacobs,
 
 Correlation matrix : A quick start guide to analyze, format and visualize a correlation matrix using R softwards. http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyzeformat-and-visualize-a-correlation-matrix-using-r-software
 
-Visualize correlation matrix using correlogram. http://www.sthda.com/english/wiki/visualizecorrelation-
-matrix-using-correlogram
+Visualize correlation matrix using correlogram. http://www.sthda.com/english/wiki/visualizecorrelation-matrix-using-correlogram
 
 ## R Libraries
 
