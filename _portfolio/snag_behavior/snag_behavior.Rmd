@@ -80,7 +80,7 @@ More specifically, the questions per spatial navigation task were:
 
 All data and methods are described in the published paper. Briefly, the three navigation tasks included an immersive virtual reality circular path integration task (LOOP), a virtual desktop wayfinding task (MAZE), and a virtual dual-solutions paradigm task (DSP) (**Figure 1**).
 
-![ ](2021_yu_snag_fig1.png)
+![](2021_yu_snag_fig1.png)
 **Figure 1.** Three VR tasks probe unique aspects of navigation ability. *Task 1: LOOP.* Participants track their movements as they move through various radii of a circle. *Task 2: MAZE.* Participants explore, navigate, learn, and reach target objects in a maze environment without feedback. *Task 3: DSP.* Participants trained in a maze environment and take either the learned route or shortcuts to reach target objects. Source: Yu et al., 2021.
 
 <br>
@@ -94,11 +94,11 @@ Due to technical issues from equipment and motion simulator sickness, some parti
 ##### Table showing samples sizes for overall and by task
 
 #Read in LOOP, MAZE, DSP data
-df_loop <- read_csv(here("data", "snag",
+df_loop <- read_csv(here::here("data", "snag",
                          "snag_behavior_loop.csv")) %>% clean_names()
-df_maze <- read_csv(here("data", "snag",
+df_maze <- read_csv(here::here("data", "snag",
                          "snag_behavior_maze.csv")) %>% clean_names()
-df_dsp <- read_csv(here("data", "snag",
+df_dsp <- read_csv(here::here("data", "snag",
                          "snag_behavior_dsp.csv")) %>% clean_names()
 
 #Table LOOP
@@ -121,7 +121,7 @@ tab1 <- merge(tab_loop, tab_maze, by = c("group", "sex"))
 
 #Rename columns
 tab1 <- tab1 %>% 
-  rename(n_subject_loop = n_subject.x,
+  dplyr::rename(n_subject_loop = n_subject.x,
          n_subject_maze = n_subject.y)
 
 #Rest of the merge
@@ -129,7 +129,7 @@ tab_final <- merge(tab1, tab_dsp, by = c("group", "sex"))
 
 #Rename columns
 tab_final <- tab_final %>% 
-  rename(n_subject_dsp = n_subject)
+  dplyr::rename(n_subject_dsp = n_subject)
   
 tab_final <- tab_final %>% 
   #Remove age group
@@ -196,7 +196,7 @@ We asked whether the navigation task variables were correlated with one another.
 ##### Generate data for correlation
 
 #Read in data
-corr_dat <- read_csv(here("data", "snag", 
+corr_dat <- read_csv(here::here("data", "snag", 
                           "snag_behavior_correlations.csv"))
 
 #Remove SubjectID column
@@ -613,8 +613,6 @@ cd_dsp_m <- cohen.d(si_strict ~ group, data = df_dsp_male,
         conf.level = 0.95, 
         pooled = T, paired = F)
 ```
-
-
 
 
 
