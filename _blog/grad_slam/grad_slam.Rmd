@@ -2,7 +2,6 @@
 title: "Grad Slam 2023: Runner-up for the Math & Brain Sciences Round"
 description: |
   In this blog post, I write my reflections on competing in the annual UC Santa Barbara Grad Slam competition.
-preview: grad_slam_winner1.jpg
 author:
   - name: Shuying Yu
     url: {}
@@ -26,6 +25,11 @@ knitr::opts_chunk$set(echo = FALSE)
 #Libraries
 library(here)
 ```
+
+```{r include=FALSE, preview=TRUE, results="hide"}
+knitr::include_graphics("grad_slam_winners.jpg")
+```
+
 
 This year was the year that I (finally) had results from my project and also the year that *wasn't* during a pandemic, so I decided to sign up for the [UC Santa Barbara Grad Slam](https://www.gradpost.ucsb.edu/grad-slam) competition 10 days before my department's preliminary round was set to take place. Grad Slam is an annual event that spotlights graduate students' research in 3-minute lightning talks (like mini-TED talks) that are "clear, direct, and engaging to diverse audiences". This tradition started at UC Santa Barbara and 2023 celebrates its 10th year showcase.
 
@@ -51,7 +55,8 @@ They announced the winners at the end after tallying the scores. Since Emily cou
 
 A week after the competition, Graduate Division shared the anonymous feedback and scores from the judges. Here are mine below:
 
-```{r echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "1100px", out.height = "800px"}
+```{r echo=FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H"}
+#, out.width = "1100px", out.height = "800px"
 knitr::include_graphics("grad_slam_feedback_shuying.pdf")
 ```
 
