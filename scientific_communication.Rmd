@@ -202,8 +202,8 @@ The Jacobs Lab was invited in 2018 to host a booth at MOXI's Afterparty, which i
 
 With the support of a university research fellowship during the summer of 2014, I and my colleagues at the Research on Autism and Development Laboratory (RADLab) at UC San Diego collaborated with the Fleet Science Center, a local science museum, to develop an educational model that blends research and outreach in an informal learning environment. While using interactive demonstrations to collect balance data from museum patrons, we taught them that balance is a motor skill that changes across the lifespan. Because our research team was all female (mainly women of color), we also made an effort to signal to our patrons, especially young girls, that there is no stereotypical model of what a scientist should look like. Our published manuscript is based on the results of our data and our experience in bridging the communication gap between scientists and the public.
 
-```{r echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H"}
-#out.width = "1100px", out.height = "800px
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "800px", out.height = "900px"}
+#
 knitr::include_graphics("Suarez_et_al_2015_FISP_Poster.pdf")
 ```
 
