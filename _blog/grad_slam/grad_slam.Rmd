@@ -2,6 +2,7 @@
 title: "Grad Slam 2023: Runner-up for the Math & Brain Sciences Round"
 description: |
   In this blog post, I write my reflections on competing in the annual UC Santa Barbara Grad Slam competition.
+preview: grad_slam_winner1.jpg
 author:
   - name: Shuying Yu
     url: {}
@@ -34,16 +35,25 @@ The hardest part about giving talks is knowing what story you want to tell. It's
 
 On the day of the competition, I was really excited to learn about my peers' research. I learned about geometry and shapes from the speakers in the Math department, and also learned a little bit about Liz Rizor's research since she also presented about sex hormones in the brain. My advisor, Emily Jacobs, was coincidentally one of the judges on the panel, so naturally she recused herself from judging my and Liz's presentations. But it was great to have her there for moral support! 
 
-They had the communications team come to professional record the talks, which I assume is for future promotional materials and hopefully to share with the graduate students so we can use the videos as a learning guide on how to improve our talks for future presentations.
+They had the communications team come to professional record the talks, which I assume is for future promotional materials and hopefully to share with the graduate students so we can use the videos as a learning guide on how to improve our talks for future presentations. To watch my recorded talk, please visit the [Videos section](https://esswhy.github.io/scientific_communication.html#videos) of my publications and scientific communications tab!
 
 
 ![List of presenters for Round 5: Math & Brain Sciences.](grad_slam_presenters.jpg)
 
-When it was my turn to go, I definitely felt the nerves as I got up on stage. But everything seemed to flow pretty well as soon as I started speaking. The audience was sparse, but I think that helped make the talk more intimate and easy to communicate, like you're just talking to some friends who really wanted to ask what you've been up to for the last 5+ years. 
+When it was my turn to go, I definitely felt the nerves as I got up on stage. But everything seemed to flow pretty well as soon as I started speaking. There were definitely some hiccups here and there, of course. The audience was sparse, but I think that helped make the talk more intimate and easy to communicate, like you're just talking to some friends who really wanted to ask what you've been up to for the last 5+ years. 
 
-They announced the winners at the end after tallying the scores. Since Emily couldn't judge my talk, they replaced her scores for each section with an average score compiled from the remaining of the judges. Fabio from the Math department won, with his talk about how we can use math to optimize the number of toppings on a pizza. Then they announced me as the runner-up, which was a nice surprise! The winner goes on to compete as a finalist in April and wins $1000, and the runner-up receives the title and also gets a sweet cash prize.
+![Setting the stage by presenting why my research is important!](grad_slam_presenting.jpg)
 
-![Winner and runner-up!](grad_slam_winners.jpg)
+They announced the winners at the end after tallying the scores. Since Emily couldn't judge my talk, they replaced her scores for each section with an average score compiled from the remaining of the judges. Fabio from the Math department won, with his talk about how we can use math to optimize the number of toppings on a pizza. Then they announced me as the runner-up, which was a nice surprise! The winner goes on to compete as a finalist in April and wins \$1000, and the runner-up receives the title and also gets a sweet cash prize of \$500.
+
+![](grad_slam_winners1.jpg) ![](grad_slam_winners.jpg)
+
+
+A week after the competition, Graduate Division shared the anonymous feedback and scores from the judges. Here are mine below:
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "1100px", out.height = "800px"}
+knitr::include_graphics("grad_slam_feedback_shuying.pdf")
+```
 
 Congratulations to all the presenters for their hard work in the competition! I really enjoyed learning about others' research and I look forward to seeing the final showcase in April.
 
