@@ -7,7 +7,18 @@
     <description>Shuying Yu
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Sep 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Internship: Carpe Data</title>
+      <dc:creator>Shuying Yu</dc:creator>
+      <link>https://esswhy.github.io/portfolio/internship_carpe_data</link>
+      <description>In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites.</description>
+      <category>Python</category>
+      <category>Classification</category>
+      <guid>https://esswhy.github.io/portfolio/internship_carpe_data</guid>
+      <pubDate>Sun, 04 Sep 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://esswhy.github.io/portfolio/internship_carpe_data/carpe_data_logo.png" medium="image" type="image/png" width="800" height="230"/>
+    </item>
     <item>
       <title>Data Visualization: Carbon Dioxide Emissions from Food Consumption</title>
       <dc:creator>Shuying Yu</dc:creator>

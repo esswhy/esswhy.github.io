@@ -9,6 +9,8 @@ date: 2023-02-12
 categories:
   - Grad School
   - Science Communication
+case_url: https://esswhy.github.io/blog/grad_slam/
+preview: grad_slam_winners1.jpg
 output:
   distill::distill_article:
     self_contained: false
@@ -55,6 +57,9 @@ A week after the competition, Graduate Division shared the anonymous feedback an
 ```{r message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "800px", out.height = "500px"}
 knitr::include_graphics("grad_slam_feedback_shuying.pdf")
 ```
+
+
+<br>
 
 Congratulations to all the presenters for their hard work in the competition! I really enjoyed learning about others' research and I look forward to seeing the final showcase in April.
 

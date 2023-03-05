@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://esswhy.github.io/blog.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -89,635 +88,51 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>SY: Blog Posts</title>
+  <title>Internship: Carpe Data</title>
+
+  <meta property="description" itemprop="description" content="In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites."/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-09-04"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-09-04"/>
+  <meta name="article:author" content="Shuying Yu"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="SY: Blog Posts"/>
+  <meta property="og:title" content="Internship: Carpe Data"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites."/>
+  <meta property="og:image" content="https://esswhy.github.io/portfolio/internship_carpe_data/carpe_data_logo.png"/>
+  <meta property="og:image:width" content="800"/>
+  <meta property="og:image:height" content="230"/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="SY"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
-  <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="SY: Blog Posts"/>
+  <meta property="twitter:card" content="summary_large_image"/>
+  <meta property="twitter:title" content="Internship: Carpe Data"/>
+  <meta property="twitter:description" content="In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites."/>
+  <meta property="twitter:image" content="https://esswhy.github.io/portfolio/internship_carpe_data/carpe_data_logo.png"/>
+  <meta property="twitter:image:width" content="800"/>
+  <meta property="twitter:image:height" content="230"/>
 
+  <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
+  <meta name="citation_title" content="Internship: Carpe Data"/>
+  <meta name="citation_fulltext_html_url" content="https://esswhy.github.io/portfolio/internship_carpe_data/"/>
+  <meta name="citation_online_date" content="2022/09/04"/>
+  <meta name="citation_publication_date" content="2022/09/04"/>
+  <meta name="citation_author" content="Shuying Yu"/>
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","listing"]}},"value":[{"type":"character","attributes":{},"value":["Blog Posts"]},{"type":"character","attributes":{},"value":["blog"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","citation_url","date","categories","base_url","preview","output"]}},"value":[{"type":"character","attributes":{},"value":["Internship: Carpe Data"]},{"type":"character","attributes":{},"value":["In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites. \n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Shuying Yu"]}]}]},{"type":"character","attributes":{},"value":["https://esswhy.github.io/portfolio/internship_carpe_data/"]},{"type":"character","attributes":{},"value":["2022-09-04"]},{"type":"character","attributes":{},"value":["Python","Classification"]},{"type":"character","attributes":{},"value":["https://esswhy.github.io/portfolio/internship_carpe_data/"]},{"type":"character","attributes":{},"value":["carpe_data_logo.png"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","code_folding","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["Code"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["carpe_data_logo.png","carpe_ds_lunch.jpg","carpe_ds_lunch2.jpg","internship_carpe_data_files/anchor-4.2.2/anchor.min.js","internship_carpe_data_files/bowser-1.9.3/bowser.min.js","internship_carpe_data_files/distill-2.2.21/template.v2.js","internship_carpe_data_files/header-attrs-2.19/header-attrs.js","internship_carpe_data_files/jquery-3.6.0/jquery-3.6.0.js","internship_carpe_data_files/jquery-3.6.0/jquery-3.6.0.min.js","internship_carpe_data_files/jquery-3.6.0/jquery-3.6.0.min.map","internship_carpe_data_files/popper-2.6.0/popper.min.js","internship_carpe_data_files/tippy-6.2.7/tippy-bundle.umd.min.js","internship_carpe_data_files/tippy-6.2.7/tippy-light-border.css","internship_carpe_data_files/tippy-6.2.7/tippy.css","internship_carpe_data_files/tippy-6.2.7/tippy.umd.min.js","internship_carpe_data_files/webcomponents-2.0.0/webcomponents.js","presentation_slide1.png","presentation_slide2.png","presentation_slide3.png","presentation_slide4.png","presentation_slide5.png","presentation_slide6.png","presentation_slide7.png","presentation_slide8.png"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2071,660 +1486,131 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </script>
 
-  <style type="text/css">
-  /* base variables */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    sans-serif;
-    --mono-font:       monospace;
-    --body-font:       sans-serif;
-    --navbar-font:     sans-serif;  /* websites + blogs only */
-  }
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       18px;
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white;
-    --bkgd-color:       #0F2E3D;
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below                      */
-  </style>
-  <style type="text/css">
-  /* base variables */
-
-  /* Colors: https://www.colorhexa.com/ */
-
-  /* Edit the CSS properties in this file to create a custom
-     Distill theme. Only edit values in the right column
-     for each row; values shown are the CSS defaults.
-     To return any property to the default,
-     you may set its value to: unset
-     All rows must end with a semi-colon.                      */
-
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-  /* Optional: embed custom fonts here with `@import`          */
-  /* This must remain at the top of this file.                 */
-
-  @import url('https://fonts.googleapis.com/css2?family=Amiri');
-  @import url('https://fonts.googleapis.com/css2?family=Bitter');
-  @import url('https://fonts.googleapis.com/css2?family=DM+Mono');
-
-  html {
-    /*-- Main font sizes --*/
-    --title-size:      50px;
-    --body-size:       1.06rem;
-    --code-size:       14px;
-    --aside-size:      12px;
-    --fig-cap-size:    13px;
-    /*-- Main font colors --*/
-    --title-color:     #000000;
-    --header-color:    rgba(0, 0, 0, 0.8);
-    --body-color:      rgba(0, 0, 0, 0.8);
-    --aside-color:     rgba(0, 0, 0, 0.6);
-    --fig-cap-color:   rgba(0, 0, 0, 0.6);
-    /*-- Specify custom fonts ~~~ must be imported above   --*/
-    --heading-font:    "Amiri", serif;
-    --mono-font:       "DM Mono", monospace;
-    --body-font:       "Bitter", sans-serif;
-    --navbar-font:     "Amiri", serif;
-  }
-
-
-  /*-- WIDGETS 
-  .html-widget {
-      margin: auto; --*/ /*center widgets*/
-
-
-  /*-- ARTICLE METADATA --*/
-  d-byline {
-    --heading-size:    0.6rem;
-    --heading-color:   rgba(0, 0, 0, 0.5);
-    --body-size:       0.8rem;
-    --body-color:      rgba(0, 0, 0, 0.8);
-  }
-
-  /*-- ARTICLE TABLE OF CONTENTS --*/
-  .d-contents {
-    --heading-size:    18px;
-    --contents-size:   13px;
-  }
-
-  /*-- ARTICLE APPENDIX --*/
-  d-appendix {
-    --heading-size:    15px;
-    --heading-color:   rgba(0, 0, 0, 0.65);
-    --text-size:       0.8em;
-    --text-color:      rgba(0, 0, 0, 0.5);
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  /* These properties only apply to Distill sites and blogs  */
-
-  .distill-site-header {
-    --title-size:       19px;    
-    --text-color:       #800080; /*text color*/
-    --text-size:        19px;
-    --hover-color:      #676efd; /*text hover color*/
-    --bkgd-color:       #d3beeb; /*banner background color */
-  }
-
-  .distill-site-footer {
-    --text-color:       rgba(255, 255, 255, 0.8);
-    --text-size:        15px;
-    --hover-color:      white; /*text hover color*/
-    --bkgd-color:       #800080; /*link background color when hovered, #0F2E3D*/
-  }
-
-  /*-- Additional custom styles --*/
-  /* Add any additional CSS rules below*/
-
-
-  /*Date of the post list*/
-  .posts-list .metadata .publishedDate {
-      color: #676efd; /*text color for date in blog*/
-  }
-
-
-  /* Change bullets */
-  ul > li::marker {
-    font-size: 1.125em;
-    color: #800080; /*bulletpoint color*/
-  }
-
-  /* Change link appearance */
-  d-article a {
-    border-bottom: 2px solid #d3beeb; /*underline color*/
-    text-decoration: none;
-  }
-
-
-
-  /*
-   * CSS Snipped for display logo color brand on HOVER for font awesome social media icons
-  */
-
-  .btn-outline-dark {
-      background-color: transparent;
-      color: #676efd; 
-      border: 1px solid;
-      border-color: #cccccc; /*icon link border color*/
-  }
-
-  .btn-outline-dark:hover {
-      background-color: #ede5f7; /*icon link background hover color*/
-      border-color: #d3beeb; /*icon link border hover color*/
-      color: white;
-  }</style>
-  <style type="text/css">
-  /* base style */
-
-  /* FONT FAMILIES */
-
-  :root {
-    --heading-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-    --mono-default: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    --body-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-
-  body,
-  .posts-list .post-preview p,
-  .posts-list .description p {
-    font-family: var(--body-font), var(--body-default);
-  }
-
-  h1, h2, h3, h4, h5, h6,
-  .posts-list .post-preview h2,
-  .posts-list .description h2 {
-    font-family: var(--heading-font), var(--heading-default);
-  }
-
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-family: var(--mono-font), var(--mono-default);
-  }
-
-
-  /*-- TITLE --*/
-  d-title h1,
-  .posts-list > h1 {
-    color: var(--title-color, black);
-  }
-
-  d-title h1 {
-    font-size: var(--title-size, 50px);
-  }
-
-  /*-- HEADERS --*/
-  d-article h1,
-  d-article h2,
-  d-article h3,
-  d-article h4,
-  d-article h5,
-  d-article h6 {
-    color: var(--header-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- BODY --*/
-  d-article > p,  /* only text inside of <p> tags */
-  d-article > ul, /* lists */
-  d-article > ol {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-    font-size: var(--body-size, 1.06rem);
-  }
-
-
-  /*-- CODE --*/
-  d-article div.sourceCode code,
-  d-article pre code {
-    font-size: var(--code-size, 14px);
-  }
-
-  /*-- ASIDE --*/
-  d-article aside {
-    font-size: var(--aside-size, 12px);
-    color: var(--aside-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- FIGURE CAPTIONS --*/
-  figure .caption,
-  figure figcaption,
-  .figure .caption {
-    font-size: var(--fig-cap-size, 13px);
-    color: var(--fig-cap-color, rgba(0, 0, 0, 0.6));
-  }
-
-  /*-- METADATA --*/
-  d-byline h3 {
-    font-size: var(--heading-size, 0.6rem);
-    color: var(--heading-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-byline {
-    font-size: var(--body-size, 0.8rem);
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  d-byline a,
-  d-article d-byline a {
-    color: var(--body-color, rgba(0, 0, 0, 0.8));
-  }
-
-  /*-- TABLE OF CONTENTS --*/
-  .d-contents nav h3 {
-    font-size: var(--heading-size, 18px);
-  }
-
-  .d-contents nav a {
-    font-size: var(--contents-size, 13px);
-  }
-
-  /*-- APPENDIX --*/
-  d-appendix h3 {
-    font-size: var(--heading-size, 15px);
-    color: var(--heading-color, rgba(0, 0, 0, 0.65));
-  }
-
-  d-appendix {
-    font-size: var(--text-size, 0.8em);
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  d-appendix d-footnote-list a.footnote-backlink {
-    color: var(--text-color, rgba(0, 0, 0, 0.5));
-  }
-
-  /*-- WEBSITE HEADER + FOOTER --*/
-  .distill-site-header .title {
-    font-size: var(--title-size, 18px);
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .distill-site-header a,
-  .nav-dropdown .nav-dropbtn {
-    font-family: var(--navbar-font), var(--heading-default);
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    font-size: var(--text-size, 15px);
-  }
-
-  .distill-site-header a:hover,
-  .nav-dropdown:hover .nav-dropbtn {
-    color: var(--hover-color, white);
-  }
-
-  .distill-site-header {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer {
-    font-size: var(--text-size, 15px);
-    color: var(--text-color, rgba(255, 255, 255, 0.8));
-    background-color: var(--bkgd-color, #0F2E3D);
-  }
-
-  .distill-site-footer a:hover {
-    color: var(--hover-color, white);
-  }</style>
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="internship_carpe_data_files/header-attrs-2.19/header-attrs.js"></script>
+  <script src="internship_carpe_data_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="internship_carpe_data_files/popper-2.6.0/popper.min.js"></script>
+  <link href="internship_carpe_data_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="internship_carpe_data_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="internship_carpe_data_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="internship_carpe_data_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="internship_carpe_data_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="internship_carpe_data_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="internship_carpe_data_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Blog Posts","authors":[]}
+{"title":"Internship: Carpe Data","description":"In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites.","authors":[{"author":"Shuying Yu","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-09-04T00:00:00.000-07:00","citationText":"Yu, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">SY</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="resume.html">Resume</a>
-<a href="portfolio.html">Portfolio</a>
-<a href="scientific_communication.html">Publications</a>
-<a href="blog.html">Blog</a>
-<a href="https://github.com/esswhy/esswhy.github.io">
-<i class="fab fa-github" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).on("load", function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      page_category = decodeURIComponent(page_category)
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Blog Posts">Blog Posts</h1>
-<a href="blog/grad_slam/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Grad School","Science Communication"]}</script>
-<div class="metadata">
-<div class="publishedDate">Feb. 12, 2023</div>
-<div class="dt-authors">
-<div class="dt-author">Shuying Yu</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="blog/grad_slam/grad_slam_winners1.jpg"/>
-</div>
-<div class="description">
-<h2>Grad Slam 2023: Runner-up for the Math &amp; Brain Sciences Round</h2>
-<div class="dt-tags">
-<div class="dt-tag">Grad School</div>
-<div class="dt-tag">Science Communication</div>
-</div>
-<p>In this blog post, I write my reflections on competing in the annual UC Santa Barbara Grad Slam competition.</p>
-</div>
-</a>
-<a href="blog/ossd_2022/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Grad School"]}</script>
-<div class="metadata">
-<div class="publishedDate">May 9, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Shuying Yu</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="blog/ossd_2022/yu_poster_ossd.jpg"/>
-</div>
-<div class="description">
-<h2>OSSD 2022: My First In-Person Conference as a Ph.D. Candidate</h2>
-<div class="dt-tags">
-<div class="dt-tag">Grad School</div>
-</div>
-<p>In this blog post, I share some highlights about the OSSD conference that I attended last week with my lab.</p>
-</div>
-</a>
-<a href="blog/winter_2022/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Grad School"]}</script>
-<div class="metadata">
-<div class="publishedDate">March 21, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Shuying Yu</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>Winter 2022</h2>
-<div class="dt-tags">
-<div class="dt-tag">Grad School</div>
-</div>
-<p>In this blog post, I reflect on the highs and lows of Winter 2022.</p>
-</div>
-</a>
-<a href="blog/welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":[]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 15, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Shuying Yu</div>
-</div>
-</div>
-<div class="thumbnail">
-<img/>
-</div>
-<div class="description">
-<h2>My First Blog Post</h2>
-<div class="dt-tags"></div>
-<p>Hello and welcome to my website!</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(4)</span>
-</li>
-<li>
-<a href="#category:Grad_School">Grad School</a>
-<span class="category-count">(3)</span>
-</li>
-<li>
-<a href="#category:Science_Communication">Science Communication</a>
-<span class="category-count">(1)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Blog Posts</h1>
+<h1>Internship: Carpe Data</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt-tag">Python</div>
+<div class="dt-tag">Classification</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>In this project, I provide an overview of my Data Science internship experience and describe the multi-label classification models I created to predict relevant insurance claim information from social media sites.</p></p>
 </div>
 
+<div class="d-byline">
+  Shuying Yu  
+  
+<br/>2022-09-04
+</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#project">Project</a>
+<ul>
+<li><a href="#goals">Goals</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#takeaways">Takeaways</a></li>
+</ul></li>
+<li><a href="#what-i-learned">What I Learned</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>During the summer of 2022 for three months, I did an in-person Data Science internship with <a href="https://www.carpe.io/">Carpe Data</a> in Santa Barbara, CA. They are an Insurance Tech company that provides data and products for insurance carriers to help detect fraudulent claims and assess risks.</p>
+<p>My project as an independent contributor over the course of 10 weeks was to create an upgraded version of the Dynamic Relevancy Model that my manager had created.</p>
+<h1 id="project">Project</h1>
+<h2 id="goals">Goals</h2>
+<p>Carpe Data receives data from insurance carriers and the product delivery engineering (PDE) team uses the company’s internal search functionality to filter and identify claimants that are potentially fraudulent. These searches include highly relevant URLs that may contain relevant information in processing claims. These URLs could be split into either static (e.g., pages that do not get updated) or social (e.g., dynamic pages that get regular updates) URLs, with the latter making up &gt;80% of the URLs in the database.</p>
+<p><img src="presentation_slide1.png" /></p>
+<p>The goal was to create a machine learning model that could help filter for these relevant URLs (mainly the social URLs like LinkedIn, Twitter, Facebook, etc.) to reduce the time and workload of the PDE team, and ultimately save the company money and resources that could be directed elsewhere.</p>
+<p>My manager previously worked on the first iteration of the model to predict whether subjects would post claim-relevant information on social media sites or not. Her model helped capture &gt;90% of relevant claims, but it still needed a filter to identify <em>which</em> specific URLs were relevant.</p>
+<p>Thus for my project, I refined the Dynamic Relevancy Model by using multi-label classification to predict which social media sites the subject will likely most claim-relevant information to.</p>
+<p><img src="presentation_slide2.png" /></p>
+<h2 id="methods">Methods</h2>
+<p>After wrangling the data through AWS and concatenating the variables together from multiple CSV files, I cleaned and explored the data. The top five social media sites among the subjects were LinkedIn, Facebook, Twitter, Instagram, and “other” (anything <em>not</em> LinkedIn, Facebook, Twitter, or Instagram). This is how we decided to create the labels; it was based on which social media sites were highly reprepresented in the data. We also created a label called “NaN” for social media sites linked to a subject that had no claim-relevant information whatsoever.</p>
+<p>So in total, there were six major domain labels:</p>
+<ol type="1">
+<li>Facebook</li>
+<li>Twitter</li>
+<li>LinkedIn</li>
+<li>Instagram</li>
+<li>Other</li>
+<li>NaN</li>
+</ol>
+<p><br></p>
+<p><img src="presentation_slide3.png" /></p>
+<p>For example, <strong>Subject A</strong> might have a few social media sites where the description from internal feedback (information provided by PDE) stated whether that particular URL contained claim-relevant information or not. In this example, only Instagram and LinkedIn were relevant, so Subject gets a listed label for those two social mediate sites. All the irrelevant sites do not get listed.</p>
+<p><strong>Subject B</strong> could have social media sites such as TikTok, Facebook, and Twitter with relevant information, but because TikTok is not among the four major social labels, it gets categorized as “other” in the listed label.</p>
+<p>Finally, it could be the case where a subject’s associated social media sites contain no relevant information based on the internal feedback. Thus, <strong>Subject C</strong> receives the “NaN” label.</p>
+<p><img src="presentation_slide4.png" /></p>
+<p>The list of labels was transformed to multiple labels or columns using the multi-label binarizer from <code>sklearn.preprocessing MultilabelBinarizer</code>.</p>
+<p>During exploratory data analysis, the major social URLs represented over 99% of the social URLs with relevant claim information. After taking into account those with irrelevant claim information (NaN), we see that the training dataset was highly imbalanced. The fill rate for subject data was also low, meaning that there were a lot of missing data.</p>
+<p>A list of numeric and categorical features were cleaned, dummy coded, and aggregated to select for the training data in the models. Variables were chosen based on intuition, from previous models, and based on whether there could be multicolinearity between similar variables. Numeric correlation analyses wree conducted using Pearson and Spearman correlations, and categorical correlation analyses were conducted using Cramer’s V.</p>
+<p>Training data (<em>n</em> = ~260k after a 70/30 split) was resampled to adjust for class imblanace since most URLs were NaN, and afterwards missing numeric data were imputed based on the average value of the variable.</p>
+<h2 id="results">Results</h2>
+<p>My model pipeline started with using a multi-label random forest classifier from <code>sklearn.ensemble.RandomForestClassifier</code>. Hyperparameter tuning and training on many iterations of the model led to one that had overall low recall and precision for the social domain URLs that contained relevant claim information. However, recall and precision scores (~98% and above) were high when the model was identifying which social URLs <em>did not</em> contain relevant claim information. Other model metrics (ROC, AUC, F1 score, etc.) were computed for each model.</p>
+<p><img src="presentation_slide5.png" /></p>
+<p>During the model optimization step, I tuned the threshold criterion with a probability range (0.10-0.90) and recomputed the model metrics based on the best model (Model 2.6). The model using this approach (Model 2.6.2) had a threshold criterion of 0.70 that produced produced high recall and precision (at least 85%) for all URLs with no relevant claim information.</p>
+<p><img src="presentation_slide6.png" /></p>
+<p>Another optimization step involved resampling the training data based on labels that were “zero” (had irrelevant claim information) and retrained the model using Model 2.6 hyperparameters. This model (Model 2.7) had similar metrics as Model 2.6.</p>
+<p><img src="presentation_slide7.png" /></p>
+<p>This produced models that have similar performance metrics for filtering social domain URLs that contained irrelevant claim information.</p>
+<p>Future model training and optimization would need to take place, which may involve dimensionality reduction of the variables, investigating feature importance and correlations between labels, and using LightGBM model type for multi-label classification. Prospective long-term plans would be to create a third version of the Dynamic Relevancy Model that predicts which internal feedback description contains relevant claim information.</p>
+<h2 id="takeaways">Takeaways</h2>
+<p>In summary, the model could be used for filtering irrelevant social media URLs, which will be a big load off of PDE team. Using experimental approaches in the Data Science team helps us better understand the variables in the model and what parameters we can tune to improve future methods in the modeling pipeline.</p>
+<p><img src="presentation_slide8.png" /></p>
+<h1 id="what-i-learned">What I Learned</h1>
+<p>I learned a lot more about what it was like to work as a data scientist in a day-to-day role. For project management, we had a lot of weekly standup and sprint meetings using Jira to share our progress on different aspects of our projects. It helped to keep track of what needed to get done as a priority and how that impacts the progress of others on the team who may be relying on our results. While meetings were very early because we wanted to accomodate team members living in Portugal (starting as early as 7:45am PST), I liked having the early commute and enjoyed the calm scenery of downtown in the mornings! It made me really cherish the beauty of Santa Barbara. As I worked on my projects, we focused a lot on keeping organized as well with knowing where scripts were housed and creating documentations with project framing guidelines. I also learned about the different steps or the roadmap involved in a project. I got to the step with model optimization, but the steps afterwards would have included:</p>
+<ul>
+<li>Code refactoring (strucure code to script and get repository ready for deployment)</li>
+<li>Deployment to production (sending product out for use)</li>
+<li>Integration/unit testing (tests added to model repository)</li>
+<li>Model documentation (confluence and/or code documentation as needed)</li>
+</ul>
+<p>The main technial skills I honed and developed included being more confident using Python and Jupyter Lab in the terminal, AWS, really getting to know the <code>pandas</code> and <code>numpy</code> libraries, and actually using a Macbook for once in my life (no joke). The problem solving aspect of knowing how to piece different parts of code to get the results I needed was always satisfying, and I learned that it was okay to ask for help even on the simple tasks so that things can move forward. One cool tool I also learned is that you can “pickle” large models you created for later use!</p>
+<p>I also learned a lot more of the different machine learning methods and practices when it comes to working with different types of data (e.g., imbalanced and missing data) and the models typically used in practice. For my specific project, I learned about the difference between multi-label and multi-class classification: the former is when we allow for a variable number of labels to be assigned to each instance, whereas the latter is when there is an assignment to a mutually exclusive collection of classes.</p>
+<p>Since I was working in an industry that have insurance carriers as clients, I had opportunities to learn about insurance and claims from online classes and met with other stakeholders in the company to understand the products and business goals of the models I was creating. One amazing opportunity the other interns and I had was that we were able to present our projects to the C-suite stakeholders to show them the work we’ve done all summer and to implement their feedback!</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>I really loved my manager, team lead, and my intern buddy throughout this experience! Everyone was so nice, social, and willing to help whenever I had questions. I also liked that there were other PhDs on the team, who shared a lot of helpful advice about their grad school journey and post-academic experience. The people at the company are really inclusive and always throw in fun social activities within and outside the company, such as beach volleyball hangouts and coordinating local Santa Barbara summer movie night events. I also loved the catered lunches we got on Thursdays! The Data Science team and the interns celebrated our final week with a social at the bowling alley!</p>
+<p><img src="carpe_ds_lunch.jpg" /> <img src="carpe_ds_lunch2.jpg" /></p>
+<p>It has been one of the best summers I’ve ever had in Santa Barabra, and I’m so grateful for the experience and for the wonderful people I’ve connected with at Carpe Data!</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2737,7 +1623,18 @@ function init_posts_list() {
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="citation">Citation</h3>
+<p>For attribution, please cite this work as</p>
+<pre class="citation-appendix short">Yu (2022, Sept. 4). Internship: Carpe Data. Retrieved from https://esswhy.github.io/portfolio/internship_carpe_data/</pre>
+<p>BibTeX citation</p>
+<pre class="citation-appendix long">@misc{yu2022internship:,
+  author = {Yu, Shuying},
+  title = {Internship: Carpe Data},
+  url = {https://esswhy.github.io/portfolio/internship_carpe_data/},
+  year = {2022}
+}</pre>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

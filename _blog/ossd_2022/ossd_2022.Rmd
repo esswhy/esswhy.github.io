@@ -4,11 +4,13 @@ description: |
   In this blog post, I share some highlights about the OSSD conference that I attended last week with my lab.
 author:
   - name: Shuying Yu
-    url: {}
+    url: https://esswhy.github.io/blog/ossd_2022/
 date: 2022-05-09
 categories:
   - Grad School
-output:
+base_url: https://esswhy.github.io/blog/ossd_2022/
+preview: yu_poster_ossd.jpg
+output: 
   distill::distill_article:
     self_contained: false
     code_folding: Code
