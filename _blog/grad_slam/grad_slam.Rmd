@@ -17,10 +17,9 @@ output:
     toc_float: true
 ---
 
-
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE, message = FALSE,
                       fig.align = "center")
 
 #Libraries
@@ -53,7 +52,7 @@ They announced the winners at the end after tallying the scores. Since Emily cou
 
 A week after the competition, Graduate Division shared the anonymous feedback and scores from the judges. Here are mine below:
 
-```{r echo=FALSE, message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "800px", out.height = "600px"}
+```{r message = FALSE, warning = FALSE, fig.align = "center", fig.pos = "H", out.width = "800px", out.height = "500px"}
 knitr::include_graphics("grad_slam_feedback_shuying.pdf")
 ```
 
