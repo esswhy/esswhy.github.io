@@ -1,0 +1,28 @@
+---
+title: "Internship: Carpe Data"
+description: |
+  In this project, I provide an overview of my internship experience working with multi-label classification models on social media sites for insurance fraud risks. 
+author:
+  - name: Shuying Yu
+citation_url: https://esswhy.github.io/portfolio/internship_carpe_data/
+date: 2023-03-04
+categories:
+  - Python
+  - Classification
+  - Machine Learning
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: Code
+    toc: true
+    toc_float: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+
